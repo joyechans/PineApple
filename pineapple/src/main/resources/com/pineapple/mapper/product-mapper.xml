@@ -6,7 +6,7 @@
 <mapper namespace="com.pineapple.mapper.ProductMapper">
 
     <select id="listPage" resultType="Product"
-   parameterType="com.catwebsite.vo.ProductCriteria">
+   parameterType="com.pineapple.vo.ProductCriteria">
 		SELECT PRODUCTNO, NAME, UPLOADER, REGDATE, CONTENT, PRICE, KIND
       from (
 		SELECT PRODUCTNO, NAME, UPLOADER, REGDATE, CONTENT, PRICE, KIND,
