@@ -4,7 +4,6 @@
 			<div class="container">
 				<div class="row">
 					<div class="col text-center">
-						<div class="footer_logo"><a href="/pineapple/">PineApple</a></div>
 						<nav class="footer_nav">
 							<ul>
 							<li><a href="#">Mac</a></li>
