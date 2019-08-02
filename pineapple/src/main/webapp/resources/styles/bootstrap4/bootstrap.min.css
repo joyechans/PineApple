@@ -7082,6 +7082,7 @@ supports ((position:-webkit-sticky ) or (position:sticky )){ .
 }
 
 .ml-auto, .mx-auto {
+	margin-left: auto !important
 }
 
 @media ( min-width :576px) {
