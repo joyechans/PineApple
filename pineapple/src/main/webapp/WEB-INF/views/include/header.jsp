@@ -16,8 +16,8 @@
 					<li><a href="/pineapple/upload/pr-list">iPad</a></li>
 					<li><a href="categories.html">iPhone</a></li>
 					<li><a href="categories.html">Watch</a></li>
-					<li><a href="contact.html">Review</a></li>
-					<li><a href="contact.html">Notice</a></li>
+					<li><a href="categories.html">NOTICE</a></li>
+					<li><a href="/pineapple/upload/re-list">Review</a></li>
 				</ul>
 			</nav>
 			<div class="header_content ml-auto">
@@ -29,7 +29,7 @@
             </c:when>
             <c:otherwise>            	
             	<a href="#" class="btn">${ loginuser.memberId }님 </a>
-            	<a href="/account/logout" class="btn">로그아웃</a>
+            	<a href="/pineapple/account/logout" class="btn">로그아웃</a>
             </c:otherwise>
             </c:choose>
 					</form>
@@ -75,11 +75,7 @@
 				</div>
 			</div>
 
-			<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm">
-				<div></div>
-				<div></div>
-				<div></div>
-			</div>
+			<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
 		</div>
 	</header>
         
@@ -99,7 +95,6 @@
 					<li><a href="categories.html">iPhone</a></li>
 					<li><a href="categories.html">Watch</a></li>
 					<li><a href="contact.html">Review</a></li>
-					<li><a href="contact.html">Notice</a></li>
 				</ul>
 			</nav>
 		</div>   

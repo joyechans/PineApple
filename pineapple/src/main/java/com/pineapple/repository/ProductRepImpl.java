@@ -119,8 +119,7 @@ public class ProductRepImpl implements ProductRep {
 	@Override
 	public ProductImg findUploadFileByUploadNo(int productNo) {
 		ProductImg img = productMapper.findUploadFileByUploadNo(productNo);
-		return img;
-		
+		return img;		
 		}			
 	
 	public List<Product> listPage(ProductCriteria cri) {

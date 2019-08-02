@@ -1,8 +1,8 @@
 package com.pineapple.controller;
 
+import java.util.List;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -28,196 +28,189 @@ import com.pineapple.vo.ProductImg;
 @RequestMapping(path = "/upload/")
 public class ProductController {
 
-	@Autowired
-	@Qualifier("productService")
-	private ProductService productService;
+   @Autowired
+   @Qualifier("productService")
+   private ProductService productService;
 
-	/*
-	 * @RequestMapping(path = "/pr-listPage", method = RequestMethod.GET) public
-	 * String listPage(CatCriteria cri, Model model) {
-	 * 
-	 * 
-	 * List<Product> list = productService.listPage(cri);
-	 * 
-	 * for(Product product : list) {
-	 * product.setImg(productService.findUploadFileByUploadNo(product.getProductNo()
-	 * )); }
-	 * 
-	 * model.addAttribute("product", list);
-	 * 
-	 * ProductPageMaker ProductPageMaker = new ProductPageMaker();
-	 * ProductPageMaker.setCri(cri);
-	 * ProductPageMaker.setTotalCount(productService.listCount());
-	 * model.addAttribute("ProductPageMaker", ProductPageMaker);
-	 * 
-	 * return "upload/pr-listPage" ; }
-	 */
+   
+//    @RequestMapping(path = "/pr-list", method = RequestMethod.GET)
+//    public String listPage() {
+//       
+   
+   
+//     return "upload/pr-list" ; 
+//    
+//   }
 
-	@RequestMapping(path = "/pr-kind", method = RequestMethod.POST)
-	public String category(String kind, Model model) {
+    
 
-		if (kind == null) {
-			kind = "all";
-		}
+   @RequestMapping(path = "/pr-kind", method = RequestMethod.POST)
+   public String category(String kind, Model model) {
 
-		List<Product> list = productService.kindCategory(kind);
+      if (kind == null) {
+         kind = "all";
+      }
 
-		for (Product product : list) {
-			product.setImg(productService.findUploadFileByUploadNo(product.getProductNo()));
-		}
+      List<Product> list = productService.kindCategory(kind);
 
-		model.addAttribute("product", list);
-		return "upload/pr-list";
+      for (Product product : list) {
+         product.setImg(productService.findUploadFileByUploadNo(product.getProductNo()));
+      }
 
-	}
+      model.addAttribute("product", list);
+      return "upload/pr-list";
 
-	
-	  @RequestMapping(path = "/pr-list", method = RequestMethod.GET) public String
-	  list(String col, String word, Model model, HttpSession session) {
-	  
-	  Member loginuser = (Member) session.getAttribute("loginuser"); String
-	  memberId = loginuser.getMemberId();
-	  
-	  List<Product> list = productService.listProduct(col, word);
-	  
-	  for(Product product : list) {
-	  product.setImg(productService.findUploadFileByUploadNo(product.getProductNo()
-	  )); }
-	  
-	  model.addAttribute("product", list);
-	  
-	  return "upload/pr-list"; }
-	  
-	
+   }
 
-	@RequestMapping(path = "/pr-write", method = RequestMethod.GET)
-	public String writeForm() {
+   
+     @RequestMapping(path = "/pr-list", method = RequestMethod.GET) 
+     public String list(String col, String word, Model model, HttpSession session) {
+     
+//     Member loginuser = (Member) session.getAttribute("loginuser"); 
+//     String memberId = loginuser.getMemberId();
+     
+     List<Product> list = productService.listProduct(col, word);
+     
+     for(Product product : list) {
+     product.setImg(productService.findUploadFileByUploadNo(product.getProductNo()
+     )); }
+     
+     model.addAttribute("product", list);
+     
+     return "upload/pr-list"; }
+     
+   
 
-		return "upload/pr-write";
-	}
+   @RequestMapping(path = "/pr-write", method = RequestMethod.GET)
+   public String writeForm() {
 
-	@RequestMapping(path = "/pr-write", method = RequestMethod.POST)
-	public String write(MultipartHttpServletRequest req, Product product) {
+      return "upload/pr-write";
+   }
 
-		MultipartFile ci = req.getFile("attach");
-		if (ci != null) {
+   @RequestMapping(path = "/pr-write", method = RequestMethod.POST)
+   public String write(MultipartHttpServletRequest req, Product product) {
 
-			ServletContext application = req.getServletContext();
-			String path = application.getRealPath("/resources/upload-files");
+      MultipartFile ci = req.getFile("attach");
+      if (ci != null) {
 
-			String userFileName = ci.getOriginalFilename();
-			if (userFileName.contains("\\")) {
-				userFileName = userFileName.substring(userFileName.lastIndexOf("\\") + 1);
-			}
-			String savedFileName = Util.makeUniqueFileName(userFileName);
+         ServletContext application = req.getServletContext();
+         String path = application.getRealPath("/resources/upload-files");
 
-			try {
-				ci.transferTo(new File(path, savedFileName));
+         String userFileName = ci.getOriginalFilename();
+         if (userFileName.contains("\\")) {
+            userFileName = userFileName.substring(userFileName.lastIndexOf("\\") + 1);
+         }
+         String savedFileName = Util.makeUniqueFileName(userFileName);
 
-				ProductImg productImg = new ProductImg();
-				productImg.setUserFileName(userFileName);
-				productImg.setSavedFileName(savedFileName);
-				ArrayList<ProductImg> files = new ArrayList<ProductImg>();
-				files.add(productImg);
-				product.setImgs(files);
+         try {
+            ci.transferTo(new File(path, savedFileName));
 
-				productService.insertProduct(product);
+            ProductImg productImg = new ProductImg();
+            productImg.setUserFileName(userFileName);
+            productImg.setSavedFileName(savedFileName);
+            ArrayList<ProductImg> files = new ArrayList<ProductImg>();
+            files.add(productImg);
+            product.setImgs(files);
 
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-		}
+            productService.insertProduct(product);
 
-		return "redirect:pr-list?col=all&word=";
-	}
+         } catch (Exception ex) {
+            ex.printStackTrace();
+         }
+      }
 
-	@RequestMapping(path = "/pr-detail", method = RequestMethod.GET)
-	public String detail(@RequestParam(name = "productNo") int productNo, Model model) {
+      return "redirect:pr-list";
+      //return "redirect:pr-list?col=all&word=";
+   }
 
-		productService.updateCount(productNo);
+   @RequestMapping(path = "/pr-detail", method = RequestMethod.GET)
+   public String detail(@RequestParam(name = "productNo") int productNo, Model model) {
 
-		Product product = productService.findUploadByUploadNo(productNo);
+      productService.updateCount(productNo);
 
-		if (product == null) {
-			return "redirect:pr-list";
-		}
-		List<ProductImg> imgs = productService.findUploadFilesByUploadNo(productNo);
-		product.setImgs((ArrayList<ProductImg>) imgs);
+      Product product = productService.findUploadByUploadNo(productNo);
 
-		model.addAttribute("product", product);
+      if (product == null) {
+         return "redirect:pr-list";
+      }
+      List<ProductImg> imgs = productService.findUploadFilesByUploadNo(productNo);
+      product.setImgs((ArrayList<ProductImg>) imgs);
 
-		return "upload/pr-detail";
-	}
+      model.addAttribute("product", product);
 
-	@RequestMapping(path = "/delete/{productNo}", method = RequestMethod.GET)
-	public String delete(@PathVariable int productNo) {
+      return "upload/pr-detail";
+   }
 
-		productService.deleteProduct(productNo);
+   @RequestMapping(path = "/delete/{productNo}", method = RequestMethod.GET)
+   public String delete(@PathVariable int productNo) {
 
-		return "redirect:/upload/pr-list?col=all&word=";
-	}
+      productService.deleteProduct(productNo);
 
-	@RequestMapping(path = "/delete-file/{productNo}/{fileNo}", method = RequestMethod.GET)
-	public String deleteFile(@PathVariable int productNo, @PathVariable int fileNo, Model model) {
+      	return "redirect:/upload/pr-list";
+//      return "redirect:/upload/pr-list?col=all&word=";
+   }
 
-		ProductImg img = productService.findUploadFileByUploadFileNo(fileNo);
+   @RequestMapping(path = "/delete-file/{productNo}/{fileNo}", method = RequestMethod.GET)
+   public String deleteFile(@PathVariable int productNo, @PathVariable int fileNo, Model model) {
 
-		File f = new File(img.getSavedFileName());
-		if (f.exists()) {
-			f.delete();
-		}
+      ProductImg img = productService.findUploadFileByUploadFileNo(fileNo);
 
-		productService.deleteProductImg(fileNo);
+      File f = new File(img.getSavedFileName());
+      if (f.exists()) {
+         f.delete();
+      }
 
-		return "redirect:/upload/pr-update/" + productNo;
-	}
+      productService.deleteProductImg(fileNo);
 
-	@RequestMapping(path = "/pr-update/{productNo}", method = RequestMethod.GET)
-	public String updateForm(@PathVariable int productNo, Model model) {
+      return "redirect:/upload/pr-update/" + productNo;
+   }
 
-		Product product = productService.findUploadByUploadNo(productNo);
-		if (product == null) {
-			return "redirect:/upload/pr-list";
-		}
-		List<ProductImg> files = productService.findUploadFilesByUploadNo(productNo);
-		product.setImgs((ArrayList<ProductImg>) files);
+   @RequestMapping(path = "/pr-update/{productNo}", method = RequestMethod.GET)
+   public String updateForm(@PathVariable int productNo, Model model) {
 
-		model.addAttribute("product", product);
+      Product product = productService.findUploadByUploadNo(productNo);
+      if (product == null) {
+         return "redirect:/upload/pr-list";
+      }
+      List<ProductImg> files = productService.findUploadFilesByUploadNo(productNo);
+      product.setImgs((ArrayList<ProductImg>) files);
 
-		return "upload/pr-update";
-	}
+      model.addAttribute("product", product);
 
-	@RequestMapping(path = "/pr-update", method = RequestMethod.POST)
-	public String updateForm(MultipartHttpServletRequest req, Product product) {
+      return "upload/pr-update";
+   }
 
-		MultipartFile mf = req.getFile("attach");
-		if (mf != null) {
+   @RequestMapping(path = "/pr-update", method = RequestMethod.POST)
+   public String updateForm(MultipartHttpServletRequest req, Product product) {
 
-			ServletContext application = req.getServletContext();
-			String path = application.getRealPath("/upload-files");
+      MultipartFile mf = req.getFile("attach");
+      if (mf != null) {
 
-			String userFileName = mf.getOriginalFilename();
-			if (userFileName.contains("\\")) {
-				userFileName = userFileName.substring(userFileName.lastIndexOf("\\") + 1);
-			}
-			String savedFileName = Util.makeUniqueFileName(userFileName);
+         ServletContext application = req.getServletContext();
+         String path = application.getRealPath("/upload-files");
 
-			try {
-				mf.transferTo(new File(path, savedFileName));
+         String userFileName = mf.getOriginalFilename();
+         if (userFileName.contains("\\")) {
+            userFileName = userFileName.substring(userFileName.lastIndexOf("\\") + 1);
+         }
+         String savedFileName = Util.makeUniqueFileName(userFileName);
 
-				productService.updateProduct(product);
+         try {
+            mf.transferTo(new File(path, savedFileName));
 
-				ProductImg productImg = new ProductImg();
-				productImg.setUserFileName(userFileName);
-				productImg.setSavedFileName(savedFileName);
-				productImg.setProductNo(product.getProductNo());
-				productService.insertProductImg(productImg);
+            productService.updateProduct(product);
 
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-		}
+            ProductImg productImg = new ProductImg();
+            productImg.setUserFileName(userFileName);
+            productImg.setSavedFileName(savedFileName);
+            productImg.setProductNo(product.getProductNo());
+            productService.insertProductImg(productImg);
 
-		return "redirect:/upload/pr-detail/" + product.getProductNo();
-	}
+         } catch (Exception ex) {
+            ex.printStackTrace();
+         }
+      }
+
+      return "redirect:/upload/pr-detail/" + product.getProductNo();
+   }
 }

@@ -28,7 +28,6 @@ public interface ProductService {
 	
 	void updateProduct(Product product);
 
-//	MovieFile findUploadFileByUploadFileNo(int uploadFileNo);
 	ProductImg findUploadFileByUploadNo(int productNo);
 
 	List<Product> kindCategory(String kind);

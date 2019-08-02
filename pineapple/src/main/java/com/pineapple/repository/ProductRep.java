@@ -3,7 +3,6 @@ package com.pineapple.repository;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import com.pineapple.vo.Product;
 import com.pineapple.vo.ProductCriteria;
 import com.pineapple.vo.ProductImg;
@@ -33,7 +32,7 @@ public interface ProductRep {
 	ProductImg findUploadFileByUploadNo(int productNo);
 
 	ArrayList<Product> kindCategorys(String kind);
-
+	
 	List<Product> listPage(ProductCriteria cri);
 	
 	int listCount();
