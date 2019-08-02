@@ -39,7 +39,7 @@
 	</bean>
 	
 	<!-- Member -->
-<!-- 	<bean id="memberRep" class="com.pineapple.repository.MemberRepImpl">
+ 	<bean id="memberRep" class="com.pineapple.repository.MemberRepImpl">
 		<property name="sessionTemplate" ref="sqlSessionTemplate" />
 		<property name="memberMapper" ref="memberMapper" />
 	</bean>
@@ -54,7 +54,7 @@
 		<property name="mapperInterface" value="com.pineapple.mapper.MemberMapper" />
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
 	</bean>	
-	 -->
+	 
 	
 	
 	<!-- Product -->

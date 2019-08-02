@@ -19,14 +19,28 @@
 					<li><a href="contact.html">Review</a></li>
 				</ul>
 			</nav>
-<!-- 			<div class="header_content ml-auto">
+			<div class="header_content ml-auto">
 				<div class="search header_search">
 					<form action="#">
-						<input type="search" class="search_input" required="required">
-						<button type="submit" id="search_button" class="search_button"><img src="resources/images/magnifying-glass.svg" alt=""></button>
+						<c:choose>
+            <c:when test="${ empty loginuser }">
+                
+            </c:when>
+            <c:otherwise>            	
+            	<a href="#" class="btn">${ loginuser.memberId }님 </a>
+            	<a href="/account/logout" class="btn">로그아웃</a>
+            </c:otherwise>
+            </c:choose>
 					</form>
-				</div> -->
+				</div> 
+				
 				<div class="shopping">
+					<c:choose>
+					<c:when test="${empty loginuser }">
+						<a href="/pineapple/account/login" class="btn">Login</a>
+                		<a href="/pineapple/account/register" class="btn">Register</a>
+					</c:when>
+					<c:otherwise>
 					<!-- Cart -->
 					<a href="#">
 						<div class="cart">
@@ -55,6 +69,8 @@
 							<img src="resources/images/avatar.svg" alt="">
 						</div>
 					</a>
+					</c:otherwise>
+				</c:choose>
 				</div>
 			</div>
 

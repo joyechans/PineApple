@@ -1,6 +1,5 @@
 package com.pineapple.vo;
 
-import java.sql.Date;
 
 import lombok.Data;
 
@@ -10,9 +9,6 @@ public class Member {
 	private String memberId;
 	private String name;
 	private String passwd;
-	private String phone;
-	private String gender;
-	private String email;
-	private String userType;
-	private Date regDate;		
+	private String phoneNumber;
+	private String userType;		
 }
