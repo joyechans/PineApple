@@ -17,6 +17,7 @@
 					<li><a href="categories.html">iPhone</a></li>
 					<li><a href="categories.html">Watch</a></li>
 					<li><a href="contact.html">Review</a></li>
+					<li><a href="contact.html">Notice</a></li>
 				</ul>
 			</nav>
 			<div class="header_content ml-auto">
@@ -74,7 +75,11 @@
 				</div>
 			</div>
 
-			<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
+			<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
 		</div>
 	</header>
         
@@ -94,6 +99,7 @@
 					<li><a href="categories.html">iPhone</a></li>
 					<li><a href="categories.html">Watch</a></li>
 					<li><a href="contact.html">Review</a></li>
+					<li><a href="contact.html">Notice</a></li>
 				</ul>
 			</nav>
 		</div>   

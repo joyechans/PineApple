@@ -71,7 +71,8 @@
 {
 	.main_nav
 	{
-		padding-left: 60px;
+		width: 100%;
+		text-align: center;
 	}
 	.main_nav ul li
 	{
