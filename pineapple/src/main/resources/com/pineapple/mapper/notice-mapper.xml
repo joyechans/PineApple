@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pineapple.mapper.NoticeMapper">
+
+<select id="listNotice" parameterType="hashmap" resultType="Notice" >
+      select NOTICENO, TITLE, UPLOADER, CONTENT
+      FROM NOTICE
+      order by noticeNo DESC
+   </select> 
+	
+	<!-- **************************************************** -->
+	
+	<!-- insert가 완료된 후 keyColumn(uploadNo)의 값을 vo의 keyProperty(uploadNo)에 저장 -->
+	<insert id="insertNotice" parameterType="Notice"
+			useGeneratedKeys="true" keyColumn="noticeNo" keyProperty="noticeNo">
+		INSERT INTO NOTICE(NOTICENO, UPLOADER, CONTENT, TITLE)
+		VALUES (NOTICE_SEQUENCE.NEXTVAL, #{ uploader }, #{ content }, #{ title })
+	</insert>
+	
+
+	
+</mapper>

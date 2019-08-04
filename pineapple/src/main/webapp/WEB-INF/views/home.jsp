@@ -34,7 +34,7 @@
 	
 			<div class="home_slider_container">
 				<div class="owl-carousel owl-theme home_slider">
-					
+					<a href="/pineapple/upload/pr-list">
 					<!-- Home Slider Item -->
 					<div class="owl-item">
 						<div class="home_slider_background" style="background-image:url(resources/images/home_slider_1.jpg)"></div>
@@ -45,8 +45,10 @@
 							</div>	
 						</div>
 					</div>
+					</a>
 	
 					<!-- Home Slider Item -->
+					<a href="/pineapple/upload/pr-list">
 					<div class="owl-item">
 						<div class="home_slider_background" style="background-image:url(resources/images/home_slider_2.jpg)"></div>
 						<div class="home_slider_content">
@@ -56,8 +58,10 @@
 							</div>	
 						</div>
 					</div>
-	
-					<!-- Home Slider Item -->
+					</a>
+					
+					<!-- Home Slider Item -->					
+					<a href="/pineapple/upload/pr-list">
 					<div class="owl-item">
 						<div class="home_slider_background" style="background-image:url(resources/images/home_slider_3.jpg)"></div>
 						<div class="home_slider_content">
@@ -67,7 +71,8 @@
 							</div>	
 						</div>
 					</div>
-	
+					</a>
+
 				</div>
 				
 				<!-- Home Slider Nav -->
@@ -140,6 +145,7 @@
 	<script src="/pineapple/resources/plugins/parallax-js-master/parallax.min.js"></script>
 	<script src="/pineapple/resources/plugins/colorbox/jquery.colorbox-min.js"></script>
 	<script src="/pineapple/resources/js/custom.js"></script>
+	<script type="text/javascript"></script>
 	</body>
 </html>		
 		

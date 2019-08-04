@@ -23,7 +23,7 @@
 							</ul>
 						</div>
 						<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This Website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="http://www.goott.co.kr" target="_blank">GoottAcedemy</a> & by<a href="/pineapple/" target="_blank">PineApple</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website is made with<i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="home" style="color:navy">PineApple</a>
 	<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
 					</div>
 				</div>

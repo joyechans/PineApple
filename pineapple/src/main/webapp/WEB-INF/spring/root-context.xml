@@ -72,6 +72,23 @@
 	<bean id="productMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
 		<property name="mapperInterface" value="com.pineapple.mapper.ProductMapper" />
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+	</bean>
+	
+		<!-- Product -->
+	<bean id="noticeRep" class="com.pineapple.repository.NoticeRepImpl">
+		<property name="sessionTemplate" ref="sqlSessionTemplate" />
+		<property name="noticeMapper" ref="noticeMapper" />
+	</bean>
+
+	
+	<bean id="noticeService" class="com.pineapple.service.NoticeServiceImpl">
+		<property name="noticeRep" ref="noticeRep" />
+	</bean>
+	
+	
+	<bean id="noticeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.pineapple.mapper.NoticeMapper" />
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
 	</bean>	
 
 	

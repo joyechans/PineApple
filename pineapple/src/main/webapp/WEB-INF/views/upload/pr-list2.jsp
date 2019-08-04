@@ -33,10 +33,6 @@
 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
 	
 	<!-- header End -->
-	
-	
-
-
 
 	<!-- Products -->
 	<div class="products">
@@ -47,14 +43,16 @@
 					
 					<div class="current_page" style="text-align: center; font-size: 20px;">IPAD</div>
 					<div style="width: 100%">
-<!-- 						<div class="search" style="text-align: center">
-							<form action="#">
-								<input type="search" q="googlesearch" class="search_input menu_mm" required="required">
-								<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="../resources/images/magnifying-glass.svg" alt=""></button>
-							</form>
-						</div> -->
-					</div>
-						
+						<div class="product_size">										
+					     <form id="selectform" action="pr-kind" method="POST">
+						<input type="radio" name="kind" value="IPHONE" id="kindCategory" <c:if test="${param.kind eq 'IPHONE'}"></c:if>/><label for="kindCategory">iPhone</label>
+						<input type="radio" name="kind" value="IPAD" id="kindCategory2" <c:if test="${param.kind eq 'IPAD'}"></c:if>/><label for="kindCategory2">iPad</label>
+						<input type="radio" name="kind" value="MAC" id="kindCategory3" <c:if test="${param.kind eq 'MAC'}"></c:if>/><label for="kindCategory3">MAC</label>					
+						<input type="radio" name="kind" value="WATCH" id="kindCategory4" <c:if test="${param.kind eq 'WATCH'}"></c:if>/><label for="kindCategory4">Watch</label>					
+						<input type="radio" name="kind" value="AIRPOT" id="kindCategory5" <c:if test="${param.kind eq 'AIRPOT'}"></c:if>/><label for="kindCategory5">Airpot</label>			 				                     
+                 		</form>
+                     </div>
+				</div>
 	<div class="row products_container">
 				<div class="col">
 					
@@ -66,7 +64,7 @@
 						<!-- Product -->
 				<c:forEach begin="0" end="${ fn:length(product)/3 }" varStatus="i">
                <c:forEach var="product" begin="${i.index*3}" end="${i.index*3+2}" items="${ product }" varStatus="productnum">
-						<div class="product">	
+						<div class="product">
 							<div class="product_image"><img src="/pineapple/resources/upload-files/${ product.img.savedFileName }" alt="" style="height:280px;width:320px"></div>
 							<div class="rating rating_5" data-rating="5">
 								<i class="fa fa-star"></i>
@@ -129,6 +127,8 @@
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 	
 	<!-- footer End -->
+	
+	
 </div>
 </div>
 
@@ -141,8 +141,44 @@
 	<script src="/pineapple/resources/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.js"></script>
 	<script src="/pineapple/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 	<script src="/pineapple/resources/js/categories_custom.js"></script>
+	<script type="text/javascript"></script>
+	<script type="text/javascript">
 	
+   	$(function(){	   		
+   		$('#kindCategory').on('change', function(event){
+   			this.form.submit();
+   			
+   		});
+   	});
 
+   	$(function(){	   		
+   		$('#kindCategory2').on('change', function(event){
+   			this.form.submit();
+   			
+   		});
+   	});
 
+   	$(function(){	   		
+   		$('#kindCategory3').on('change', function(event){
+   			this.form.submit();
+   			
+   		});
+   	});   	
+
+   	$(function(){	   		
+   		$('#kindCategory4').on('change', function(event){
+   			this.form.submit();
+   			
+   		});
+   	}); 
+
+   	$(function(){	   		
+   		$('#kindCategory5').on('change', function(event){
+   			this.form.submit();
+   			
+   		});
+   	});   	
+  	
+	</script>
 </body>
 </html>

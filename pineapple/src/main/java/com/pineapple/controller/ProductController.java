@@ -1,8 +1,8 @@
 package com.pineapple.controller;
 
-import java.util.List;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -20,9 +20,10 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.pineapple.common.Util;
 import com.pineapple.service.ProductService;
-import com.pineapple.vo.Member;
 import com.pineapple.vo.Product;
+import com.pineapple.vo.ProductCriteria;
 import com.pineapple.vo.ProductImg;
+import com.pineapple.vo.ProductPageMaker;
 
 @Controller
 @RequestMapping(path = "/upload/")
@@ -33,32 +34,45 @@ public class ProductController {
    private ProductService productService;
 
    
-//    @RequestMapping(path = "/pr-list", method = RequestMethod.GET)
-//    public String listPage() {
-//       
    
-   
-//     return "upload/pr-list" ; 
-//    
-//   }
+   @RequestMapping(path = "/pr-list2", method = RequestMethod.GET)
+   public String listPage(ProductCriteria cri, Model model) {
+      
+      
+      List<Product> list = productService.listPage(cri);
+      
+      for(Product product : list) {
+         product.setImg(productService.findUploadFileByUploadNo(product.getProductNo()));
+      }
+      
+      model.addAttribute("product", list);
+      
+      ProductPageMaker ProductPageMaker = new ProductPageMaker();
+      ProductPageMaker.setCri(cri);
+      ProductPageMaker.setTotalCount(productService.listCount());
+      model.addAttribute("ProductPageMaker", ProductPageMaker);
+      
+      return "upload/pr-list2";
+   }	
 
     
 
    @RequestMapping(path = "/pr-kind", method = RequestMethod.POST)
-   public String category(String kind, Model model) {
+   public String categorys(String kind, Model model) {
 
       if (kind == null) {
          kind = "all";
       }
-
+      
       List<Product> list = productService.kindCategory(kind);
 
       for (Product product : list) {
          product.setImg(productService.findUploadFileByUploadNo(product.getProductNo()));
       }
 
+      
       model.addAttribute("product", list);
-      return "upload/pr-list";
+      return "upload/pr-list2";
 
    }
 
@@ -66,18 +80,17 @@ public class ProductController {
      @RequestMapping(path = "/pr-list", method = RequestMethod.GET) 
      public String list(String col, String word, Model model, HttpSession session) {
      
-//     Member loginuser = (Member) session.getAttribute("loginuser"); 
-//     String memberId = loginuser.getMemberId();
-     
+
      List<Product> list = productService.listProduct(col, word);
      
      for(Product product : list) {
-     product.setImg(productService.findUploadFileByUploadNo(product.getProductNo()
-     )); }
+     product.setImg(productService.findUploadFileByUploadNo(product.getProductNo())); 
+     }
      
      model.addAttribute("product", list);
      
-     return "upload/pr-list"; }
+     return "upload/pr-list"; 
+     }
      
    
 
@@ -131,7 +144,7 @@ public class ProductController {
       Product product = productService.findUploadByUploadNo(productNo);
 
       if (product == null) {
-         return "redirect:pr-list";
+         return "redirect:pr-list2";
       }
       List<ProductImg> imgs = productService.findUploadFilesByUploadNo(productNo);
       product.setImgs((ArrayList<ProductImg>) imgs);
@@ -146,7 +159,7 @@ public class ProductController {
 
       productService.deleteProduct(productNo);
 
-      	return "redirect:/upload/pr-list";
+      	return "redirect:/upload/pr-list2";
 //      return "redirect:/upload/pr-list?col=all&word=";
    }
 
@@ -170,7 +183,7 @@ public class ProductController {
 
       Product product = productService.findUploadByUploadNo(productNo);
       if (product == null) {
-         return "redirect:/upload/pr-list";
+         return "redirect:/upload/pr-list2";
       }
       List<ProductImg> files = productService.findUploadFilesByUploadNo(productNo);
       product.setImgs((ArrayList<ProductImg>) files);

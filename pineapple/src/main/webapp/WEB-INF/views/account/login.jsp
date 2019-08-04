@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Wish</title>
+		<title>PineApple</title>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="description" content="Wish shop project">
@@ -26,27 +26,6 @@
 		<!-- header -->
 		<jsp:include page="/WEB-INF/views/include/header.jsp" />
 		<!-- header End -->
-	
-		<div class="home">
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="../resources/images/categories.jpg" data-speed="0.8"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="home_container">
-						<div class="home_content">
-							<div class="home_title">Login</div>
-							<div class="breadcrumbs">
-								<ul>
-									<li><a href="/pineapple/home">Home</a></li>									
-									<li>Login</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	
 	<div class="checkout">
 		<div class="container">

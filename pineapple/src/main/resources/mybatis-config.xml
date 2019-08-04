@@ -10,6 +10,7 @@
 		<typeAlias type="com.pineapple.vo.Member" alias="Member" />
 		<typeAlias type="com.pineapple.vo.Product" alias="Product" />
 		<typeAlias type="com.pineapple.vo.ProductImg" alias="ProductImg" />	
+		<typeAlias type="com.pineapple.vo.Notice" alias="Notice" />		
 					
 	</typeAliases>
 	
@@ -29,6 +30,7 @@
 	<mappers>
 		<mapper resource="com/pineapple/mapper/member-mapper.xml" />
 		<mapper resource="com/pineapple/mapper/product-mapper.xml" /> 
+		<mapper resource="com/pineapple/mapper/notice-mapper.xml" />		
 	</mappers>
 	
 </configuration>

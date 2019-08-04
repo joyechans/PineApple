@@ -21,8 +21,21 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.pineapple.controller" />
+	<context:component-scan base-package="com.pineapple.controller" />	
+		<beans:bean id="authInterceptor"
+				class="com.pineapple.interceptor.AuthInterceptor" />			
+	<interceptors>
+		<interceptor>
+			<mapping path="/upload/**" />
+			<beans:ref bean="authInterceptor" />
+		</interceptor>				
+	</interceptors>
 	
+	
+	<!-- File Upload Handler (Class, Bean) Registration -->
+	<beans:bean id="multipartResolver"
+				class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</beans:bean>
 	
 	
 </beans:beans>

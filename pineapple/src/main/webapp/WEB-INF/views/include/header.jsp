@@ -3,21 +3,30 @@
        pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
       
-
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="description" content="Wish shop project">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/bootstrap4/bootstrap.min.css">
+		<link href="resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="/pineapple/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+		<link rel="stylesheet" type="text/css" href="/pineapple/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+		<link rel="stylesheet" type="text/css" href="/pineapple/resources/plugins/OwlCarousel2-2.2.1/animate.css">
+		<link href="resources/plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/main_styles.css">
+		<link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/responsive.css">
       
       <!-- Header -->
 
 	<header class="header">
 		<div class="header_inner d-flex flex-row align-items-center justify-content-start">
 			<div class="logo"><a href="/pineapple/">PineApple</a></div>
-			<nav class="main_nav">
+			<nav class="main_nav">			
 				<ul>
-					<li><a href="#">Mac</a></li>
-					<li><a href="/pineapple/upload/pr-list">iPad</a></li>
-					<li><a href="categories.html">iPhone</a></li>
-					<li><a href="categories.html">Watch</a></li>
-					<li><a href="categories.html">NOTICE</a></li>
-					<li><a href="/pineapple/upload/re-list">Review</a></li>
+					<li><a href="/pineapple/upload/pr-list2">APPLE</a></li>				
+                    <li ><a href="/pineapple/upload/nt-list">NOTICE</a></li>         
+					<li><a href="#">REVIEW</a></li>
+					<li><a href="#">Q&A</a></li>
 				</ul>
 			</nav>
 			<div class="header_content ml-auto">
@@ -83,19 +92,23 @@
 			<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
 			<div class="logo menu_mm"><a href="#">PineApple</a></div>
 			<div class="search">
-				<form action="#">
-					<input type="search" class="search_input menu_mm" required="required">
-					<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="resources/images/magnifying-glass.svg" alt=""></button>
+				<form action="pr-list?col=name&word=" method="get">
+					<input type="text" name="word" id="search" class="search_input menu_mm" required="required" placeholder="검색어를 입력해주세요.">
+					<button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm" src="/pineapple/resources/images/magnifying-glass.svg" alt=""></button>
+					<select name="col" style="display:none">
+					<option value="name">상품이름</option>
+					</select>
 				</form>
 			</div>
 			<nav class="menu_nav">
 				<ul class="menu_mm">
-					<li><a href="#">Mac</a></li>
-					<li><a href="/pineapple/upload/pr-list">iPad</a></li>
-					<li><a href="categories.html">iPhone</a></li>
-					<li><a href="categories.html">Watch</a></li>
-					<li><a href="contact.html">Review</a></li>
+					<li><a href="/pineapple/upload/pr-list2">APPLE</a></li>				
+                    <li ><a href="/pineapple/upload/nt-list">NOTICE</a></li>         
+					<li><a href="#">REVIEW</a></li>
+					<li><a href="#">Q&A</a></li>
 				</ul>
 			</nav>
 		</div>   
+		
+		
         

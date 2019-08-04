@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Wish</title>
+		<title>PineApple</title>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="description" content="Wish shop project">
@@ -27,26 +27,6 @@
 		<jsp:include page="/WEB-INF/views/include/header.jsp" />
 		<!-- header End -->
 	
-		<div class="home">
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="../resources/images/categories.jpg" data-speed="0.8"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="home_container">
-						<div class="home_content">
-							<div class="home_title">Register</div>
-							<div class="breadcrumbs">
-								<ul>
-									<li><a href="/pineapple/home">Home</a></li>									
-									<li>Register</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 	
 	<div class="checkout">
 		<div class="container">
@@ -59,10 +39,10 @@
 						<div class="checkout_form_container">
 							<form id="register-form" action="register" method="post">
 								<input type="text" class="checkout_input" id="name" name="name" value="" placeholder="Name">
+								<input type="text" class="checkout_input" id="phoneNumber" name="phoneNumber" value="" placeholder="Phone Number">										
 								<input type="text" class="checkout_input" id="memberId" name="memberId" value="" placeholder="ID">
 								<input type="password" class="checkout_input" id="passwd" name="passwd" placeholder="Password" required="required">	
-								<input type="password" class="checkout_input" id="confirm" name="confirm" placeholder="Password confirm" required="required">
-								<input type="text" class="checkout_input" id="phoneNumber" name="phoneNumber" value="" placeholder="Phone Number">																								
+								<input type="password" class="checkout_input" id="confirm" name="confirm" placeholder="Password confirm" required="required">																						
 							</form>
 						</div>
 					</div>

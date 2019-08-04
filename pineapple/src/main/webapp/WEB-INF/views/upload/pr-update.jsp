@@ -17,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	
-	<title>pineapple | Update</title>
+	<title>PineApple</title>
 	
  	<!-- Favicon  -->
     <link rel="icon" href="/pineapple/resources/img/core-img/favicon.ico">
@@ -59,7 +59,7 @@
             
 	<div id="pageContainer">
 	
-		<h3 style="text-align:center;padding-top:50px">용품구매</h3>
+		<h3 style="text-align:center;padding-top:50px">상품구매</h3>
 		
 		<div class="container" style="margin-top:20px; text-align:center; width: 60%;">	        
 		        <form action="/pineapple/upload/pr-update"
@@ -68,27 +68,25 @@
 					<input type="hidden" name="productNo" value="${ product.productNo }">
 		        <table class="table table-bordered">
 			<tr style="height: 50px; width: 500px">
-		                <th>용품이름</th>
+		                <th>상품이름</th>
 		                <td>
 		                    <input type="text" name="name" style="width:550px" class="form-control" value="${ product.name }"/>
 		                </td>
 		            </tr>
 		            <tr>
-		            	<th>용품종류</th>
+		            	<th>상품종류</th>
 		             <td>
 		                    <select name="kind">
-		                      <option value="사료" selected="selected">사료</option>
-							  <option value="하우스">하우스</option>		                      
-		                      <option value="미용">미용</option>
-		                      <option value="목욕">목욕</option>	
-							  <option value="장난감">장난감</option>
-							  <option value="모래">모래</option>							  
-							  <option value="캣타워">캣타워</option>							
-						     </select>
+		                	  <option value="IPHONE" selected="selected">iPhone</option>
+							  <option value="IPAD">iPad</option>
+		                      <option value="MAC">MAC</option>		                      
+		                      <option value="WATCH">Watch</option>		                      
+							  <option value="AIRPOT">Airpot</option>				
+							  </select>
 		                </td>
 		                </tr>
 		            <tr>
-		                <th>용품가격</th>
+		                <th>상품가격</th>
 		                <td>
 		                    <input type="text" name="price" style="width:550px" class="form-control" value="${ product.price }"/>
 		                </td>
@@ -113,10 +111,9 @@
 			                ${ file.userFileName } 
 			               [<a href="/pineapple/upload/delete-file/${ product.productNo }/${ file.productImgNo }">삭제</a>]<br>
 			                </c:forEach>
-							  <div class="custom-file">
-							    <input type="file" class="custom-file-input" id="image" name="attach">
-							    <label class="custom-file-label" for="customFile">이미지를 선택해주세요.</label>
-							  </div>
+										<div class="custom-file">
+											<input type="file" name="attach"> 
+										</div>
 							
 		                </td>
 		            </tr>

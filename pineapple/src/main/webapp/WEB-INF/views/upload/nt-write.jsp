@@ -68,32 +68,14 @@
 		
 		<div class="container" style="margin-top:20px; text-align:center; width: 60%;">
 		
-		        <form action="pr-write"
+		        <form action="nt-write"
 						method="post"
 						enctype="multipart/form-data" >
 		        <table class="table table-hover">
 			<tr style="height: 50px; width: 500px">
 		                <th>상품이름</th>
 		                <td>
-		                    <input type="text" name="name" style="width:550px" class="form-control"/>
-		                </td>
-		            </tr>
-		            <tr>
-		            	<th>상품종류</th>
-		             <td>
-		                    <select name="kind">
-		                	  <option value="IPHONE" selected="selected">iPhone</option>
-							  <option value="IPAD">iPad</option>
-		                      <option value="MAC">MAC</option>		                      
-		                      <option value="WATCH">Watch</option>		                      
-							  <option value="AIRPOT">Airpot</option>				
-							  </select>
-		                </td>
-		                </tr>
-		            <tr>
-		                <th>상품가격</th>
-		                <td>
-		                    <input type="text" name="price" style="width:550px" class="form-control"/>
+		                    <input type="text" name="title" style="width:550px" class="form-control"/>
 		                </td>
 		            </tr>
 								<tr>
@@ -104,16 +86,6 @@
 		                	<input type="hidden" name="uploader" 
 		                	value="<%= member.getMemberId() %>" readonly="readonly">
 		                	--%></td>
-								</tr>
-								<tr>
-									<th colspan="1">이미지</th>
-									<td colspan="2" style="text-align: left">
-
-										<div class="custom-file">
-											<input type="file" name="attach"> 
-										</div>
-
-									</td>
 								</tr>
 
 								<tr>
