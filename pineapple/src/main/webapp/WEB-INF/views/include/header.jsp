@@ -2,7 +2,7 @@
        contentType="text/html; charset=utf-8" 
        pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-      
+    <!DOCTYPE html>  
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="description" content="Wish shop project">
@@ -52,9 +52,10 @@
 					</c:when>
 					<c:otherwise>
 					<!-- Cart -->
-					<a href="#">
+					<a href="/pineapple/upload/ordercart?memberId=${loginuser.memberId }">
 						<div class="cart">
-							<img src="resources/images/shopping-bag.svg" alt="">
+							 <img src="resources/images/shopping-bag.svg" alt="">
+							
 							<div class="cart_num_container">
 								<div class="cart_num_inner">
 									<div class="cart_num">0</div>
