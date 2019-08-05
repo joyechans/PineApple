@@ -35,8 +35,8 @@
 				<div class="col">
 					<div class="current_page">
 						<ul>
-							<li><a href="categories.html">PineApple</a></li>
-							<li><a href="categories.html">${ product.kind }</a></li>
+							<li><a href="/pineapple/">PineApple</a></li>
+							<li><a href="/pineapple/upload/pr-list2">${ product.kind }</a></li>
 							<li>${ product.name }</li>
 						</ul>
 					</div>
@@ -75,22 +75,24 @@
 							<p>${ product.content }</p>
 						</div>
 						<!-- Product Quantity -->
+		        	<form name="form1" method="post" action="/pineapple/upload/insertcart">
+		        	<input type="hidden" name="memberId" value="${loginuser.memberId }">
+					<input type="hidden" name="productNo" value="${product.productNo }">		        							
 						<div class="product_quantity_container">
 							<span>Quantity</span>
-							<div class="product_quantity clearfix">
-								<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-								<div class="quantity_buttons">
-									<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
-									<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
-								</div>								
-							</div>
+		        	<select name="amount">
+		        	<c:forEach begin="1" end="10" var="i">
+		        	<option value="${i}">${i}</option>
+		        	</c:forEach>
+		        	</select>
 						</div>
+					<input type="submit" class="button cart_button" style="color:white" value="Add to Cart">						
+					<input type="button" id="cancel_button"
+					class="button cart_button" style="color:white" value="LIST" /><br>							
+					</form>
 					<!-- Product Size -->
 						<div class="product_size_container">	
-                           			<div class="buttons">
-								    <input type="submit" class="button cart_button" style="color:white" value="Add to Cart"> 													
-									<input type="button" id="cancel_button"
-										class="button cart_button" style="color:white" value="LIST" /><br>		                           			
+                           			<div class="buttons">              			
 									<c:if test="${ loginuser.memberId eq product.uploader }">
 									<input type="button" id="update_button"
 											class="button cart_button" style="color:white" value="EDIT" />

@@ -25,8 +25,8 @@
 				<ul>
 					<li><a href="/pineapple/upload/pr-list2">APPLE</a></li>				
                     <li ><a href="/pineapple/upload/nt-list">NOTICE</a></li>         
-					<li><a href="#">REVIEW</a></li>
-					<li><a href="#">Q&A</a></li>
+					<li><a href="/pineapple/upload/re-list">REVIEW</a></li>
+					<li><a href="/pineapple/qa-upload/qa-list">Q&A</a></li>
 				</ul>
 			</nav>
 			<div class="header_content ml-auto">
@@ -54,7 +54,7 @@
 					<!-- Cart -->
 					<a href="/pineapple/upload/ordercart?memberId=${loginuser.memberId }">
 						<div class="cart">
-							 <img src="resources/images/shopping-bag.svg" alt="">
+							 <img src="/pineapple/resources/images/shopping-bag.svg" alt="">
 							
 							<div class="cart_num_container">
 								<div class="cart_num_inner">
@@ -77,7 +77,7 @@
 					<!-- Avatar -->
 					<a href="#">
 						<div class="avatar">
-							<img src="resources/images/avatar.svg" alt="">
+						<a href="/pineapple/member/membermypage?memberId=${loginuser.memberId }"><img src="/pineapple/resources/images/avatar.svg"></a>
 						</div>
 					</a>
 					</c:otherwise>
@@ -105,8 +105,8 @@
 				<ul class="menu_mm">
 					<li><a href="/pineapple/upload/pr-list2">APPLE</a></li>				
                     <li ><a href="/pineapple/upload/nt-list">NOTICE</a></li>         
-					<li><a href="#">REVIEW</a></li>
-					<li><a href="#">Q&A</a></li>
+					<li><a href="/pineapple/upload/re-list">REVIEW</a></li>
+					<li><a href="/pineapple/qa-upload/qa-list">Q&A</a></li>
 				</ul>
 			</nav>
 		</div>   

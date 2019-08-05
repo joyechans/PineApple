@@ -892,7 +892,7 @@ section
 .product_quantity_container span
 {
 	display: inline-block;
-	font-size: 14px;
+	font-size: 15px;
 	font-weight: 600;
 	color: #232323;
 	vertical-align: middle;
@@ -1005,7 +1005,7 @@ section
 }
 .regular_radio:checked + label
 {
-	background: #937c6f;
+	background: #000000;
 	color: #FFFFFF;
 }
 .regular_radio + label

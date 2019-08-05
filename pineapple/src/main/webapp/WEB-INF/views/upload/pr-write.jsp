@@ -36,20 +36,6 @@
 </head>
 <body>
 
-	<!-- ##### Main Content Wrapper Start ##### -->
-    <div class="main-content-wrapper d-flex clearfix">
-
-        <!-- Mobile Nav (max width 767px)-->
-        <div class="mobile-nav">
-            <!-- Navbar Brand -->
-            <div class="amado-navbar-brand">
-                <a href="/pineapple/home"><img src="/resources/img/core-img/logo.png" alt=""></a>
-            </div>
-            <!-- Navbar Toggler -->
-            <div class="amado-navbar-toggler">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
 
 		<!--header start  -->
 		<jsp:include page="/WEB-INF/views/include/header.jsp" />
@@ -64,9 +50,9 @@
 	<div id="pageContainer">
 	
 	
-		<h3 style="text-align:center;padding-top:50px">상품구매</h3>
+		<h3 style="text-align:center;padding-top:5%">상품구매</h3>
 		
-		<div class="container" style="margin-top:20px; text-align:center; width: 60%;">
+		<div class="container" style="mpadding-top:50;text-align:center">
 		
 		        <form action="pr-write"
 						method="post"
@@ -127,8 +113,8 @@
 
 							</table>
 		        <div class="buttons">
-		        	<input type="submit" value="자료등록"  class="btn btn-outline-secondary"  />
-		        	<input id="cancel_button" type="button" value="취소"  class="btn btn-outline-secondary" />
+		        	<input type="submit" value="자료등록"  class="btn btn-dark"  />
+		        	<input id="cancel_button" type="button" value="취소"  class="btn btn-dark" />
 		        </div>
 		        </form>
 

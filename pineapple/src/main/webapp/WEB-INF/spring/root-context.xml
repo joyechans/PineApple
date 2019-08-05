@@ -74,7 +74,7 @@
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
 	</bean>
 	
-		<!-- Product -->
+		<!-- notice -->
 	<bean id="noticeRep" class="com.pineapple.repository.NoticeRepImpl">
 		<property name="sessionTemplate" ref="sqlSessionTemplate" />
 		<property name="noticeMapper" ref="noticeMapper" />
@@ -90,6 +90,39 @@
 		<property name="mapperInterface" value="com.pineapple.mapper.NoticeMapper" />
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
 	</bean>	
+	
+      <!-- Question -->
+   <bean id="questionService" class="com.pineapple.service.QuestionServiceImpl">
+      <property name="questionRep" ref="questionRep" />
+   </bean>
+
+   <bean id="questionRep" class="com.pineapple.repository.QuestionRepImpl">
+      <property name="sessionTemplate" ref="sqlSessionTemplate" />
+      <property name="questionMapper" ref="questionMapper" />
+   </bean>
+   
+   
+   <bean id="questionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+      <property name="mapperInterface" value="com.pineapple.mapper.QuestionMapper" />
+      <property name="sqlSessionTemplate" ref="sqlSessionTemplate" />  
+   </bean>
+   
+         <!-- Review -->
+   <bean id="reviewRep" class="com.pineapple.repository.ReviewRepImpl">
+      <property name="sessionTemplate" ref="sqlSessionTemplate" />
+      <property name="reviewMapper" ref="reviewMapper" />
+   </bean>
+
+   
+   <bean id="reviewService" class="com.pineapple.service.ReviewServiceImpl">
+      <property name="reviewRep" ref="reviewRep" />
+   </bean>
+   
+   
+   <bean id="reviewMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+      <property name="mapperInterface" value="com.pineapple.mapper.ReviewMapper" />
+      <property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+   </bean>      	
 	
 	<!-- cart -->
 	

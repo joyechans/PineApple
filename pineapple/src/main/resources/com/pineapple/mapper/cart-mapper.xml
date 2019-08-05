@@ -7,7 +7,7 @@
 	<!--주문 넣기  -->
 	<insert id="insertCart" parameterType="Cart">
 		INSERT INTO CART(orderId, memberId, productNo, amount)
-		VALUES(seq_cart.NEXTVAL, #{memberId}, #{productNo}, #{amount})
+		VALUES(CART_SEQUENCE.NEXTVAL, #{memberId}, #{productNo}, #{amount})
 	</insert>
 	<!--  리스트보기-->
 	<select id="selectCartsByMemberId" resultType="Cart">

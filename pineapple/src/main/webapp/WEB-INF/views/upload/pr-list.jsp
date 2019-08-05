@@ -45,7 +45,7 @@
 		<%-- 	<c:forEach var="product" begin="${i.index*3}" end="${i.index*3+2}" items="${ product }" varStatus="productnum"> --%>
 				<div class="col-12">
 					
-					<div class="current_page" style="text-align: center; font-size: 20px;">IPAD</div>
+					<div class="current_page" style="text-align: center; font-size: 20px;">Apple</div>
 					<div style="width: 100%">
 <!-- 						<div class="search" style="text-align: center">
 							<form action="#">

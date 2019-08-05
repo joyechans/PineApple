@@ -6,11 +6,10 @@
 					<div class="col text-center">
 						<nav class="footer_nav">
 							<ul>
-							<li><a href="#">Mac</a></li>
-							<li><a href="/pineapple/upload/pr-list">iPad</a></li>
-							<li><a href="categories.html">iPhone</a></li>
-							<li><a href="categories.html">Watch</a></li>
-							<li><a href="contact.html">Review</a></li>
+							<li><a href="/pineapple/upload/pr-list2">APPLE</a></li>				
+		                    <li ><a href="/pineapple/upload/nt-list">NOTICE</a></li>         
+		                    <li><a href="/pineapple/upload/re-list">REVIEW</a></li>
+							<li><a href="/pineapple/qa-upload/qa-list">Q&A</a></li>
 							</ul>
 						</nav>
 						<div class="footer_social">
