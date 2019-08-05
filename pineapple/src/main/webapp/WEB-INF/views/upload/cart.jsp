@@ -8,12 +8,12 @@
 <html>
 <head>
 <title>Cart</title>
-<meta charset="utf-8">
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Wish shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/bootstrap4/bootstrap.min.css">
-<link href="resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="/pinapple/resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/cart.css">
 <link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/cart_responsive.css">
 </head>
@@ -26,30 +26,6 @@
 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
 
 	
-
-	<!-- Home -->
-
-	<!-- <div class="home">
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="resources/images/cart.jpg" data-speed="0.8"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="home_container">
-						<div class="home_content">
-							<div class="home_title">Shopping Cart</div>
-							<div class="breadcrumbs">
-								<ul>
-									<li><a href="index.html">Home</a></li>
-									<li>Shopping Cart</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
 	<!-- Cart -->
 
 	<div class="cart_container">
@@ -64,7 +40,7 @@
 				장바구니가 비었습니다.
 			</c:when>
 			<c:otherwise>
-			<form name="form1" id="form1" method="post" action="/pineapple/cart-upload/updatecart">
+			<form name="form1" id="form1" method="post" action="/pineapple/upload/updatecart">
 			<input type="hidden" name="memberId" value="${loginuser.memberId }">
 			<div class="row">
 				<div class="col">
@@ -99,20 +75,24 @@
 										<!-- Product Quantity -->
 										<div class="product_quantity_container">
 											<div class="product_quantity clearfix">
-												<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+												<input type="hidden" name="productNo" value="${row.productNo }">
+												<input id="quantity_input" type="text" name="amount" value="${ row.amount }" pattern="[1-9]*">
+												
 												<div class="quantity_buttons">
-													<input type="number" name="amount" value="${ row.amount }" min="1">
-													<input type="hidden" name="productNo" value="${row.productNo }">
+													<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
+													<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
 												</div>
+												
 											</div>
 										</div>
 										<!-- Products Total Price -->
 										<div class="cart_product_total">${ row.money }</div>
 										<!-- Product Cart Trash Button -->
 										<div class="cart_product_button">
-											<button class="cart_product_remove" onclick="/pineapple/cart-upload/deletecart?orderId=${ row.orderId }&memberId=${loginuser.memberId}"><img src="../resources/images/trash.png" 
-											alt="">
-											</button>
+											<!-- <button class="cart_product_remove"> -->
+											<a href="/pineapple/upload/deletecart?orderId=${ row.orderId }&memberId=${loginuser.memberId}'"><img src="../resources/images/trash.png" 
+											alt=""></a>
+											<!-- </button> -->
 										</div>
 									</div>
 								</div>
@@ -139,7 +119,7 @@
 				<!-- Cart Coupon -->
 				<div class="col-lg-6">
 					<div class="cart_coupon">
-						<div class="cart_title">coupon code</div>
+						<div class="cart_title"></div>
 						
 					</div>
 				</div>

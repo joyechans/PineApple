@@ -19,7 +19,7 @@
 			p.name AS productName,
 			c.amount,
 			p.price AS productPrice,
-			(price* amount) money
+			ROUND(price* amount) money
 		FROM MEMBER m, PRODUCT p, CART c
 		WHERE m.memberId = c.memberId
 			AND p.productNo = c.productNo

@@ -11,7 +11,7 @@ public class Product {
 	//PRODUCT
 	private int productNo;
 	private String name;
-	private String price;
+	private int price;
 	private int readCount;
 	private String kind;
 	private String uploader;
