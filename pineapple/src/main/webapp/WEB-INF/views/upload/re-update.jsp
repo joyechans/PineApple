@@ -47,8 +47,8 @@
         <!-- Mobile Nav (max width 767px)-->
         <div class="mobile-nav">
             <!-- Navbar Brand -->
-            <div class="amado-navbar-brand">
-                <a href="/pineapple/home"><img src="/resources/img/core-img/logo.png" alt=""></a>
+            <div class="amado-navbar-brand"><!-- 
+                <a href="/pineapple/home"><img src="/resources/img/core-img/logo.png" alt=""></a> -->
             </div>
             <!-- Navbar Toggler -->
             <div class="amado-navbar-toggler">
@@ -68,7 +68,9 @@
             
 	<div id="pageContainer">
 	
-		<h3 style="text-align:center;padding-top:5%">Review</h3>
+		<h3 style="text-align:center;padding-top:8%">Re
+		
+		view</h3>
 		
 		<div style="padding-top:50;text-align:center">
 		<div id="inputcontent">
@@ -103,17 +105,16 @@
 		            </tr>
 		            <tr>
 		                <th colspan="1">첨부자료</th>
-		                <td colspan="2" style="text-align:left"><c:forEach var ="file" items="${review.files }">
-                         ${ file.userFileName } 
-                         [<a href="/pineapple/upload/delete-file/${ review.reviewNo }/${ file.reviewFileNo }">삭제</a>]&nbsp;|&nbsp;
-						</c:forEach>
+		                <td colspan="2" style="text-align:left">
+		                  	<c:forEach var="file" items="${ product.imgs }">
+			                ${ file.userFileName } 
+			               [<a href="/pineapple/upload/delete-file/${ product.productNo }/${ file.productImgNo }">삭제</a>]<br>
+			                </c:forEach>
+										<div class="custom-file">
+											<input type="file" name="attach"> 
+										</div>
 							
-						  <div class="custom-file">
-						    <input type="file" class="custom-file-input" id="customFile" name="attach">
-						    <label class="custom-file-label" for="customFile">Choose file</label>
-						  </div>
-						
-						</td>
+		                </td>
 		            </tr>
 		            <tr>
 		               <td colspan="3" >
@@ -122,8 +123,8 @@
 		            </tr>
 		        </table>
 		        <div class="buttons">
-		        	<input type="submit" value="자료등록" id="insertBoard" class="btn btn-outline-secondary" />
-		        	<input id="cancel_button" type="button" value="취소"  class="btn btn-outline-secondary"  />
+		        	<input type="submit" value="자료등록" id="insertBoard" class="btn btn-dark" />
+		        	<input id="cancel_button" type="button" value="취소"  class="btn btn-dark"  />
 		        </div>
 		        </form>
 		        

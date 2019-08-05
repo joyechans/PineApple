@@ -50,7 +50,7 @@
         <div class="mobile-nav">
             <!-- Navbar Brand -->
             <div class="amado-navbar-brand">
-                <a href="/catopia/home"><img src="/resources/img/core-img/logo.png" alt=""></a>
+                <a href="/pineapple/home"><img src="/resources/img/core-img/logo.png" alt=""></a>
             </div>
             <!-- Navbar Toggler -->
             <div class="amado-navbar-toggler">
@@ -84,10 +84,12 @@
 				<th style="width: 100px;text-align: center">
 					<form id="selectform" action="viewcategory" method="POST">
                          <select name="category" id="selectcategory">
-                             <option value="MAC" <c:if test="${param.category eq 'MAC'}">selected</c:if>>MAC</option>
-                             <option value="IPAD" <c:if test="${param.category eq 'IPAD'}">selected</c:if>>IPAD</option>
-                             <option value="IPHONE" <c:if test="${param.category eq 'IPHONE'}">selected</c:if>>IPHONE</option>
-                             <option value="WATCH" <c:if test="${param.category eq 'WATCH'}">selected</c:if>>WATCH</option>
+                         	<option value="all" <c:if test="${param.category eq 'all'}">selected</c:if>>CATEGORY</option>
+                         	<option value="IPHONE" <c:if test="${param.category eq 'IPHONE'}">selected</c:if>>IPHONE</option>
+                            <option value="IPAD" <c:if test="${param.category eq 'IPAD'}">selected</c:if>>IPAD</option>
+                            <option value="MAC" <c:if test="${param.category eq 'MAC'}">selected</c:if>>MAC</option>
+                            <option value="WATCH" <c:if test="${param.category eq 'WATCH'}">selected</c:if>>WATCH</option>
+                         	<option value="AIRPOT" <c:if test="${param.category eq 'AIRPOT'}">selected</c:if>>AIRPOT</option>
                          </select>
                 	</form>
 				
@@ -101,8 +103,8 @@
 				<tr style="height: 30px">
 					<td style="text-align: center">${ review.reviewNo }</td>
 					<td style="text-align: center">${ review.category }</td>
-					<td style='text-align: left; padding-left: 10px'><a
-						href="/catopia/re-upload/re-detail/${ review.reviewNo }">${ review.title }</a></td>
+					<td style='text-align: left; padding-left: 10px'>
+					<a  style='color:#111' href="/pineapple/upload/re-detail/${ review.reviewNo }">${ review.title }</a></td>
 					<td style="text-align: center">${ review.uploader }</td>
 					<td style="text-align: center">${ review.regDate }</td>
 				</tr>
@@ -111,7 +113,7 @@
 		
 		<br></br>
 		<div style="padding-top: 10px; padding-left:1000px; text-align: center" >
-		 <input type="button" value="글작성" onclick="location.href='re-write' " class="btn btn-outline-secondary">
+		 <input type="button" value="글작성" onclick="location.href='re-write' " class="btn btn-dark">
 		</div>
 	</div>
 	</div>

@@ -5,41 +5,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%--jstl의 함수를 제공하는 taglib --%>
-<!DOCTYPE html>
 
+		<!--header start  -->
+		<jsp:include page="/WEB-INF/views/include/header.jsp" />
+		<!--header end  -->
 
-
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="description" content="">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-<!-- Title  -->
-<title>CatWebSite | List</title>
-
-<!-- Favicon  -->
-<link rel="icon" href="/pineapple/resources/img/core-img/favicon.ico">
-
-<!-- Core Style CSS -->
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" > -->
-<link rel="stylesheet" href="/pineapple/resources/css/core-style.css">
-<link rel="stylesheet" href="/pineapple/resources/style.css">
-<link rel="Stylesheet" href="/pineapple/resources/styles/input.css" />
-
-
-</head>
 
 <body>
-
+<div class="container">
 	<!-- ##### Main Content Wrapper Start ##### -->
 	<div class="main-content-wrapper d-flex clearfix">
 
@@ -47,8 +20,8 @@
 		<div class="mobile-nav">
 			<!-- Navbar Brand -->
 			<div class="amado-navbar-brand">
-				<a href="/catopia/home"><img
-					src="/resources/img/core-img/logo.png" alt=""></a>
+				<a href="/pineapple/home"><!-- 
+				<img src="/resources/img/core-img/logo.png" alt=""> --></a>
 			</div>
 			<!-- Navbar Toggler -->
 			<div class="amado-navbar-toggler">
@@ -56,21 +29,17 @@
 			</div>
 		</div>
 
-		<!--header start  -->
-		<jsp:include page="/WEB-INF/views/include/header.jsp" />
-		<!--header end  -->
-
 
 
 		<!-- Product Catagories Area Start -->
-		<div class="products-catagories-area clearfix">
+		<div class="products-catagories-area clearfix container w-75">
 			<div class="amado-pro-catagory clearfix">
 
 				<div id="pageContainer">
 
+					<h3 style="text-align: center; padding-top: 8%">Review</h3>
 
-					<div class="container"
-						style="padding-top: 25px; text-align: center">
+					<div class="container" style="padding-top: 50px; text-align: center">
 						<div>
 							<div>
 								<div class="inputsubtitle"></div>
@@ -101,7 +70,7 @@
 										<th colspan="1">첨부자료</th>
 										<td colspan="2" style="text-align: left">
 										<c:forEach var="file" items="${ review.files }">
-										<img src="/catopia/resources/upload-files/${ file.savedFileName }">
+										<img src="/pineapple/resources/upload-files/${ file.savedFileName }" width="350">
 										<br>
 											</c:forEach></td>
 									</tr>
@@ -119,13 +88,13 @@
 									<%--eq: 같은애를 찾는  / 로그인한 사용자와 글의 작성자가 같으면 삭제, 수정 버튼 활성화--%>
 									<c:if test="${ loginuser.memberId eq review.uploader }">
 										<input type="button" id="update_button"
-											class="btn btn-outline-secondary" value="편집" />
+											class="btn btn-dark" value="편집" />
 										<input type="button" id="delete_button"
-											class="btn btn-outline-secondary" value="삭제" />
+											class="btn btn-dark" value="삭제" />
 									</c:if>
 
 									<input type="button" id="cancel_button"
-										class="btn btn-outline-secondary" value="목록보기" /> <br> <br>
+										class="btn btn-dark" value="목록보기" /> <br> <br>
 									<script type="text/javascript">
 		        	//브라우저가 html을 모두 읽고 처리할 준비가 되었을 때 호출 할 함수 지정
 		        	window.addEventListener('load',function(event){//js의 main 함수 역할
@@ -244,16 +213,8 @@
     <!-- ##### Footer Area End ##### -->
 
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
-    <script src="<c:url value="/resources/js/jquery/jquery-2.2.4.min.js" />"></script>
-    <!-- Popper js -->
-    <script src="<c:url value="/resources/js/popper.min.js" />"></script>
-    <!-- Bootstrap js -->
-    <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-    <!-- Plugins js -->
-    <script src="<c:url value="/resources/js/plugins.js" />"></script>
-    <!-- Active js -->
-    <script src="<c:url value="/resources/js/active.js" />"></script>
-
+    <script src="<c:url value="/resources/js/jquery-3.2.1.min.js" />"></script>
+    
 	<!-- 댓글 javascript -->
 	<script type="text/javascript">
 	$(function() {
@@ -387,6 +348,8 @@
 
 	</script>
 	
-	
-
+				</div>
+			</div>
+		</div>
+	</div>
 </body>

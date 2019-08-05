@@ -165,7 +165,7 @@ public class ReviewController {
 	      
 		reviewService.deleteReview(reviewNo);
 	          
-	      return "redirect:/re-upload/re-list"; 
+	      return "redirect:/upload/re-list"; 
 	    
 	}
 	
@@ -207,7 +207,7 @@ public class ReviewController {
 			reviewService.deleteReviewFile(fileNo);
 
 			
-			return "redirect:/re-upload/re-update/" + reviewNo;
+			return "redirect:/upload/re-update/" + reviewNo;
 		}
 		
 		@RequestMapping(path = "/re-update", method = RequestMethod.POST)
@@ -246,7 +246,7 @@ public class ReviewController {
 			}
 
 			
-			return "redirect:/re-upload/re-detail/" + review.getReviewNo();
+			return "redirect:/upload/re-detail/" + review.getReviewNo();
 		}
 		
 		@RequestMapping(path = "/write-comment", 
