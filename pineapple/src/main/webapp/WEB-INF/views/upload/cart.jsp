@@ -54,7 +54,7 @@
 			
 			<c:choose>
 			<c:when test="${map.count ==0 }">
-				장바구니가 비었습니다.
+				<p style="color:navy">장바구니가 비었습니다.</p>
 			</c:when>
 			<c:otherwise>
 			<form name="form1" id="form1" method="post" action="/pineapple/upload/updatecart">
@@ -110,7 +110,7 @@
 						<input type="hidden" name="count" value="${map.count }">
 						<!-- <button class="button_clear cart_button">clear cart</button> -->
 						<button type="submit" id="btnUpdate" class="button_update cart_button">Edit</button>
-					<button class="button_update cart_button_2 ml-md-auto">continue shopping</button>
+					<button class="button_update cart_button_2 ml-md-auto" id="continue">continue shopping</button>
 					</div>
 				</div>
 			</div>
@@ -300,6 +300,14 @@
         element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
         element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
     }
+   	
+    $(function(){
+   		$('#continue').on('click', function(event){
+   			location.href="/pineapple/pr-upload/pr-list2"; 
+   			
+   		});
+   		  		
+   	});   
 </script>
 </body>
 </html>
