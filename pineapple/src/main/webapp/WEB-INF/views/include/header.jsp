@@ -1,21 +1,26 @@
-﻿<%@ page language="java" 
-       contentType="text/html; charset=utf-8" 
-       pageEncoding="utf-8"%>
+﻿<%@ page import="com.pineapple.vo.Product"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    <!DOCTYPE html>  
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+<!DOCTYPE html>  
+    <html>
+    <head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="description" content="Wish shop project">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/bootstrap4/bootstrap.min.css">
-		<link href="resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="/pineapple/resources/resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" type="text/css" href="/pineapple/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 		<link rel="stylesheet" type="text/css" href="/pineapple/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
 		<link rel="stylesheet" type="text/css" href="/pineapple/resources/plugins/OwlCarousel2-2.2.1/animate.css">
 		<link href="resources/plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/main_styles.css">
 		<link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/responsive.css">
-      
+      </head>
       <!-- Header -->
 
 	<header class="header">
@@ -23,7 +28,7 @@
 			<div class="logo"><a href="/pineapple/">PineApple</a></div>
 			<nav class="main_nav">			
 				<ul>
-					<li><a href="/pineapple/upload/pr-list2">APPLE</a></li>				
+					<li><a href="/pineapple/pr-upload/pr-list2">APPLE</a></li>				
                     <li ><a href="/pineapple/upload/nt-list">NOTICE</a></li>         
 					<li><a href="/pineapple/upload/re-list">REVIEW</a></li>
 					<li><a href="/pineapple/qa-upload/qa-list">Q&A</a></li>
@@ -34,7 +39,6 @@
 					<form action="#">
 						<c:choose>
             <c:when test="${ empty loginuser }">
-                
             </c:when>
             <c:otherwise>            	
             	<a href="#" class="btn">${ loginuser.memberId }님 </a>
@@ -44,17 +48,19 @@
 					</form>
 				</div> 
 				
-				<div class="shopping">
+				<div class="shopping">	
 					<c:choose>
 					<c:when test="${empty loginuser }">
 						<a href="/pineapple/account/login" class="btn">Login</a>
-                		<a href="/pineapple/account/register" class="btn">Register</a>
+                	    <a href="/pineapple/account/register" class="btn">Register</a>
 					</c:when>
-					<c:otherwise>
+					<c:otherwise>	
+				
+					
 					<!-- Cart -->
 					<a href="/pineapple/upload/ordercart?memberId=${loginuser.memberId }">
 						<div class="cart">
-							 <img src="/pineapple/resources/images/shopping-bag.svg" alt="">
+							 <img src="/pineapple/resources/images/cart.png" alt="">
 							
 							<div class="cart_num_container">
 								<div class="cart_num_inner">
@@ -63,10 +69,10 @@
 							</div>
 						</div>
 					</a>
-					<!-- Star -->
+					<!-- Favorite -->
 					<a href="#">
 						<div class="star">
-							<img src="resources/images/star.svg" alt="">
+							<img src="/pineapple/resources/images/star.png" alt="">
 							<div class="star_num_container">
 								<div class="star_num_inner">
 									<div class="star_num">0</div>
@@ -74,12 +80,15 @@
 							</div>
 						</div>
 					</a>
-					<!-- Avatar -->
+					<!-- Favorite End -->
+					
+					<!-- MyPage -->
 					<a href="#">
 						<div class="avatar">
-						<a href="/pineapple/member/membermypage?memberId=${loginuser.memberId }"><img src="/pineapple/resources/images/avatar.svg"></a>
+						<a href="/pineapple/member/membermypage?memberId=${loginuser.memberId }"><img src="/pineapple/resources/images/profile.png"></a>
 						</div>
 					</a>
+					<!-- MyPage End -->
 					</c:otherwise>
 				</c:choose>
 				</div>

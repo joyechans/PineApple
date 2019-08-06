@@ -14,7 +14,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		
 		String uri = req.getRequestURI();
 		
-		if (uri.contains("/upload/")) {
+		if (uri.contains("/upload")||uri.contains("/qa-upload")||uri.contains("/pr-upload")) {
 			HttpSession session = req.getSession();
 			if (session.getAttribute("loginuser") == null) {		
 				resp.sendRedirect("/pineapple/account/login");

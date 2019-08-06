@@ -111,20 +111,20 @@
 		        		window.addEventListener('load',function(event){
 						var btnCancel =document.querySelector('#cancel_button');
 		        		btnCancel.addEventListener('click', function(event) {
-		        			location.href="/pineapple/upload/pr-list2";
+		        			location.href="/pineapple/pr-upload/pr-list2";
 		        		});
 		        		
 		        		var btnDelete = document.querySelector('#delete_button');
 		        		btnDelete.addEventListener('click', function(event){
 		        			var ok = confirm("${product.name} 상품을 삭제할까요?");
 		        			if(ok){
-		        			location.href="/pineapple/upload/delete/${ product.productNo }";
+		        			location.href="/pineapple/pr-upload/delete/${ product.productNo }";
 		        			}
 		        		});
 		        		
 		        		var btnUpdate = document.querySelector('#update_button');
 		        		btnUpdate.addEventListener('click', function(event){
-		        			location.href="/pineapple/upload/pr-update/${ product.productNo }";
+		        			location.href="/pineapple/pr-upload/pr-update/${ product.productNo }";
 		        		});
 		        		
 		        	});

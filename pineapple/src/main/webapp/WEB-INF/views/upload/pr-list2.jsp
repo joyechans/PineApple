@@ -79,7 +79,8 @@
 									<div class="product_price}">￦${ product.price }</div>
 								</div>
 								<div class="product_options">
-									<div class="product_buy product_option"><img src="/pineapple/resources/images/shopping-bag.svg" alt=""></div>
+								
+									<a href="/pineapple/upload/ordercart?meberid=${ member.merberId }"><div class="product_buy product_option"><img src="/pineapple/resources/images/shopping-bag.svg" alt=""></div></a>
 									<div class="product_fav product_option">+</div>
 									</div>
 								</div>

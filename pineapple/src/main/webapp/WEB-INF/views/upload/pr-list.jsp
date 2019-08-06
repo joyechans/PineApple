@@ -13,7 +13,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Wish shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 	<link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/bootstrap4/bootstrap.min.css">
 	<link href="/pineapple/resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="/pineapple/resources/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
@@ -21,8 +20,6 @@
 	<link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/categories.css">
 	<link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/main_styles.css">
 	<link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/categories_responsive.css">
-	
-
 </head>
 <body>
 

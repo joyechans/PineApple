@@ -26,7 +26,7 @@ import com.pineapple.vo.ProductImg;
 import com.pineapple.vo.ProductPageMaker;
 
 @Controller
-@RequestMapping(path = "/upload/")
+@RequestMapping(path = "/pr-upload/")
 public class ProductController {
 
    @Autowired
@@ -159,7 +159,7 @@ public class ProductController {
 
       productService.deleteProduct(productNo);
 
-      	return "redirect:/upload/pr-list2";
+      	return "redirect:/pr-upload/pr-list2";
 //      return "redirect:/upload/pr-list?col=all&word=";
    }
 
@@ -175,7 +175,7 @@ public class ProductController {
 
       productService.deleteProductImg(fileNo);
 
-      return "redirect:/upload/pr-update/" + productNo;
+      return "redirect:/pr-upload/pr-update/" + productNo;
    }
 
    @RequestMapping(path = "/pr-update/{productNo}", method = RequestMethod.GET)
@@ -224,6 +224,6 @@ public class ProductController {
          }
       }
 
-      return "redirect:/upload/pr-detail/" + product.getProductNo();
+      return "redirect:/pr-upload/pr-detail/" + product.getProductNo();
    }
 }

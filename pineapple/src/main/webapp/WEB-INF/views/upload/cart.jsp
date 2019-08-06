@@ -32,7 +32,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<div class="cart_title">your shopping cart</div>
+					<div class="cart_title">Your Shopping Cart</div>
 				</div>
 			</div>
 			<c:choose>
@@ -108,7 +108,7 @@
 					<div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start">
 						<input type="hidden" name="count" value="${map.count }">
 						<!-- <button class="button_clear cart_button">clear cart</button> -->
-						<button type="submit" id="btnUpdate" class="button_update cart_button">수정</button>
+						<button type="submit" id="btnUpdate" class="button_update cart_button">Edit</button>
 						<button class="button_update cart_button_2 ml-md-auto">continue shopping</button>
 					</div>
 				</div>

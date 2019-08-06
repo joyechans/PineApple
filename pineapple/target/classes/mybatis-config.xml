@@ -11,7 +11,13 @@
 		<typeAlias type="com.pineapple.vo.Product" alias="Product" />
 		<typeAlias type="com.pineapple.vo.ProductImg" alias="ProductImg" />	
 		<typeAlias type="com.pineapple.vo.Notice" alias="Notice" />		
-		<typeAlias type="com.pineapple.vo.Cart" alias="Cart"/>			
+		<typeAlias type="com.pineapple.vo.Cart" alias="Cart"/>
+      	<typeAlias type="com.pineapple.vo.Review" alias="Review" />   
+      	<typeAlias type="com.pineapple.vo.ReviewFile" alias="ReviewFile" />   
+      	<typeAlias type="com.pineapple.vo.ReviewComment" alias="ReviewComment" />   
+ 		<typeAlias type="com.pineapple.vo.Question" alias="Question"/>
+        <typeAlias type="com.pineapple.vo.QuestionFile" alias="QuestionFile"/>   
+        <typeAlias type="com.pineapple.vo.QuestionComment" alias="QuestionComment" />    						
 	</typeAliases>
 	
 	<environments default="development">
@@ -31,7 +37,9 @@
 		<mapper resource="com/pineapple/mapper/member-mapper.xml" />
 		<mapper resource="com/pineapple/mapper/product-mapper.xml" /> 
 		<mapper resource="com/pineapple/mapper/notice-mapper.xml" />	
-		<mapper resource="com/pineapple/mapper/cart-mapper.xml" />	
+		<mapper resource="com/pineapple/mapper/question-mapper.xml" />	
+		<mapper resource="com/pineapple/mapper/review-mapper.xml" />	
+		<mapper resource="com/pineapple/mapper/cart-mapper.xml" />					
 	</mappers>
 	
 </configuration>
