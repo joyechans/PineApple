@@ -54,7 +54,7 @@
 			
 			<c:choose>
 			<c:when test="${map.count ==0 }">
-				<p style="color:navy">장바구니가 비었습니다.</p>
+				<p style="text-align: center; font-size:20px;">장바구니가 비었습니다</p>
 			</c:when>
 			<c:otherwise>
 			<form name="form1" id="form1" method="post" action="/pineapple/upload/updatecart">
