@@ -57,17 +57,14 @@
 					</div>
 				</div>
 			</div>
+			<c:forEach var="row" items="${map.carts}">
 			<div class="row">
 				<div class="col">
 					<div class="cart_products">
 						<ul>
 							<li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
 								<!-- Product Image -->
-								<c:forEach var="file" items="${ product.imgs }">
-<%-- 								<div class="cart_product_image"><img src="/pineapple/resources/upload-files/${ file.savedFileName }" alt=""></div> --%>
-								<div class="cart_product_image"><img src="/pineapple/resources/images/cart_product_1.jpg" alt=""></div>								
-								</c:forEach>
-								<c:forEach var="row" items="${map.carts}">
+								<div class="cart_product_image"><img src="/pineapple/resources/upload-files/${ product.img.savedFileName }" alt=""></div>
 								<!-- Product Name -->
 								<div class="cart_product_name"><a href="product.html">${row.productName }</a></div>
 								<div class="cart_product_info ml-auto">
@@ -98,12 +95,12 @@
 										</div>
 									</div>
 								</div>
-							</c:forEach>
 							</li>
 						</ul>
 					</div>
 				</div>
 			</div>
+			</c:forEach>
 			
 			<div class="row">
 				<div class="col">

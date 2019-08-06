@@ -48,14 +48,18 @@
 			<tr style="height: 50px">
 				<th style="width:;text-align: center">Phone</th>
 				<td>${ member.phoneNumber }</td>
-			</tr>
+			</tr>		
 			
 		</table>
 		
 		<br></br>
 		<div style="padding-top: 10px; text-align: center">		
-		 <input type="button" id="btnmemberset" value="수정" class="btn btn-outline-secondary" >
-		 <input type="button" id="cancel" value="home" class="btn btn-outline-secondary">				 				 
+		 <c:if test="${loginuser.userType eq 'admin' }">	 	
+		 <input type="button" id="manger" value="Manger" class="button cart_button" style="color:white;" >
+		 </c:if>	
+		 <input type="button" id="orderlist" value="OrderList" class="button cart_button" style="color:white;" >			 		
+		 <input type="button" id="btnmemberset" value="Edit" class="button cart_button" style="color:white;" >	 		  
+		 <input type="button" id="cancel" value="home" class="button cart_button" style="color:white;">						 
 		</div>
 	</div>
 	</div>
@@ -82,7 +86,6 @@
 	<script src="/pineapple/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 	<script src="/pineapple/resources/js/categories_custom.js"></script>
 	<script type="text/javascript"></script>
-	
 	<script type="text/javascript">	        	
    	$(function(){
    		$('#cancel').on('click', function(event){
@@ -95,6 +98,16 @@
    			
    		});
    		
+   		$('#manger').on('click', function(event){
+   			location.href="/pineapple/member/memberlist"; 
+   			
+   		});
+   		
+   		
+   		$('#orderlist').on('click', function(event){
+   			location.href="/pineapple/upload/payment?memberId=${loginuser.memberId }"; 
+   			
+   		});
    		
    	});
 	</script>
