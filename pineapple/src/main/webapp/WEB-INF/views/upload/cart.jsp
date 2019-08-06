@@ -35,13 +35,7 @@
 					<div class="cart_title">Your Shopping Cart</div>
 				</div>
 			</div>
-			<c:choose>
-			<c:when test="${map.count ==0 }">
-				장바구니가 비었습니다.
-			</c:when>
-			<c:otherwise>
-			<form name="form1" id="form1" method="post" action="/pineapple/upload/updatecart">
-			<input type="hidden" name="memberId" value="${loginuser.memberId }">
+			
 			<div class="row">
 				<div class="col">
 					<div class="cart_bar d-flex flex-row align-items-center justify-content-start">
@@ -57,6 +51,14 @@
 					</div>
 				</div>
 			</div>
+			
+			<c:choose>
+			<c:when test="${map.count ==0 }">
+				장바구니가 비었습니다.
+			</c:when>
+			<c:otherwise>
+			<form name="form1" id="form1" method="post" action="/pineapple/upload/updatecart">
+			<input type="hidden" name="memberId" value="${loginuser.memberId }">
 			<c:forEach var="row" items="${map.carts}">
 			<div class="row">
 				<div class="col">
@@ -75,11 +77,11 @@
 										<div class="product_quantity_container">
 											<div class="product_quantity clearfix">
 												<input type="hidden" name="productNo" value="${row.productNo }">
-												<input id="quantity_input" type="text" name="amount" value="${ row.amount }" pattern="[1-9]*">
+												<input id="quantity_input${row.productNo }" type="text" name="amount" value="${ row.amount }" pattern="[1-9]*">
 												
 												<div class="quantity_buttons">
-													<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
-													<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+													<div id="quantity_inc_button${row.productNo }" data-no="${row.productNo }" class="quantity_inc quantity_control"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
+													<div id="quantity_dec_button${row.productNo }" data-no="${row.productNo }" class="quantity_dec quantity_control"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
 												</div>
 												
 											</div>
@@ -89,7 +91,7 @@
 										<!-- Product Cart Trash Button -->
 										<div class="cart_product_button">
 											<!-- <button class="cart_product_remove"> -->
-											<a href="/pineapple/upload/deletecart?orderId=${ row.orderId }&memberId=${loginuser.memberId}'"><img src="../resources/images/trash.png" 
+											<a href="/pineapple/upload/deletecart?orderId=${ row.orderId }&memberId=${loginuser.memberId}"><img src="../resources/images/trash.png" 
 											alt=""></a>
 											<!-- </button> -->
 										</div>
@@ -148,7 +150,7 @@
 								<div class="cart_total_price ml-auto">￦${map.allSum}</div>
 							</li>
 						</ul>
-						<button class="cart_total_button">proceed to checkout</button>
+						<button id="payment" class="cart_total_button">proceed to checkout</button>
 					</div>
 				</div>			
 			</div>
@@ -174,6 +176,44 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript">	        	
+   	$(function(){
+   		   		
+   		$('#payment').on('click', function(event){
+   			location.href="/pineapple/upload/doorder?memberId=${loginuser.memberId}&money=${map.allSum}";
+   			
+   		});
+   		
+   		////////////////////////////////////////////
+   		
+   		// Handle product quantity input
+		if($('.product_quantity').length) {
+			
+			$('div[id ^= quantity_inc_button]').on('click', function(event) {
+				var no = $(this).attr('data-no');
+				var input = $('#quantity_input' + no);				
+				var originalVal;
+				var endVal;
+				originalVal = input.val();
+				endVal = parseFloat(originalVal) + 1;
+				input.val(endVal);
+			});
+			$('div[id ^= quantity_dec_button]').on('click', function(event) {
+				var no = $(this).attr('data-no');
+				var input = $('#quantity_input' + no);
+				var originalVal;
+				var endVal;
+				originalVal = input.val();
+				if(originalVal > 0)
+				{
+					endVal = parseFloat(originalVal) - 1;
+					input.val(endVal);
+				}
+			});
+
+		}
+   	});
+</script>
 <script>
     // 우편번호 찾기 화면을 넣을 element
     var element_layer = document.getElementById('layer');
