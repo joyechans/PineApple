@@ -58,16 +58,16 @@
 						method="post"
 						enctype="multipart/form-data" >
 		        <table class="table table-hover">
-			<tr style="height: 50px; width: 500px">
+			<tr>
 		                <th>상품이름</th>
 		                <td>
-		                    <input type="text" name="name" style="width:550px" class="form-control"/>
+		                    <input type="text" name="name" class="form-control"/>
 		                </td>
 		            </tr>
 		            <tr>
 		            	<th>상품종류</th>
 		             <td>
-		                    <select name="kind">
+		                    <select name="kind" class="form-control">
 		                	  <option value="IPHONE" selected="selected">iPhone</option>
 							  <option value="IPAD">iPad</option>
 		                      <option value="MAC">MAC</option>		                      
@@ -79,7 +79,7 @@
 		            <tr>
 		                <th>상품가격</th>
 		                <td>
-		                    <input type="text" name="price" style="width:550px" class="form-control"/>
+		                    <input type="text" name="price" class="form-control"/>
 		                </td>
 		            </tr>
 								<tr>
@@ -104,7 +104,7 @@
 
 								<tr>
 									<td colspan="3"><textarea name="content"
-											style="width: 750px" rows="20" class="form-control"></textarea>
+										rows="20" class="form-control"></textarea>
 									</td>
 								</tr>
 

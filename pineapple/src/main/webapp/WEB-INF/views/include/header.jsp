@@ -28,7 +28,7 @@
 			<div class="logo"><a href="/pineapple/">PineApple</a></div>
 			<nav class="main_nav">			
 				<ul>
-					<li><a href="/pineapple/pr-upload/pr-list2">APPLE</a></li>				
+					<li><a href="/pineapple/pr-upload/pr-list2">PiNEAPPLE</a></li>				
                     <li ><a href="/pineapple/upload/nt-list">NOTICE</a></li>         
 					<li><a href="/pineapple/upload/re-list">REVIEW</a></li>
 					<li><a href="/pineapple/qa-upload/qa-list">Q&A</a></li>
@@ -59,33 +59,16 @@
 					
 					<!-- Cart -->
 					<a href="/pineapple/upload/ordercart?memberId=${loginuser.memberId }">
-						<div class="cart">
-							 <img src="/pineapple/resources/images/cart.png" alt="">
+						<div class="avatar">
+							 <img src="/pineapple/resources/images/cart.png" alt="">1
 							
-							<div class="cart_num_container">
-								<div class="cart_num_inner">
-									<div class="cart_num">0</div>
-								</div>
-							</div>
 						</div>
 					</a>
-					<!-- Favorite -->
-					<a href="#">
-						<div class="star">
-							<img src="/pineapple/resources/images/star.png" alt="">
-							<div class="star_num_container">
-								<div class="star_num_inner">
-									<div class="star_num">0</div>
-								</div>
-							</div>
-						</div>
-					</a>
-					<!-- Favorite End -->
-					
+
 					<!-- MyPage -->
 					<a href="#">
 						<div class="avatar">
-						<a href="/pineapple/member/membermypage?memberId=${loginuser.memberId }"><img src="/pineapple/resources/images/profile.png"></a>
+						<a href="/pineapple/member/membermypage?memberId=${loginuser.memberId }"><img src="/pineapple/resources/images/profile.png">2</a>
 						</div>
 					</a>
 					<!-- MyPage End -->
@@ -112,7 +95,7 @@
 			</div>
 			<nav class="menu_nav">
 				<ul class="menu_mm">
-					<li><a href="/pineapple/upload/pr-list2">APPLE</a></li>				
+					<li><a href="/pineapple/pr-upload/pr-list2">PINEAPPLE</a></li>				
                     <li ><a href="/pineapple/upload/nt-list">NOTICE</a></li>         
 					<li><a href="/pineapple/upload/re-list">REVIEW</a></li>
 					<li><a href="/pineapple/qa-upload/qa-list">Q&A</a></li>

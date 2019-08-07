@@ -1,5 +1,9 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page import="com.pineapple.vo.Product"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -38,7 +42,7 @@
 						<div class="checkout_title">Register</div>
 						<div class="checkout_form_container">
 							<form id="register-form" action="register" method="post">
-								<input type="text" class="checkout_input" id="name" name="name" value="" placeholder="Name">
+								<input type="text" class="checkout_input" id="name" name="name" value="" placeholder="Name">					
 								<input type="text" class="checkout_input" id="phoneNumber" name="phoneNumber" value="" placeholder="Phone Number">										
 								<input type="text" class="checkout_input" id="memberId" name="memberId" value="" placeholder="ID">
 								<input type="password" class="checkout_input" id="passwd" name="passwd" placeholder="Password" required="required">	
@@ -47,6 +51,7 @@
 						</div>
 					</div>
 				</div>
+				
 
 				<!-- Cart Details -->
 				<div class="col-lg-6">
@@ -86,7 +91,7 @@
    		});
    		
    		$('#cancel').on('click', function(event){
-   			location.href="/catwebsite/home"; 
+   			location.href="/pineapple/home"; 
    			
    		});
    	});

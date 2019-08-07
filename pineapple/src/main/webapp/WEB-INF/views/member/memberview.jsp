@@ -73,14 +73,6 @@
 				<td>${ member.name }</td>
 			</tr>
 			<tr style="height: 50px">
-				<th style="width:;text-align: center">Gender</th>
-				<td>${ member.gender }</td>
-			</tr>
-			<tr style="height: 50px">
-				<th style="width:;text-align: center">Email</th>
-				<td>${ member.email }</td>
-			</tr>
-			<tr style="height: 50px">
 				<th style="width:;text-align: center">Phone</th>
 				<td>${ member.phone }</td>
 			</tr>
@@ -89,8 +81,8 @@
 		
 		<br></br>
 		<div style="padding-top: 10px; text-align: center">		
-		 <input type="button" id="btnmembertypeset" value="권한" class="btn btn-outline-secondary" >
-		 <input type="button" id="btnmemberlist" value="목록" class="btn btn-outline-secondary">				 				 
+		 <input type="button" id="btnmembertypeset" value="권한" class="button cart_button" style="color:white;" >
+		 <input type="button" id="btnmemberlist" value="목록" class="button cart_button" style="color:white;">				 				 
 		</div>
 	</div>
 	</div>

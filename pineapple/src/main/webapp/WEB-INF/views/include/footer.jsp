@@ -6,7 +6,7 @@
 					<div class="col text-center">
 						<nav class="footer_nav">
 							<ul>
-							<li><a href="/pineapple/upload/pr-list2">APPLE</a></li>				
+							<li><a href="/pineapple/pr-upload/pr-list2">PINEAPPLE</a></li>				
 		                    <li ><a href="/pineapple/upload/nt-list">NOTICE</a></li>         
 		                    <li><a href="/pineapple/upload/re-list">REVIEW</a></li>
 							<li><a href="/pineapple/qa-upload/qa-list">Q&A</a></li>

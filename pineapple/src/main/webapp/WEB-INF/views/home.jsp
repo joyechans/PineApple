@@ -34,7 +34,7 @@
 	
 			<div class="home_slider_container">
 				<div class="owl-carousel owl-theme home_slider">
-					<a href="/pineapple/upload/pr-list">
+					<a href="/pineapple/pr-upload/pr-list2">
 					<!-- Home Slider Item -->
 					<div class="owl-item">
 						<div class="home_slider_background" style="background-image:url(resources/images/home_slider_1.jpg)"></div>
@@ -48,7 +48,7 @@
 					</a>
 	
 					<!-- Home Slider Item -->
-					<a href="/pineapple/upload/pr-list">
+					<a href="/pineapple/pr-upload/pr-list2">
 					<div class="owl-item">
 						<div class="home_slider_background" style="background-image:url(resources/images/home_slider_2.jpg)"></div>
 						<div class="home_slider_content">
@@ -61,7 +61,7 @@
 					</a>
 					
 					<!-- Home Slider Item -->					
-					<a href="/pineapple/upload/pr-list">
+					<a href="/pineapple/pr-upload/pr-list2">
 					<div class="owl-item">
 						<div class="home_slider_background" style="background-image:url(resources/images/home_slider_3.jpg)"></div>
 						<div class="home_slider_content">

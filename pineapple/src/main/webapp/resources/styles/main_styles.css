@@ -74,8 +74,11 @@ label {
   display: inline-block;
   cursor: pointer;
   font-weight: bold;
+  border:1px;
+  font-size: 15px;
   padding: 10px 40px;
 }
+
 
 input[type=radio]:checked + label{
   color: lighten($bg,60%);
@@ -671,15 +674,15 @@ section
 	right: 60px;
 	width: 45px;
 	height: 45px;
-	background: #937c6f;
+	background: #000000;
 	z-index: 10;
 	border-radius: 50%;
 	cursor: pointer;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
+	-webkit-transition: all 10ms ease;
+	-moz-transition: all 10ms ease;
+	-ms-transition: all 10ms ease;
+	-o-transition: all 10ms ease;
+	transition: all 10ms ease;
 }
 .home_slider_next:hover
 {
@@ -724,11 +727,11 @@ section
 	width: 0px;
 	height: 1px;
 	background: #FFFFFF;
-	-webkit-transition: all 200ms ease;
-	-moz-transition: all 200ms ease;
-	-ms-transition: all 200ms ease;
-	-o-transition: all 200ms ease;
-	transition: all 200ms ease;
+	-webkit-transition: all 10ms ease;
+	-moz-transition: all 10ms ease;
+	-ms-transition: all 10ms ease;
+	-o-transition: all 10ms ease;
+	transition: all 10ms ease;
 	margin-left: 4px;
 	margin-right: -4px;
 }

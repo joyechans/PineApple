@@ -41,10 +41,11 @@
 		<%-- 	<c:forEach var="product" begin="${i.index*3}" end="${i.index*3+2}" items="${ product }" varStatus="productnum"> --%>
 				<div class="col-12">
 					
-					<div class="current_page" style="text-align: center; font-size: 20px;">Apple</div><br>
+					<div class="current_page" style="text-align: center; font-size: 25px;">PineApple</div><br>
 					<div style="width: 100%">
-						<div style="width: 650px; position: absolute; left: 41%; margin-left: -200px;">									
-					     <form id="selectform" action="pr-kind" method="POST">     
+						<div style="width: 800px; position: absolute; left: 35%; margin-left: -200px;">									
+					     <form id="selectform" action="pr-kind" method="POST">
+			            <input type="radio" name="kind" value="ALL" id="ALL"><label for="ALL">ALL</label>					          
 						<input type="radio" name="kind" value="IPHONE" id="kindCategory" <c:if test="${param.kind eq 'IPHONE'}"></c:if>/><label for="kindCategory">iPhone</label>
 						<input type="radio" name="kind" value="IPAD" id="kindCategory2" <c:if test="${param.kind eq 'IPAD'}"></c:if>/><label for="kindCategory2">iPad</label>
 						<input type="radio" name="kind" value="MAC" id="kindCategory3" <c:if test="${param.kind eq 'MAC'}"></c:if>/><label for="kindCategory3">MAC</label>				
@@ -80,8 +81,8 @@
 								</div>
 								<div class="product_options">
 								
-									<a href="/pineapple/upload/ordercart?meberid=${ member.merberId }"><div class="product_buy product_option"><img src="/pineapple/resources/images/shopping-bag.svg" alt=""></div></a>
-									<div class="product_fav product_option">+</div>
+									<a href="pr-detail?productNo=${ product.productNo }"><div class="product_buy product_option"><img src="/pineapple/resources/images/shopping-bag.svg" alt=""></div></a>
+									<a href="pr-detail?productNo=${ product.productNo }"><div class="product_fav product_option">+</div></a>
 									</div>
 								</div>
 							</div>
@@ -178,7 +179,15 @@
    			this.form.submit();
    			
    		});
-   	});   	
+   	});   
+   	
+   	$(function(){
+   		$('#ALL').on('click', function(event){
+   			location.href="/pineapple/pr-upload/pr-list2"; 
+   			
+   		});
+   		  		
+   	});
   	
 	</script>
 </body>

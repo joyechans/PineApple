@@ -718,8 +718,30 @@ section
 	font-size: 30px;
 	color: #232323;
 	text-transform: uppercase;
-	line-height: 0.75;
+	line-height: 0.65;
+	text-align: center;
 }
+
+.cart_titlee
+{
+	font-family: 'Lucida', serif;
+	font-size: 30px;
+	color: #232323;
+	text-transform: uppercase;
+	line-height: 0.65;
+}
+
+
+.cart_titles
+{
+	font-family: 'Lucida', serif;
+	font-size: 22px;
+	color: #232323;
+	text-transform: uppercase;
+	line-height: 0.35;
+	text-align: center;
+}
+
 .cart_bar
 {
 	width: 100%;
@@ -836,6 +858,17 @@ section
 	padding-left: 11px;
 	vertical-align: middle;
 }
+
+.product_quantitys
+{
+	display: inline-block;
+	width: 122px;
+	height: 41px;
+	border: solid 1px #ffffff;
+	overflow: hidden;
+	padding-left: 11px;
+	vertical-align: middle;
+}
 .product_quantity input
 {
 	display: block;
@@ -940,13 +973,13 @@ section
 	height: 47px;
 	border: solid 1px #b5b5b5;
 	outline: none;
-	background: #FFFFFF;
+	background: #000000;
 	padding-left: 34px;
 	padding-right: 34px;
 	text-transform: uppercase;
 	letter-spacing: 0.2em;
 	font-size: 12px;
-	color: #232323;
+	color: #ffffff;
 	cursor: pointer;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
@@ -959,7 +992,7 @@ section
 	height: 47px;
 	border: solid 1px #b5b5b5;
 	outline: none;
-	background: #937c6f;
+	background: #000000;
 	padding-left: 34px;
 	padding-right: 34px;
 	text-transform: uppercase;
@@ -1063,7 +1096,7 @@ section
 	height: 47px;
 	border: solid 1px #b5b5b5;
 	outline: none;
-	background: #937c6f;
+	background: #000000;
 	text-align: center;
 	text-transform: uppercase;
 	letter-spacing: 0.2em;

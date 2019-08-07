@@ -83,8 +83,8 @@
 		</form>
 		<br></br>
 		<div style="padding-top: 10px; text-align: center">		
-		 <input type="submit" id="btnmemberset" value="등록" class="btn btn-outline-secondary" >
-		 <input type="button" id="btnmembermypage" value="취소" class="btn btn-outline-secondary">				 				 
+		 <input type="submit" id="btnmemberset" value="Submit" class="button cart_button" style="color:white;" >
+		 <input type="button" id="btnmembermypage" value="Cancle" class="button cart_button" style="color:white;" >				 				 
 		</div>	
 	</div>
 	</div>

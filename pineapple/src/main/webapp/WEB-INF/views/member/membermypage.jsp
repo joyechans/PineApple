@@ -105,7 +105,7 @@
    		
    		
    		$('#orderlist').on('click', function(event){
-   			location.href="/pineapple/upload/payment?memberId=${loginuser.memberId }"; 
+   			location.href="/pineapple/upload/orderlist"; 
    			
    		});
    		

@@ -57,13 +57,13 @@
 			<tr style="height: 50px; width: 500px">
 		                <th>상품이름</th>
 		                <td>
-		                    <input type="text" name="name" style="width:550px" class="form-control" value="${ product.name }"/>
+		                    <input type="text" name="name" class="form-control" value="${ product.name }"/>
 		                </td>
 		            </tr>
 		            <tr>
 		            	<th>상품종류</th>
 		             <td>
-		                    <select name="kind">
+		                    <select name="kind" class="form-control">
 		                	  <option value="IPHONE" selected="selected">iPhone</option>
 							  <option value="IPAD">iPad</option>
 		                      <option value="MAC">MAC</option>		                      
@@ -75,7 +75,7 @@
 		            <tr>
 		                <th>상품가격</th>
 		                <td>
-		                    <input type="text" name="price" style="width:550px" class="form-control" value="${ product.price }"/>
+		                    <input type="text" name="price" class="form-control" value="${ product.price }"/>
 		                </td>
 		            </tr>		            
 		            <tr>
@@ -107,7 +107,7 @@
 		           
 		            <tr>
 		                <td colspan="3">
-		                	<textarea name="content" style="width:750px" rows="20" class="form-control">${ product.content }</textarea>
+		                	<textarea name="content" rows="20" class="form-control">${ product.content }</textarea>
 		                </td>
 		            </tr>
 		            

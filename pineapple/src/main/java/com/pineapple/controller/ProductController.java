@@ -132,7 +132,7 @@ public class ProductController {
          }
       }
 
-      return "redirect:pr-list";
+      return "redirect:pr-list2";
       //return "redirect:pr-list?col=all&word=";
    }
 
