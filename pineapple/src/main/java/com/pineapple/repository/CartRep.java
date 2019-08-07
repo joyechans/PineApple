@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.pineapple.vo.Cart;
+import com.pineapple.vo.Payment;
+import com.pineapple.vo.PaymentDetail;
 
 
 
@@ -23,5 +25,10 @@ public interface CartRep {
 	void delete(int orderId);
 
 	void modifyCart(Cart cart);
-		
+
+	void insertorder(Payment payment);
+	
+	void insertorderdetail(PaymentDetail paymentDetail);
+	
+	void alldelete(String memberId);
 }

@@ -10,6 +10,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import com.pineapple.mapper.CartMapper;
 
 import com.pineapple.vo.Cart;
+import com.pineapple.vo.Payment;
+import com.pineapple.vo.PaymentDetail;
 
 
 public class CartRepImpl implements CartRep {
@@ -78,8 +80,23 @@ public class CartRepImpl implements CartRep {
 		cartMapper.modifyCart(cart);
 	}
 
+	@Override
+	public void insertorder(Payment payment) {
+		cartMapper.insertpayment(payment);
+		
+	}
+
+	@Override
+	public void insertorderdetail(PaymentDetail paymentDetail) {
+		cartMapper.insertpaymentdetail(paymentDetail);
+		
+	}
 	
-	
+	@Override
+	public void alldelete(String memberId) {
+		cartMapper.alldeleteCart(memberId);
+		
+	}
 	
 	
 	

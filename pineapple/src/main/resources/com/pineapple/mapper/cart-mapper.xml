@@ -55,7 +55,25 @@
 	<update id="modifyCart">
 		UPDATE CART
 		SET amount = #{amount}
-		WHERE memberId = #{memberId}
-		AND productNo = #{productNo}
+		WHERE orderId = #{orderId}
+		
 	</update>
+	<!-- 주문하기 -->
+	<insert id="insertpayment" parameterType="Payment">
+		INSERT INTO PAYMENT(paymentNo, memberId, money, addr1, addr2, addr3)
+		VALUES(#{paymentNo}, #{memberId}, #{money}, #{addr1}, #{addr2}, #{addr3})
+	</insert>
+	<!-- 주문 상세 정보 --> 
+	<insert id="insertpaymentdetail" parameterType="PaymentDetail">
+ 		INSERT INTO PAYMENTDETAIL(paymentDetailNo, paymentNo, productNo, amount)
+	    VALUES(PAYMENTDETAIL_SEQUENCE.NEXTVAL, #{paymentNo}, #{productNo}, #{amount})      
+	</insert> 
+	
+	<!--장바구니에서 모든상품삭제  -->
+	<delete id="alldeleteCart">
+		DELETE CART
+		WHERE memberId = #{memberId}
+	</delete>
+	
+	
 </mapper>

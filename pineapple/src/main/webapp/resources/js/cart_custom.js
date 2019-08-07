@@ -120,7 +120,7 @@ $(document).ready(function()
 
 	function initQuantity()
 	{
-		// Handle product quantity input
+		/*// Handle product quantity input
 		if($('.product_quantity').length)
 		{
 			var input = $('#quantity_input');
@@ -146,6 +146,6 @@ $(document).ready(function()
 					input.val(endVal);
 				}
 			});
-		}
+		}*/
 	}
 });

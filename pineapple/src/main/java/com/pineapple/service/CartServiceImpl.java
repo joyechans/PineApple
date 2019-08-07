@@ -6,6 +6,8 @@ import com.pineapple.common.Util;
 import com.pineapple.repository.CartRep;
 
 import com.pineapple.vo.Cart;
+import com.pineapple.vo.Payment;
+import com.pineapple.vo.PaymentDetail;
 
 
 public class CartServiceImpl implements CartService {
@@ -61,7 +63,22 @@ public class CartServiceImpl implements CartService {
 		
 	}
 
-	
+	@Override
+	public void insertorder(Payment payment) {
+		
+		cartRep.insertorder(payment);
+	}
+
+	@Override
+	public void insertorderdetail(PaymentDetail paymentDetail) {
+		cartRep.insertorderdetail(paymentDetail);
+	}
+
+	@Override
+	public void alldelete(String memberId) {
+		cartRep.alldelete(memberId);
+		
+	}
 
 	
 

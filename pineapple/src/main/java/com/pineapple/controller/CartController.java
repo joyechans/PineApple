@@ -1,5 +1,7 @@
 package com.pineapple.controller;
 
+import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.pineapple.common.Util;
 import com.pineapple.service.CartService;
 import com.pineapple.vo.Cart;
+import com.pineapple.vo.Payment;
+import com.pineapple.vo.PaymentDetail;
 
 @Controller
 @RequestMapping(path = "/upload/")
@@ -67,18 +71,51 @@ public class CartController {
 		return "redirect:/upload/ordercart?memberId="+memberId;
 	}
 	
-	@RequestMapping(path = "/updatecart", method = RequestMethod.POST)
-	public String update(@RequestParam int amount, @RequestParam int productNo, String memberId) {
-		//String memberId = (String)session.getAttribute("memberId");
-		//for(int i=0; i<productNo.length; i++) {
-			Cart cart = new Cart();
-			cart.setMemberId(memberId);
-			cart.setAmount(amount);
-			cart.setProductNo(productNo);
-			cartService.modifyCart(cart);
-		//}
+	@RequestMapping(path = "/updatecart", method = RequestMethod.GET)
+	public String update(@RequestParam int amount, int orderId, String memberId) {
+
+		Cart cart = new Cart();
+		cart.setOrderId(orderId);
+		cart.setAmount(amount);
+		
+		cartService.modifyCart(cart);
+
+
 		return "redirect:/upload/ordercart?memberId="+memberId;
 	}
+	
+	
+	  @RequestMapping(path="/doorder", method = RequestMethod.POST) 
+	  public String doorder(String memberId, Payment payment, PaymentDetail paymentDetail) { 
+		  
+		  
+		  
+		  Calendar cal = Calendar.getInstance();
+		  int year = cal.get(Calendar.YEAR);
+		  String ym = year + new DecimalFormat("00").format(cal.get(Calendar.MONTH) + 1);
+		  String ymd = ym +  new DecimalFormat("00").format(cal.get(Calendar.DATE));
+		  String subNum = "";
+		  
+		  for(int i = 1; i <= 6; i ++) {
+		   subNum += (int)(Math.random() * 10);
+		  }
+		  
+		  String paymentNo = ymd + "_" + subNum;
+		  payment.setPaymentNo(paymentNo);
+		  payment.setMemberId(memberId);
+		  
+		  
+		  cartService.insertorder(payment);
+		  	  
+		  paymentDetail.setPaymentNo(paymentNo);
+		  paymentDetail.setPaymentNo(memberId);
+		  cartService.insertorderdetail(paymentDetail);
+		  
+		  cartService.alldelete(memberId);
+		  
+	  return "redirect:/upload/ordercart?memberId="+memberId; 
+	  }
+	 
 }
 
 
