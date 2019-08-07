@@ -12,6 +12,7 @@ public class PaymentDetail {
 	private String paymentNo;
 	private int productNo;
 	private int amount;
+	private String memberId;
 	
 	
 	

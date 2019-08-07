@@ -108,7 +108,8 @@ public class CartController {
 		  cartService.insertorder(payment);
 		  	  
 		  paymentDetail.setPaymentNo(paymentNo);
-		  paymentDetail.setPaymentNo(memberId);
+		  paymentDetail.setMemberId(memberId);
+		  
 		  cartService.insertorderdetail(paymentDetail);
 		  
 		  cartService.alldelete(memberId);

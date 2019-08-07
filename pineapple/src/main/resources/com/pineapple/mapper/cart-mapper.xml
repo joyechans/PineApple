@@ -66,7 +66,9 @@
 	<!-- 주문 상세 정보 --> 
 	<insert id="insertpaymentdetail" parameterType="PaymentDetail">
  		INSERT INTO PAYMENTDETAIL(paymentDetailNo, paymentNo, productNo, amount)
-	    VALUES(PAYMENTDETAIL_SEQUENCE.NEXTVAL, #{paymentNo}, #{productNo}, #{amount})      
+	    SELECT PAYMENTDETAIL_SEQUENCE.NEXTVAL, #{paymentNo}, productNo, amount
+	    FROM CART
+	    WHERE memberId = #{memberId}      
 	</insert> 
 	
 	<!--장바구니에서 모든상품삭제  -->
