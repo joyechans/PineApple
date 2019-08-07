@@ -1,6 +1,7 @@
 package com.pineapple.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.pineapple.repository.QuestionRep;
@@ -136,6 +137,21 @@ public class QuestionServiceImpl implements QuestionService {
 	public List<Question> findQuestionlist(String category) {
 		List<Question> questions = questionRep.selectQuestionlist(category);
 		return questions;
+	}
+
+
+	@Override
+	public List<QuestionComment> findCommentListByQuestionNoWithPaging(HashMap<String, Object> params) {
+		List<QuestionComment> comments =
+		questionRep.selectQuestionByQuestionNoWithPaging(params);
+		return comments;
+	}
+
+
+	@Override
+	public int findCommentsCountByQuestionNo(int questionNo) {
+		int commentsCount =  questionRep.selectCommentsCountByQuestionNo(questionNo);
+		return commentsCount;
 	}
 	
 	

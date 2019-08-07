@@ -83,7 +83,7 @@
 				<div id="pageContainer">
 
 
-					<h3 style="text-align: center; padding-top: 5%">QnA</h3>
+					<h3 style="text-align:center;padding-top:5%">Q&A</h3>
 
 					<div style="padding-top: 50; text-align: center">
 						<div id="inputcontent">
@@ -101,42 +101,40 @@
 								
 								<form action="qa-write" method="post"
 									enctype="multipart/form-data">
-									<table class="table table-bordered" style="width:50%;margin: auto">
+									<table class="table table-bordered" style="width:50%; background-color:; margin: auto">
 										<tr>
 											<th>제목</th>
 											<td><select name="category">
-													<option value="고양이문의" selected="selected">고양이문의</option>
-													<option value="용품문의">용품문의</option>
+													<option value="제품문의" selected="selected">제품문의</option>
+													<option value="서비스문의">서비스문의</option>
 													<option value="기타문의">기타문의</option>
 											</select></td>
-											<td><input type="text" name="title" style="width: 550px"
+											<td><input type="text" name="title" style="width: 650px"
 												class="form-control" /></td>
 										</tr>
 										<tr>
 											<th colspan="1">작성자</th>
 											<td colspan="2" style="text-align: left">
-												<input type="hidden" name="uploader" value="1">
-												<%-- <input type="hidden" name="uploader" value="${loginuser.memberId}"> --%>
+												<!-- <input type="hidden" name="uploader" value="1"> -->
+												<input type="hidden" name="uploader" value="${loginuser.memberId}">
 												${ loginuser.memberId} <%-- 히든속성이 아님 <input type="hidden" name="uploader" value="<%= member.getMemberId() %>" readonly="readonly"> --%>
 											</td>
 										</tr>
-										<tr>
-											<th colspan="1">첨부자료</th>
-											<td colspan="2" style="text-align: left">
+ 									
+								<tr>
+									<th colspan="1">이미지</th>
+									<td colspan="2" style="text-align: left">
 
-												<div class="custom-file">
-													<input type="file" class="custom-file-input"
-														id="customFile" name="attach"> <label
-														class="custom-file-label" for="customFile">Choose
-														file</label>
-												</div>
+										<div class="custom-file">
+											<input type="file" name="attach"> 
+										</div>
 
-											</td>
-										</tr>
+									</td>
+								</tr>
 
 										<tr>
 											<td colspan="3">
-											<textarea name="content" id="editor" style="width: 750px" rows="20" class="form-control"></textarea>
+											<textarea name="content" id="editor" style="width: 830px" rows="20" class="form-control"></textarea>
 											</td>
 										</tr>
 
@@ -145,9 +143,9 @@
 
 									</table>
 									<div class="buttons">
-										<input type="submit" value="자료등록" id="insertBoard" class="btn btn-outline-secondary" /> 
+										<input type="submit" value="자료등록" id="insertBoard" class="btn btn-dark" /> 
 										<input id="cancel_button" type="button" value="취소"
-											class="btn btn-outline-secondary" />
+											class="btn btn-dark" />
 									</div>
 								</form>
 
@@ -211,9 +209,9 @@
 	</script>
 
 	<!-- editor -->
-	<script src="https://code.jquery.com/jquery-latest.js"></script>
-	<script type="text/javascript"
-		src="/pineapple/resources/navereditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+	<!-- <script src="https://code.jquery.com/jquery-latest.js"></script> -->
+	<script type="text/javascript" src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/pineapple/resources/navereditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 	<script type="text/javascript">
 		$(function() {
 			//전역변수

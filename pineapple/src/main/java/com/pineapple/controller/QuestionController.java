@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -110,8 +111,7 @@ public class QuestionController {
 
 //	@RequestMapping(path="/qa-detail", method = RequestMethod.GET)
 //	public String detail(@RequestParam(name="questionno")int questionNo, Model model) {
-//    
-//	      
+//       
 //	      QuestionRep dao = new QuestionRepImpl();
 //	      
 //	      Question question = dao.selectQuestion(questionNo);
@@ -122,12 +122,10 @@ public class QuestionController {
 //	      
 //	      List<QuestionFile> files = questionService.findQuestionFilesByQuestionNo(questionNo);
 //	      question.setFiles((ArrayList<QuestionFile>)files); 
-//	      
-//	      
+//	          
 //	      model.addAttribute("question", question);
 //	       
-//		
-//		return "question/qa-detail";
+//				return "question/qa-detail";
 //	}
 
 	@RequestMapping(path = "/qa-detail/{questionNo}", method = RequestMethod.GET)
@@ -142,14 +140,38 @@ public class QuestionController {
 		List<QuestionFile> files = questionService.findQuestionFilesByQuestionNo(questionNo);
 		question.setFiles((ArrayList<QuestionFile>) files);
 
-		List<QuestionComment> comments = questionService.findCommentListByQuestionNo(questionNo);
+		
+//		List<QuestionComment> comments = questionService.findCommentListByQuestionNo(questionNo);//
+//		question.setComments(comments);//
+//		questionService.readCount(questionNo);
+//		model.addAttribute("question", question);  //
+//		return "question/qa-detail";//
+		
+				
+		int pageSize = 3;
+		int currentPage = 1;
+		
+		int from = (currentPage - 1) * pageSize + 1;
+		int to = from + pageSize;
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("questionNo", questionNo);
+		params.put("from", from);
+		params.put("to", to);
+		
+		List<QuestionComment> comments = 
+				//questionService.findCommentListByQuestionNo(questionNo);
+				questionService.findCommentListByQuestionNoWithPaging(params);
 		question.setComments(comments);
-
-		questionService.readCount(questionNo);
-
-		model.addAttribute("question", question);
-
-		return "question/qa-detail";
+		
+		model.addAttribute("question", question);	
+			
+		int commentsCount = 
+				questionService.findCommentsCountByQuestionNo(questionNo);		
+		/////////////////////
+		model.addAttribute("commentsCount", commentsCount);	
+		////////////////////
+		return "question/qa-detail"; // "/WEB-INF/views/" + question/detail + ".jsp"
 	}
 
 	@RequestMapping(path = "/download/{fileNo}", method = RequestMethod.GET)
@@ -217,34 +239,38 @@ public class QuestionController {
 		MultipartFile mf = req.getFile("attach");
 		if (mf != null) {
 
-			ServletContext application = req.getServletContext();
-			String path = application.getRealPath("/upload-files");
-
 			String userFileName = mf.getOriginalFilename();
-			if (userFileName.contains("\\")) {
-				userFileName = userFileName.substring(userFileName.lastIndexOf("\\") + 1);
-			}
-
-			String savedFileName = Util.makeUniqueFileName(userFileName);
-			// 원본 파일과 저장하는 파일이 달라야 함
-
-			try {
-				mf.transferTo(new File(path, savedFileName));
-
-				QuestionFile questionFile = new QuestionFile();
-				questionFile.setUserFileName(userFileName);
-				questionFile.setSavedFileName(savedFileName);
-				questionFile.setQuestionNo(question.getQuestionNo());
-				questionService.registerQuestionFile(questionFile);
-
-				// 데이터 저장
-				questionService.updateQuestion(question);
-
-			} catch (Exception ex) {
-				ex.printStackTrace();
+			if (userFileName != null && userFileName.length() > 0) {
+			
+				ServletContext application = req.getServletContext();
+				String path = application.getRealPath("/upload-files");
+	
+				
+				if (userFileName.contains("\\")) {
+					userFileName = userFileName.substring(userFileName.lastIndexOf("\\") + 1);
+				}
+	
+				String savedFileName = Util.makeUniqueFileName(userFileName);
+				// 원본 파일과 저장하는 파일이 달라야 함
+	
+				try {
+					mf.transferTo(new File(path, savedFileName));
+	
+					QuestionFile questionFile = new QuestionFile();
+					questionFile.setUserFileName(userFileName);
+					questionFile.setSavedFileName(savedFileName);
+					questionFile.setQuestionNo(question.getQuestionNo());
+					questionService.registerQuestionFile(questionFile);
+					
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
 			}
 
 		}
+		
+		// 데이터 저장
+		questionService.updateQuestion(question);
 
 		return "redirect:/qa-upload/qa-detail/" + question.getQuestionNo();
 	}
@@ -266,7 +292,7 @@ public class QuestionController {
 	@RequestMapping(path = "/write-recomment", method = RequestMethod.POST, produces = "text/plain;charset=utf-8") // 응답
 																													// 컨텐츠의
 																													// 종류
-																													// 지정
+ 																										// 지정
 	@ResponseBody // 반환 값은 뷰이름이 아니고 응답컨텐츠입니다
 	public String writeRecomment(QuestionComment comment) {
 
@@ -274,16 +300,28 @@ public class QuestionController {
 
 		return "success"; // WEB-INF/views/success.jsp
 	}
-
+     ///////////////////////////////////////
 	@RequestMapping(value = "/comment-list", method = RequestMethod.POST)
-	public String commentList(int questionNo, Model model) {
-
-		List<QuestionComment> comments = questionService.findCommentListByQuestionNo(questionNo);
+	public String commentList(int questionNo, int pageNo, Model model) {
+		int pageSize = 3;
+		int currentPage = pageNo;
+		
+		int from = (currentPage - 1) * pageSize + 1;
+		int to = from + pageSize;
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("questionNo", questionNo);
+		params.put("from", from);
+		params.put("to", to);
+		
+		List<QuestionComment> comments = 
+				//questionService.findCommentListByQuestionNo(questionNo);
+				questionService.findCommentListByQuestionNoWithPaging(params);
 		model.addAttribute("comments", comments);
 
 		return "question/comments"; // -> /WEB-INF/views/question/comments.jsp를 응답에 사용
 	}
-
+     /////////////////////////////////////////
 	@RequestMapping(value = "/delete-comment", method = RequestMethod.GET)
 	@ResponseBody
 	public String deleteComment(int commentNo) {

@@ -96,8 +96,8 @@
 										<tr>
 											<th>제목</th>
 											<td><select name="category">
-													<option value="고양이문의" selected="selected">고양이문의</option>
-													<option value="용품문의">용품문의</option>
+													<option value="제품문의" selected="selected">제품문의</option>
+													<option value="서비스문의">서비스문의</option>
 													<option value="기타문의">기타문의</option>
 											</select></td>
 											<td><input type="text" name="title" style="width: 550px"
@@ -119,7 +119,7 @@
 													var="file" items="${question.files }">
                          ${ file.userFileName } 
                          [<a
-														href="/pineapple/qa-upload/delete-file/${ question.questionNo }/${ file.questionFileNo }">삭제</a>]&nbsp;|&nbsp;
+														href="/pineapple/qa-upload/delete-file/${ question.questionNo }/${ file.questionFileNo }" style="color:black">삭제</a>]&nbsp;|&nbsp;
 						</c:forEach>
 
 												<div class="custom-file">
@@ -130,16 +130,16 @@
 												</div></td>
 										</tr>
 										<tr>
-											<td colspan="3"><textarea name="content" id="editor"
-													style="width: 750px" rows="20" class="form-control">${ question.content }</textarea>
+											<td colspan="3">
+												<textarea name="content" id="editor" style="width: 750px" rows="20" class="form-control"></textarea>
 											</td>
 										</tr>
 									</table>
 									<div class="buttons">
 										<input type="submit" value="자료등록" id="insertBoard"
-											class="btn btn-outline-secondary" /> <input
+											class="btn btn-dark" /> <input
 											id="cancel_button" type="button" value="취소"
-											class="btn btn-outline-secondary" />
+											class="btn btn-dark" />
 									</div>
 								</form>
 
@@ -171,10 +171,8 @@
 		<!-- Product Catagories Area End////////////////////// -->
 	</div>
 	<!-- ##### Main Content Wrapper End ##### -->
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    
+	
+ 
     <!-- footer -->
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 	<!-- footer End -->
@@ -206,15 +204,16 @@
 	<script async src="https://www.google-analytics.com/analytics.js"></script>
 
 	<!-- editor -->
-	<script src="https://code.jquery.com/jquery-latest.js"></script>
-	<script type="text/javascript"
-		src="/pineapple/resources/editor/js/HuskyEZCreator.js"
-		charset="utf-8"></script>
- 
+	<!-- <script src="https://code.jquery.com/jquery-latest.js"></script> -->
+	<script type="text/javascript" src="//code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="/pineapple/resources/navereditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 		<script type="text/javascript">
 		$(function() {
 			//전역변수
 			var obj = [];
+			
+			$('#editor').val('${question.content}');
+			
 			//스마트에디터 프레임생성
 			nhn.husky.EZCreator.createInIFrame({
 				oAppRef : obj,

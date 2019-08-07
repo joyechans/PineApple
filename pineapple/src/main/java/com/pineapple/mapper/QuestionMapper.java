@@ -43,13 +43,16 @@ public interface QuestionMapper {
 	void deleteComment(int commentNo);
 
 	List<QuestionComment> selectCommentsByQuestionNo(int questionNo);
+	List<QuestionComment> selectCommentsByQuestionNoWithPaging(HashMap<String, Object> params);
+	int selectCommentsCountByQuestionNo(int questionNo);
 	
 	void updateCommentStep(QuestionComment comment);
 	
 	void insertRecomment(QuestionComment comment);
-	QuestionComment selectCommentByCommentNo(int commentNo);	
+	QuestionComment selectCommentByCommentNo(int commentNo);
 	
 	List<Question> selectQuestionlist(HashMap<String, Object> params);
+	 
 
 }
 	

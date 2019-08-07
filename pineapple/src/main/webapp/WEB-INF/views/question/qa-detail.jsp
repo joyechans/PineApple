@@ -115,7 +115,7 @@
 										<th colspan="1">첨부자료</th>
 										<td colspan="2" style="text-align: left"><c:forEach
 												var="file" items="${question.files }">
-												<a
+												<a style="color:#111"
 													href="/pineapple/qa-upload/download/${ file.questionFileNo }">
 													${ file.userFileName }</a>
 												<br>
@@ -135,13 +135,13 @@
 									<%--eq: 같은애를 찾는  / 로그인한 사용자와 글의 작성자가 같으면 삭제, 수정 버튼 활성화--%>
 									<c:if test="${ loginuser.memberId eq question.uploader }">
 										<input type="button" id="update_button"
-											class="btn btn-outline-secondary" value="편집" />
+											class="btn btn-dark" value="편집" />
 										<input type="button" id="delete_button"
-											class="btn btn-outline-secondary" value="삭제" />
+											class="btn btn-dark" value="삭제" />
 									</c:if>
 
 									<input type="button" id="cancel_button"
-										class="btn btn-outline-secondary" value="목록보기" /> <br> <br>
+										class="btn btn-dark" value="목록보기" /> <br> <br>
 									<script type="text/javascript">
 		        	//브라우저가 html을 모두 읽고 처리할 준비가 되었을 때 호출 할 함수 지정
 		        	window.addEventListener('load',function(event){//js의 main 함수 역할
@@ -176,18 +176,20 @@
 
 						<!-- write comment area -->
 						<form id="commentform">
-							<input type="hidden" name="questionNo"
-								value="${ question.questionNo }" /> <input type="hidden"
-								name="writer" value="${ loginuser.memberId }" />
+							<input type="hidden" name="questionNo"	value="${ question.questionNo }" /> 
+							<input type="hidden" name="writer" value="${ loginuser.memberId }" />
+							<!-- <input type="hidden" name="writer" value="1" /> -->
 							<table style="width: 550px; border: solid 1px; margin: 0 auto"
 								class="table table-bordered">
 								<tr>
-									<td style="width: 500px"><textarea id="comment_content"
+									<td style="width: 500px">
+										<textarea id="comment_content"
 											name="content" style="width: 500px" rows="3"
-											class="form-control"></textarea></td>
+											class="form-control"></textarea>
+										</td>
 									<td style="width: 50px; vertical-align: middle"><a
 										id="writecomment" href="javascript:"
-										style="text-decoration: none"> 댓글<br />등록
+										style="color:#111" style="text-decoration: none" > 댓글<br />등록
 									</a></td>
 								</tr>
 							</table>
@@ -216,23 +218,23 @@
 													<br /> <span> ${ comment.content } </span> <br /> <br />
 
 													<c:if test='${ loginuser.memberId eq "manager" }'>
-														<a class="editcomment "
+														<a class="editcomment " style="color:#111"
 															data-commentno='${ comment.commentNo }'
 															href="javascript:">편집</a>
-														<a class="deletecomment " href="javascript:"
+														<a class="deletecomment " style="color:#111" href="javascript:"
 															data-commentno="${ comment.commentNo }">삭제</a>
 													</c:if>
 													<c:if test='${ loginuser.memberId ne "manager" }'>
 														<div
 															style='display:${ loginuser.memberId eq comment.writer ? "block" : "none" }'>
-															<a class="editcomment "
+															<a class="editcomment " style="color:#111"
 																data-commentno='${ comment.commentNo }'
-																href="javascript:">편집</a> <a class="deletecomment "
+																href="javascript:">편집</a> <a class="deletecomment " style="color:#111"
 																href="javascript:"
 																data-commentno="${ comment.commentNo }">삭제</a>
 														</div>
 													</c:if>
-													<br /> <a class="recomment-link btn btn-outline-secondary"
+													<br /> <a class="recomment-link btn btn-dark"
 														data-commentno="${ comment.commentNo }">댓글 쓰기</a>
 												</div> <!-- 수정 -->
 												<div id='commentedit${ comment.commentNo }'
@@ -247,10 +249,10 @@
 													</form>
 													<br />
 													<div>
-														<a class="updatecomment btn btn-outline-secondary"
+														<a class="updatecomment btn btn-dark"
 															href="javascript:"
 															data-commentno="${ comment.commentNo }">수정</a> &nbsp; <a
-															class="cancel btn btn-outline-secondary"
+															class="cancel btn btn-dark"
 															data-commentno="${ comment.commentNo }"
 															href="javascript:">취소</a>
 													</div>
@@ -263,7 +265,27 @@
 									</c:forEach>
 								</c:if>
 							</table>
-
+<br><br>
+	        
+	        <div id="pager">
+		        <c:set var="pagerSize" value="3" />
+	       		[<a id="first" data-pageno="-1" style="color:#111" href="javascript:">처음</a>]
+	       		&nbsp;
+	       		[<a id="prev" data-pageno="-1" style="color:#111" href="javascript:">이전</a>]
+		        
+		        &nbsp;
+		        <c:forEach var="idx" begin="1" end="${ pagerSize }">
+		        	<a style="color:#111" class='pageno' data-pageno="${ idx }" href='javascript:'>${ idx }</a>
+		        	<c:if test="${ idx < pagerSize }">
+		        	&nbsp;
+		        	</c:if>
+		        </c:forEach>
+	
+				&nbsp;
+	       		[<a style="color:#111" id="next" data-pageno="-1" href="javascript:">다음</a>]
+	       		&nbsp;
+	       		[<a style="color:#111" id="last" data-pageno="-1" href="javascript:">마지막</a>]
+		    </div>
 						</div>
 					</div>
 
@@ -297,6 +319,129 @@
 	<script src="/pineapple/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 	<script src="/pineapple/resources/js/categories_custom.js"></script>
 
+<!-- 댓글 pager -->
+ <script type="text/javascript">
+    
+	function recalc() {
+		var page1 = Math.floor( commentsCount / pageSize );
+		var page2 = (${ commentsCount } % pageSize) > 0 ? 1 : 0;
+		lastPage = page1 + page2;
+	}
+    
+	var currentPage = 1;
+	var pagerSize = 3;
+	var pageSize = 3;
+	var commentsCount = ${ commentsCount };	
+	var questionNo = ${ question.questionNo };
+	var lastPage = recalc();
+	
+    function loadComments() {
+		$("#comment-list").load('/pineapple/qa-upload/comment-list', 
+								{ "questionNo" : questionNo, "pageNo": currentPage },
+								function() {});
+	}
+    $(function() {
+    	
+    	var pageOne = $('#pager a.pageno:first');
+    	pageOne.text("[" + pageOne.text() + "]")
+    	
+    	$('#pager #first').on('click', function(event) {
+    		if (currentPage == 1) {
+    			return;
+    		}
+    		
+    		currentPage = 1;
+    		$('#pager .pageno').each(function(idx, item) {
+    			$(this).attr('data-pageno', idx + 1);
+    			$(this).text( (idx + 1));
+    		});
+    		
+    		loadComments();
+    	});
+    	
+    	$('#pager #prev').on('click', function(event) {
+    		if (currentPage == 1) {
+    			return;
+    		}
+    		
+    		var pageNo = $('#pager .pageno:first').attr("data-pageno");
+    		if (currentPage == pageNo) {
+    			$('#pager .pageno').each(function(idx, item) {
+	    			$(this).attr('data-pageno', currentPage - (pagerSize - idx));
+	    			$(this).text( (currentPage - (pagerSize - idx) ));
+	    		});
+    		}
+    		
+    		currentPage--;	
+    		
+    		loadComments();
+    	});
+    	
+    	$('#pager .pageno').on('click', function(event) {
+    		var pageNo = $(this).attr('data-pageno');
+    		if (pageNo == currentPage) {
+    			return;
+    		}
+    		
+    		$(this).text( "[" + pageNo + "]" );
+    		var tmp = $("#pager a[data-pageno=" + currentPage +"]");
+    		tmp.text(tmp.attr('data-pageno'));
+    		currentPage = parseInt(pageNo);
+    		
+    		loadComments();
+    	});
+    	
+    	$('#pager #last').on('click', function(event) {
+    		if (currentPage == lastPage) {
+    			return;
+    		}
+    		
+    		currentPage = lastPage;
+    		var firstItem = lastPage - (lastPage % pagerSize) + 1;
+    		$('#pager .pageno').each(function(idx, item) {
+    			// $(this).attr('data-pageno', lastPage - (pagerSize - idx) + 1);
+    			// $(this).text( (lastPage - (pagerSize - idx) + 1 ));
+    			if (firstItem + idx <= lastPage) {
+	    			$(this).attr('data-pageno', firstItem + idx);
+	    			$(this).text(firstItem + idx);
+    			} else {
+    				$(this).attr('data-pageno', -1);
+	    			$(this).text("");
+    			}
+    		});
+    		
+    		loadComments();
+    	});
+    	
+    	$('#pager #next').on('click', function(event) {
+    		if (currentPage == lastPage) {
+    			return;
+    		}
+    		
+    		var pageNo = $('#pager .pageno:last').attr("data-pageno");
+    		if (currentPage == pageNo) {
+    			$('#pager .pageno').each(function(idx, item) {
+    				if ((currentPage + idx + 1) <= lastPage) {
+		    			$(this).attr('data-pageno', (currentPage + idx + 1));
+		    			$(this).text((currentPage + idx + 1));
+    				} else {
+    					$(this).attr('data-pageno', -1);
+		    			$(this).text("");
+    				}
+	    		});
+    		}
+    		
+    		currentPage++;
+    		
+    		loadComments();
+    	});
+    });
+    </script>
+
+
+
+
+
 	<!-- 댓글 javascript -->
 	<script type="text/javascript">
 	$(function() {
@@ -311,11 +456,14 @@
 				method: "POST",
 				data: formData,
 				success: function(data, status, xhr) {
-					 alert(data);
+					alert(data);
+					$('#commentform #comment_content').val('');
 					$("#comment-list").load('/pineapple/qa-upload/comment-list', 
-											{ "questionNo" : ${  question.questionNo } }, 
-											function() {})
-				},
+											{ 
+												"questionNo" : ${question.questionNo },
+											  	"pageNo" : currentPage 
+											}, function() {});
+				}, 
 				error: function(xhr, status, err) {
 					alert(err);
 				}
@@ -445,8 +593,9 @@
 				<!-- Modal body -->
 				<div class="modal-body">
 					<form id="recomment-form">
-						<input type="hidden" name="commentNo"> <input
-							type="hidden" name="writer" value="${ loginuser.memberId }">
+						<input type="hidden" name="commentNo"> 
+						<input type="hidden" name="writer" value="${ loginuser.memberId }">
+						<!-- <input type="hidden" name="writer" value="1"> -->
 						<input type="hidden" name="questionNo"
 							value="${ question.questionNo	 }">
 						<textarea name="content" rows="5" style="width: 465px"
@@ -457,8 +606,8 @@
 				<!-- Modal footer -->
 				<div class="modal-footer">
 					<button type="button" id="write-recomment"
-						class="btn btn-outline-secondary">댓글 등록</button>
-					<button type="button" class="btn btn-outline-secondary"
+						class="btn btn-dark">댓글 등록</button>
+					<button type="button" class="btn btn-dark"
 						data-dismiss="modal">취소</button>
 				</div>
 

@@ -136,6 +136,37 @@
 		WHERE QUESTIONNO = #{ questionNo } ORDER BY GROUPNO DESC, STEP ASC 
 	</select>
 	
+	
+	            
+	<select id="selectCommentsByQuestionNoWithPaging"
+		parameterType="hashmap" resultType="QuestionComment">
+		SELECT s2.*
+		FROM
+		(
+		    SELECT 
+		        rownum idx, 
+		        s.*
+		    FROM
+		    (
+		        SELECT COMMENTNO, QUESTIONNO, WRITER, REGDATE, CONTENT, GROUPNO, STEP, DEPTH
+		        FROM QUESTIONCOMMENT
+		        WHERE QUESTIONNO = #{ questionNo }
+		        ORDER BY GROUPNO DESC, STEP ASC
+		    ) s
+		) s2
+		WHERE s2.idx >= #{ from } AND s2.idx <![CDATA[<]]> #{ to }	
+	</select>
+	
+	
+	<select id="selectCommentsCountByQuestionNo"
+		parameterType="int" resultType="int">
+		SELECT COUNT(*)		
+		FROM QUESTIONCOMMENT
+		WHERE QUESTIONNO = #{ qestionNo }	
+	</select>
+	
+	
+	
 	<select id="selectCommentByCommentNo" 
 		parameterType="int" resultType="QuestionComment">
 		SELECT COMMENTNO, QUESTIONNO, WRITER, CONTENT, REGDATE, GROUPNO, STEP, DEPTH 

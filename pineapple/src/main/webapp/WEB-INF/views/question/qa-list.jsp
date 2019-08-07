@@ -43,45 +43,6 @@
 
 		<!-- header End -->
 
-		<!-- Menu -->
-
-		<div
-			class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
-			<div class="menu_close_container">
-				<div class="menu_close">
-					<div></div>
-					<div></div>
-				</div>
-			</div>
-			<div class="logo menu_mm">
-				<a href="#">Wish</a>
-			</div>
-			<div class="search">
-				<form action="#">
-					<input type="search" class="search_input menu_mm"
-						required="required">
-					<button type="submit" id="search_button_menu"
-						class="search_button menu_mm">
-						<img class="menu_mm" src="images/magnifying-glass.svg" alt="">
-					</button>
-				</form>
-			</div>
-			<nav class="menu_nav">
-				<ul class="menu_mm">
-					<li class="menu_mm"><a href="#">home</a></li>
-					<li class="menu_mm"><a href="#">clothes</a></li>
-					<li class="menu_mm"><a href="#">accessories</a></li>
-					<li class="menu_mm"><a href="#">lingerie</a></li>
-					<li class="menu_mm"><a href="#">contact</a></li>
-				</ul>
-			</nav>
-		</div>
-
-		<!-- Products /////////////////-->
-		<div class="products">
-
-
-
 			<div id="pageContainer">
 
 				<h3 style="text-align: center; padding-top: 5%">QnA</h3>
@@ -91,16 +52,17 @@
 
 				<div class="container" style="padding-top: 50; text-align: center">
 					<table class="table table-hover">
+					<thead class="thead-dark">
 						<tr style="background-color:; height: 50px">
 							<th style="width: 50px; text-align: center">NO</th>
 							<th style="width: 100px; text-align: center">
 								<form id="selectform" action="qacategory" method="POST">
 									<select name="category" id="qaselectcategory">
 										<option value="all">CATEGORY</option>
-										<option value="고양이문의"
-											<c:if test="${param.category eq '고양이문의'}">selected</c:if>>고양이문의</option>
-										<option value="용품문의"
-											<c:if test="${param.category eq '용품문의'}">selected</c:if>>용품문의</option>
+										<option value="제품문의"
+											<c:if test="${param.category eq '제품문의'}">selected</c:if>>제품문의</option>
+										<option value="서비스문의"
+											<c:if test="${param.category eq '서비스문의'}">selected</c:if>>서비스문의</option>
 										<option value="기타문의"
 											<c:if test="${param.category eq '기타문의'}">selected</c:if>>기타문의</option>
 									</select>
@@ -114,7 +76,7 @@
 						</tr>
 						<tr style="height: 30px">
 							<td style="text-align: center">*</td>
-							<td style="text-align: center"><strong>공지사항</strong></td>
+							<td style="text-align: center"><strong>알림 정보</strong></td>
 							<td style='text-align: left; padding-left: 10px'><strong>고객센터는
 									AM10:00 ~ PM16:30 까지 입니다</strong></td>
 							<td style="text-align: center">manager</td>
@@ -125,7 +87,7 @@
 							<tr style="height: 30px">
 								<td style="text-align: center">${ question.questionNo }</td>
 								<td style="text-align: center">${ question.category }</td>
-								<td style='text-align: left; padding-left: 10px'><a
+								<td style='text-align: left; padding-left: 10px'><a style="color:#111"
 									href="/pineapple/qa-upload/qa-detail/${ question.questionNo }">
 										${ question.title }</a>&nbsp;&nbsp;[${ question.recnt }]</td>
 								<td style="text-align: center">${ question.uploader }</td>
@@ -133,14 +95,14 @@
 								<td style="text-align: center">${ question.answer ? "답변완료" : "답변대기" }
 							</tr>
 						</c:forEach>
-
+						</thead>
 					</table>
 
 					<br></br>
 					<div style="padding-left: 70%; text-align: center">
 						<input type="button" value="글작성"
 							onclick="location.href='qa-write' "
-							class="btn btn-outline-secondary">
+							class="btn btn-dark">
 					</div>
 				</div>
 			</div>

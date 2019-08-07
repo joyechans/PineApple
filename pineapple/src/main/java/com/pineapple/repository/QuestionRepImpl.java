@@ -221,10 +221,21 @@ public ArrayList<QuestionFile> selectQuestionFile(int questionNo) {
 		
 		return (ArrayList<Question>) Questions;
 	}
-
+ 
 	
-	
+	@Override
+	public List<QuestionComment> selectQuestionByQuestionNoWithPaging(HashMap<String, Object> params) {
+		List<QuestionComment> comments = 
+				questionMapper.selectCommentsByQuestionNoWithPaging(params);
+		return comments;
+	}
 
+	@Override
+	public int selectCommentsCountByQuestionNo(int questionNo) {
+		return questionMapper.selectCommentsCountByQuestionNo(questionNo); 
+	}
+
+ 
 	
 }
 

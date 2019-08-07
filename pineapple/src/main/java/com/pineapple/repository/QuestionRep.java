@@ -1,6 +1,7 @@
 package com.pineapple.repository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.pineapple.vo.Question;
@@ -51,6 +52,11 @@ public interface QuestionRep {
 	void insertRecomment(QuestionComment comment);
 	
 	List<Question> selectQuestionlist(String category);
+
+	List<QuestionComment> selectQuestionByQuestionNoWithPaging(HashMap<String, Object> params);
+
+	int selectCommentsCountByQuestionNo(int questionNo);
+	
 
 
 }
