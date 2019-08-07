@@ -43,6 +43,11 @@
 		WHERE reviewFILENO = #{ resumeFileNo }
 	</select>
 	
+	<select id="countReviewList" resultType="int">
+		SELECT count(*)
+		FROM REVIEW
+	</select>
+	
 	<!-- **************************************************** -->
 	
 	<!-- insert가 완료된 후 keyColumn(resumeNo)의 값을 vo의 keyProperty(resumeNo)에 저장 -->
@@ -178,7 +183,5 @@
 			#{ depth }
 		)	
 	</insert>
-	
-	
 	
 </mapper>

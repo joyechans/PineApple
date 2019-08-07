@@ -1,6 +1,7 @@
 package com.pineapple.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.pineapple.repository.ReviewRep;
@@ -137,6 +138,14 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<Review> findReviewlist(String category) {
 		List<Review> reviews = reviewRep.selectReviewlist(category);
 		return reviews;
+	}
+
+
+	@Override
+	public int countReviewList() {
+		int reviewCount = reviewRep.countReviewList();
+		
+		return reviewCount;
 	}
 	
 

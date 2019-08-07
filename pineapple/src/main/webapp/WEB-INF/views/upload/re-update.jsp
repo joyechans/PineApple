@@ -6,43 +6,13 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<!DOCTYPE html>
-
-<html>
-<head>
-	
-	<meta charset="UTF-8">
-    <meta name="description" content="">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	
-	<title>Review</title>
-	
-	<link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/bootstrap4/bootstrap.min.css">
-   <link href="/pineapple/resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-   <link href="/pineapple/resources/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
-   <link rel="stylesheet" type="text/css" href="/pineapple/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-   <link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/categories.css">
-   <link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/main_styles.css">
-   <link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/categories_responsive.css">
-   
-   <script src="/pineapple/resources/js/jquery-3.2.1.min.js"></script>
-   <script src="/pineapple/resources/styles/bootstrap4/popper.js"></script>
-   <script src="/pineapple/resources/styles/bootstrap4/bootstrap.min.js"></script>
-   <script src="/pineapple/resources/plugins/easing/easing.js"></script>
-   <script src="/pineapple/resources/plugins/parallax-js-master/parallax.min.js"></script>
-   <script src="/pineapple/resources/plugins/Isotope/isotope.pkgd.min.js"></script>
-   <script src="/pineapple/resources/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.js"></script>
-   <script src="/pineapple/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-   <script src="/pineapple/resources/js/categories_custom.js"></script>
-
-</head>
-
+		<!--header start  -->
+		<jsp:include page="/WEB-INF/views/include/header.jsp" />
+		<!--header end  -->
 <body>
 
 	<!-- ##### Main Content Wrapper Start ##### -->
-    <div class="main-content-wrapper d-flex clearfix">
+    <div class="main-content-wrapper d-flex clearfix container">
 
         <!-- Mobile Nav (max width 767px)-->
         <div class="mobile-nav">
@@ -56,21 +26,16 @@
             </div>
         </div>
 
-		<!--header start  -->
-		<jsp:include page="/WEB-INF/views/include/header.jsp" />
-		<!--header end  -->
        
 		
 	
         <!-- Product Catagories Area Start -->
-        <div class="products-catagories-area clearfix">
+        <div class="products-catagories-area clearfix container">
             <div class="amado-pro-catagory clearfix">
             
 	<div id="pageContainer">
 	
-		<h3 style="text-align:center;padding-top:8%">Re
-		
-		view</h3>
+		<h3 style="text-align:center;padding-top:8%">Review</h3>
 		
 		<div style="padding-top:50;text-align:center">
 		<div id="inputcontent">
@@ -148,13 +113,7 @@
 	</div>
 	<!-- Product Catagories Area End -->
     </div>
-    <!-- ##### Main Content Wrapper End ##### -->
-    <!-- ##### Footer Area Start ##### -->
-    	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
-    <!-- ##### Footer Area End ##### -->
 
-
-	
 	<script>
 	// Add the following code if you want the name of the file appear on select
 	$(".custom-file-input").on("change", function() {
@@ -167,18 +126,16 @@
 	<!-- editor -->
 	<script src="https://code.jquery.com/jquery-latest.js"></script>
 	<script type="text/javascript"
-		src="/pineapple/resources/editor/js/HuskyEZCreator.js"
-		charset="utf-8"></script>
+		src="/pineapple/resources/navereditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 	<script type="text/javascript">
 		$(function() {
 			//전역변수
 			var obj = [];
 			//스마트에디터 프레임생성
-			nhn.husky.EZCreator
-					.createInIFrame({
+			nhn.husky.EZCreator.createInIFrame({
 						oAppRef : obj,
 						elPlaceHolder : "editor",
-						sSkinURI : "/pineapple/resources/editor/SmartEditor2Skin.html",
+						sSkinURI : "/pineapple/resources/navereditor/SmartEditor2Skin.html",
 						htParams : {
 							// 툴바 사용 여부
 							bUseToolbar : true,
@@ -198,6 +155,10 @@
 		});
 	</script>
 	
+	<!-- ##### Main Content Wrapper End ##### -->
+    <!-- ##### Footer Area Start ##### -->
+    	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
+    <!-- ##### Footer Area End ##### -->
 	
 </body>
 </html>

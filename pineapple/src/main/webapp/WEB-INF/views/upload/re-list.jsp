@@ -78,7 +78,8 @@
 		
 		
 		<div class="container" style="padding-top:50;text-align:center">
-		<table class="table table-hover">
+		<table class="table table-hover" id="review-list">
+		<thead class="thead-dark">
 			<tr style="background-color:;height: 50px">
 				<th style="width: 50px;text-align: center">NO</th>
 				<th style="width: 100px;text-align: center">
@@ -109,12 +110,31 @@
 					<td style="text-align: center">${ review.regDate }</td>
 				</tr>
 			</c:forEach>
-		</table>
-		
+			</thead>
+		</table>	
 		<br></br>
 		<div style="padding-top: 10px; padding-left:1000px; text-align: center" >
 		 <input type="button" value="글작성" onclick="location.href='re-write' " class="btn btn-dark">
 		</div>
+			<div id="pager">
+		        <c:set var="pagerSize" value="3" />
+	       		[<a id="first" data-pageno="-1" href="javascript:">처음</a>]
+	       		&nbsp;
+	       		[<a id="prev" data-pageno="-1" href="javascript:">이전</a>]
+		        
+		        &nbsp;
+		        <c:forEach var="idx" begin="1" end="${ pagerSize }">
+		        	<a class='pageno' data-pageno="${ idx }" href='javascript:'>${ idx }</a>
+		        	<c:if test="${ idx < pagerSize }">
+		        	&nbsp;
+		        	</c:if>
+		        </c:forEach>
+	
+				&nbsp;
+	       		[<a id="next" data-pageno="-1" href="javascript:">다음</a>]
+	       		&nbsp;
+	       		[<a id="last" data-pageno="-1" href="javascript:">마지막</a>]
+		    </div>
 	</div>
 	</div>
 	</div>		
@@ -129,7 +149,10 @@
 
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
 	
-	<script type="text/javascript">	        	
+	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript">
    	$(function(){
    		   		
    		$('#selectcategory').on('change', function(event){
@@ -139,6 +162,120 @@
    			
    		});
    	});
+   	
+  /*  	function recalc() {
+		var page1 = Math.floor( reviewCount / pageSize );
+		var page2 = (${ reviewCount } % pageSize) > 0 ? 1 : 0;
+		lastPage = page1 + page2;
+	}
+    
+	var currentPage = 1;
+	var pagerSize = 3;
+	var pageSize = 3;
+	var reviewCount = ${ reviewCount };	
+	var lastPage = recalc();
+	
+    function loadComments() {
+		$("#review-list").load('/pineapple/upload/review-list', 
+								{ "pageNo": currentPage },
+								function() {});
+	}
+    $(function() {
+    	
+    	var pageOne = $('#pager a.pageno:first');
+    	pageOne.text("[" + pageOne.text() + "]")
+    	
+    	$('#pager #first').on('click', function(event) {
+    		if (currentPage == 1) {
+    			return;
+    		}
+    		
+    		currentPage = 1;
+    		$('#pager .pageno').each(function(idx, item) {
+    			$(this).attr('data-pageno', idx + 1);
+    			$(this).text( (idx + 1));
+    		});
+    		
+    		loadComments();
+    	});
+    	
+    	$('#pager #prev').on('click', function(event) {
+    		if (currentPage == 1) {
+    			return;
+    		}
+    		
+    		var pageNo = $('#pager .pageno:first').attr("data-pageno");
+    		if (currentPage == pageNo) {
+    			$('#pager .pageno').each(function(idx, item) {
+	    			$(this).attr('data-pageno', currentPage - (pagerSize - idx));
+	    			$(this).text( (currentPage - (pagerSize - idx) ));
+	    		});
+    		}
+    		
+    		currentPage--;	
+    		
+    		loadComments();
+    	});
+    	
+    	$('#pager .pageno').on('click', function(event) {
+    		var pageNo = $(this).attr('data-pageno');
+    		if (pageNo == currentPage) {
+    			return;
+    		}
+    		
+    		$(this).text( "[" + pageNo + "]" );
+    		var tmp = $("#pager a[data-pageno=" + currentPage +"]");
+    		tmp.text(tmp.attr('data-pageno'));
+    		currentPage = parseInt(pageNo);
+    		
+    		loadComments();
+    	});
+    	
+    	$('#pager #last').on('click', function(event) {
+    		if (currentPage == lastPage) {
+    			return;
+    		}
+    		
+    		currentPage = lastPage;
+    		var firstItem = lastPage - (lastPage % pagerSize) + 1;
+    		$('#pager .pageno').each(function(idx, item) {
+    			// $(this).attr('data-pageno', lastPage - (pagerSize - idx) + 1);
+    			// $(this).text( (lastPage - (pagerSize - idx) + 1 ));
+    			if (firstItem + idx <= lastPage) {
+	    			$(this).attr('data-pageno', firstItem + idx);
+	    			$(this).text(firstItem + idx);
+    			} else {
+    				$(this).attr('data-pageno', -1);
+	    			$(this).text("");
+    			}
+    		});
+    		
+    		loadComments();
+    	});
+    	
+    	$('#pager #next').on('click', function(event) {
+    		if (currentPage == lastPage) {
+    			return;
+    		}
+    		
+    		var pageNo = $('#pager .pageno:last').attr("data-pageno");
+    		if (currentPage == pageNo) {
+    			$('#pager .pageno').each(function(idx, item) {
+    				if ((currentPage + idx + 1) <= lastPage) {
+		    			$(this).attr('data-pageno', (currentPage + idx + 1));
+		    			$(this).text((currentPage + idx + 1));
+    				} else {
+    					$(this).attr('data-pageno', -1);
+		    			$(this).text("");
+    				}
+	    		});
+    		}
+    		
+    		currentPage++;
+    		
+    		loadComments();
+    	});
+    }); */
 	</script>
 </body>
 </html>

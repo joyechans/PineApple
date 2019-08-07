@@ -1,6 +1,7 @@
 package com.pineapple.repository;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.pineapple.vo.Review;
@@ -51,6 +52,8 @@ public interface ReviewRep {
 	void insertRecomment(ReviewComment comment);
 
 	List<Review> selectReviewlist(String category);
+
+	int countReviewList();
 
 
 }

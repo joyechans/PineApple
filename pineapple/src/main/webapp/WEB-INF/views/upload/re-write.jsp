@@ -59,7 +59,7 @@
 					<h3 style="text-align: center; padding-top: 5%">Review</h3>
 
 					<div class="container" style="padding-top: 50; text-align: center">
-						<form style="text-align: center" action="re-write" method="post"
+						<form style="text-align: center"  action="re-write" method="post"
 							enctype="multipart/form-data">
 							<table class="table table-bordered">
 								<tr>

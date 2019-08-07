@@ -2,6 +2,7 @@ package com.pineapple.controller;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -30,10 +31,44 @@ public class ReviewController {
 	@Qualifier("reviewService")
 	private ReviewService reviewService;
 	
-	@RequestMapping(path = "/re-list", method = RequestMethod.GET)
+	@RequestMapping(path = "/re-list")
 	public String list(Model model) {
 		
 		ArrayList<Review> review = reviewService.findReviews();
+		
+		int pageSize = 3;
+		int currentPage = 1;
+		
+		int from = (currentPage - 1) * pageSize + 1;
+		int to = from + pageSize;
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("from", from);
+		params.put("to", to);
+		
+		
+		model.addAttribute("review", review);
+		
+		int reviewCount = reviewService.countReviewList();
+		model.addAttribute("reviewCount", reviewCount);
+		
+		return "upload/re-list"; 
+	}
+	
+	@RequestMapping(path = "/review-list")
+	public String reviewList(Model model) {
+		
+		ArrayList<Review> review = reviewService.findReviews();
+		
+		int pageSize = 3;
+		int currentPage = 1;
+		
+		int from = (currentPage - 1) * pageSize + 1;
+		int to = from + pageSize;
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("from", from);
+		params.put("to", to);
 		
 		model.addAttribute("review", review);
 		
@@ -98,28 +133,28 @@ public class ReviewController {
 		return "redirect:coding.do";  //상대경로
 	}
 	
-//	@RequestMapping(path="/qa-detail", method = RequestMethod.GET)
-//	public String detail(@RequestParam(name="questionno")int questionNo, Model model) {
+//	@RequestMapping(path="/re-detail", method = RequestMethod.GET)
+//	public String detail(@RequestParam(name="reviewno")int reviewNo, Model model) {
 //    
 //	      
-//	      QuestionRep dao = new QuestionRepImpl();
+//	      ReviewRep dao = new ReviewRepImpl();
 //	      
-//	      Question question = dao.selectQuestion(questionNo);
-//	      if (question == null) { 
+//	      Review review = dao.selectReview(reviewNo);
+//	      if (review == null) { 
 //
 //	         return "redirect:list";
 //	      }
 //	      
-//	      List<QuestionFile> files = questionService.findQuestionFilesByQuestionNo(questionNo);
-//	      question.setFiles((ArrayList<QuestionFile>)files); 
+//	      List<ReviewFile> files = reviewService.findReviewFilesByReviewNo(reviewNo);
+//	      review.setFiles((ArrayList<ReviewFile>)files); 
 //	      
 //	      
-//	      model.addAttribute("question", question);
+//	      model.addAttribute("review", review);
 //	       
 //		
-//		return "upload/qa-detail";
+//		return "upload/re-detail";
 //	}
-	
+//	
 	
 	@RequestMapping(path="/re-detail/{reviewNo}", method = RequestMethod.GET)
 	public String detail2(@PathVariable int reviewNo, Model model) {
@@ -133,6 +168,9 @@ public class ReviewController {
 	      
 	      List<ReviewFile> files = reviewService.findReviewFilesByReviewNo(reviewNo);
 	      review.setFiles((ArrayList<ReviewFile>)files); 
+	      
+	      List<ReviewComment> comments = reviewService.findCommentListByReviewNo(reviewNo);
+	      review.setComments(comments);
 	      
 	      reviewService.readCount(reviewNo);
 	      
@@ -308,5 +346,6 @@ public class ReviewController {
 	    System.err.println("저장할 내용 : " + editor);
 	    return "redirect:/coding.do";
 	}
+	
 			
 	}

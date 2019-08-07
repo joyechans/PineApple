@@ -12,7 +12,7 @@ import com.pineapple.vo.ReviewFile;
 public interface ReviewMapper {
 	
 	Review selectReview(int reviewNo);
-	
+		
 	List<Review> selectReviews();
 	
 	Review selectReviewByReviewNo(int reviewNo);
@@ -34,6 +34,8 @@ public interface ReviewMapper {
 	void updateReview(Review review);
 	
 	void updateCount(int reviewNo);
+	
+	int countReviewList();
 	
 	/* ==================================================== */
 

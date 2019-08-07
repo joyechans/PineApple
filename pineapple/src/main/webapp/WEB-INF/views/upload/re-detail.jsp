@@ -1,7 +1,6 @@
 <%@ page import="com.pineapple.vo.Product"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%--jstl의 함수를 제공하는 taglib --%>
@@ -42,6 +41,8 @@
 					<div class="container" style="padding-top: 50px; text-align: center">
 						<div>
 							<div>
+							
+							
 								<div class="inputsubtitle"></div>
 								<br /> <br /> <br />
 								<table class="table table-bordered">
@@ -137,9 +138,9 @@
 									<td style="width: 500px"><textarea id="comment_content"
 											name="content" style="width: 500px" rows="3"
 											class="form-control"></textarea></td>
-									<td style="width: 50px; vertical-align: middle"><a
-										id="writecomment" href="javascript:"
-										style="text-decoration: none"> 댓글<br />등록
+									<td style="width: 50px; vertical-align: middle">
+									<a id="writecomment" href="javascript:"
+										style="text-decoration: none; color: #111"> 댓글<br />등록
 									</a></td>
 								</tr>
 							</table>
@@ -169,12 +170,12 @@
 												<br /> <span> ${ comment.content } </span> <br /> <br />
 												<div
 													style='display:${ loginuser.memberId eq comment.writer ? "block" : "none" }'>
-													<a class="editcomment"
+													<a class="editcomment"  style="color:black"
 														data-commentno='${ comment.commentNo }' href="javascript:">편집</a>
-													&nbsp; <a class="deletecomment" href="javascript:"
+													&nbsp; <a class="deletecomment" href="javascript:"  style="color:black"
 														data-commentno="${ comment.commentNo }">삭제</a>
 												</div>
-												<a class="recomment-link btn btn-sm btn-success"
+												<a class="recomment-link btn btn-dark"
 													data-commentno="${ comment.commentNo }">댓글 쓰기</a>
 											</div>
 											<div id='commentedit${ comment.commentNo }'
@@ -189,9 +190,9 @@
 												</form>
 												<br />
 												<div>
-													<a class="updatecomment" href="javascript:"
+													<a class="updatecomment" href="javascript:"  style="color:black"
 														data-commentno="${ comment.commentNo }">수정</a> &nbsp; <a
-														class="cancel" data-commentno="${ comment.commentNo }"
+														class="cancel"   style="color:black" data-commentno="${ comment.commentNo }"
 														href="javascript:">취소</a>
 												</div>
 											</div>
@@ -333,7 +334,7 @@
 					});
 					$("#comment-list").load('/pineapple/upload/comment-list', 
 							{ "reviewNo" : ${ review.reviewNo } }, 
-							function() {})
+							function() {});
 					
 				},
 				error: function(xhr, status, err) {

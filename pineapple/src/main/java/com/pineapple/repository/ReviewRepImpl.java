@@ -211,8 +211,13 @@ public ArrayList<ReviewFile> selectReviewFile(int reviewNo) {
 		
 		return (ArrayList<Review>) reviews;
 	}
-	
 
+	@Override
+	public int countReviewList() {
+		
+		return reviewMapper.countReviewList();
+
+	}
 
 }
 
