@@ -93,8 +93,9 @@
 										<div class="cart_product_total">￦${ row.money }</div>
 										<!-- Product Cart Trash Button -->
 										<div class="cart_product_button">
-											<!-- <button class="cart_product_remove"> -->
-											<input type="submit" value="수정">
+											<!-- <button class="cart_product_remove"> -->											
+			
+											<button id="submit"><img src="../resources/images/changeamount.png"></button>
 											<a href="/pineapple/upload/deletecart?orderId=${ row.orderId }&memberId=${loginuser.memberId}"><img src="../resources/images/trash.png" 
 											alt=""></a>
 											<!-- </button> -->
@@ -120,7 +121,7 @@
 				</div>
 			</div>
 			
-			<form name="form2" method="POST" action="/pineapple/upload/doorder" >
+			<form name="form2" method="POST" action="/pineapple/upload/doorder" onsubmit="return check()">
 			<input type="hidden" name="memberId" value="${loginuser.memberId }">
 			
 			<div class="row cart_extra">
@@ -160,8 +161,8 @@
 								<div class="cart_total_title">Total</div>
 								<div class="cart_total_price ml-auto">￦${map.allSum}</div>
 							</li>
-						</ul>
-						<input type="submit" value="proceed to checkout" class="cart_total_button">
+						</ul>						
+						<input type="submit" class="cart_total_button" value="PROCEED TO CHECKOUT" >
 					</div>
 				</div>			
 				
@@ -188,7 +189,17 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type="text/javascript">	        	
+<script type="text/javascript">	     
+	function check() {
+
+	  if(document.form2.addr1.value.length==0||document.form2.addr2.value.length==0||document.form2.addr3.value.length==0) {
+		    alert("주소를 입력해 주세요.");
+		    return false;
+		  	}
+	  else return true;
+	  }
+	
+	
    	$(function(){
    		/* $('#updatebtn').on('click', function(event) {
    			event.preventDefault();
@@ -202,9 +213,12 @@
    			
    			
    		}); */
-   		
-   		
-   		
+   			$('#submit').on('click', function(event){
+   				$('#form1').submit();
+   			});
+   		 			
+			});
+   		  		
    		/////////////////////////////////////////////////////////////
    		
    		
