@@ -1,96 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:jee="http://www.springframework.org/schema/jee"
-	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
-						http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
-						http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd
-						http://www.springframework.org/schema/jee https://www.springframework.org/schema/jee/spring-jee.xsd">
-	
-	<!-- Root Context: defines shared resources visible to all other web components -->
-	
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="location" value="classpath:env.properties" />
-	</bean>
-	
-	<!-- Apache Commons DBCP -->
-	<bean id="dataSource"
-		  class="org.apache.commons.dbcp2.BasicDataSource">
-		<property name="driverClassName" value="${ds.driver}" />
-		<property name="url" value="${ds.url}" />
-		<property name="username" value="${ds.username}" />
-		<property name="password" value="${ds.password}" />
-		<property name="maxIdle" value="10" />
-		<property name="maxTotal" value="20" />
-		<property name="maxWaitMillis" value="-1" />
-	</bean>	
-	
-	<bean id="sqlSessionFactory"
-		  class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:mybatis-config.xml" />
-	</bean>
-	
-	<bean id="sqlSessionTemplate"
-		  class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactory" />
-	</bean>
-	
-	<!-- Member -->
- 	<bean id="memberRep" class="com.pineapple.repository.MemberRepImpl">
-		<property name="sessionTemplate" ref="sqlSessionTemplate" />
-		<property name="memberMapper" ref="memberMapper" />
-	</bean>
-	
-	
-	<bean id="memberService" class="com.pineapple.service.MemberServiceImpl">
-		<property name="memberRep" ref="memberRep" />
-	</bean>
-	
-	
-	<bean id="memberMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.pineapple.mapper.MemberMapper" />
-		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
-	</bean>	
-	 
-	
-	
-	<!-- Product -->
-	<bean id="productRep" class="com.pineapple.repository.ProductRepImpl">
-		<property name="sessionTemplate" ref="sqlSessionTemplate" />
-		<property name="productMapper" ref="productMapper" />
-	</bean>
+   xmlns:context="http://www.springframework.org/schema/context"
+   xmlns:jee="http://www.springframework.org/schema/jee"
+   xmlns:aop="http://www.springframework.org/schema/aop"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+                  http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+                  http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd
+                  http://www.springframework.org/schema/jee https://www.springframework.org/schema/jee/spring-jee.xsd">
+   
+   <!-- Root Context: defines shared resources visible to all other web components -->
+   
+   <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+      <property name="location" value="classpath:env.properties" />
+   </bean>
+   
+   <!-- Apache Commons DBCP -->
+   <bean id="dataSource"
+        class="org.apache.commons.dbcp2.BasicDataSource">
+      <property name="driverClassName" value="${ds.driver}" />
+      <property name="url" value="${ds.url}" />
+      <property name="username" value="${ds.username}" />
+      <property name="password" value="${ds.password}" />
+      <property name="maxIdle" value="10" />
+      <property name="maxTotal" value="20" />
+      <property name="maxWaitMillis" value="-1" />
+   </bean>   
+   
+   <bean id="sqlSessionFactory"
+        class="org.mybatis.spring.SqlSessionFactoryBean">
+      <property name="dataSource" ref="dataSource" />
+      <property name="configLocation" value="classpath:mybatis-config.xml" />
+   </bean>
+   
+   <bean id="sqlSessionTemplate"
+        class="org.mybatis.spring.SqlSessionTemplate">
+      <constructor-arg ref="sqlSessionFactory" />
+   </bean>
+   
+   <!-- Member -->
+    <bean id="memberRep" class="com.pineapple.repository.MemberRepImpl">
+      <property name="sessionTemplate" ref="sqlSessionTemplate" />
+      <property name="memberMapper" ref="memberMapper" />
+   </bean>
+   
+   
+   <bean id="memberService" class="com.pineapple.service.MemberServiceImpl">
+      <property name="memberRep" ref="memberRep" />
+   </bean>
+   
+   
+   <bean id="memberMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+      <property name="mapperInterface" value="com.pineapple.mapper.MemberMapper" />
+      <property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+   </bean>   
+    
+   
+   
+   <!-- Product -->
+   <bean id="productRep" class="com.pineapple.repository.ProductRepImpl">
+      <property name="sessionTemplate" ref="sqlSessionTemplate" />
+      <property name="productMapper" ref="productMapper" />
+   </bean>
 
-	
-	<bean id="productService" class="com.pineapple.service.ProductServiceImpl">
-		<property name="productRep" ref="productRep" />
-	</bean>
-	
-	
-	<bean id="productMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.pineapple.mapper.ProductMapper" />
-		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
-	</bean>
-	
-		<!-- notice -->
-	<bean id="noticeRep" class="com.pineapple.repository.NoticeRepImpl">
-		<property name="sessionTemplate" ref="sqlSessionTemplate" />
-		<property name="noticeMapper" ref="noticeMapper" />
-	</bean>
+   
+   <bean id="productService" class="com.pineapple.service.ProductServiceImpl">
+      <property name="productRep" ref="productRep" />
+   </bean>
+   
+   
+   <bean id="productMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+      <property name="mapperInterface" value="com.pineapple.mapper.ProductMapper" />
+      <property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+   </bean>
+   
+      <!-- notice -->
+   <bean id="noticeRep" class="com.pineapple.repository.NoticeRepImpl">
+      <property name="sessionTemplate" ref="sqlSessionTemplate" />
+      <property name="noticeMapper" ref="noticeMapper" />
+   </bean>
 
-	
-	<bean id="noticeService" class="com.pineapple.service.NoticeServiceImpl">
-		<property name="noticeRep" ref="noticeRep" />
-	</bean>
-	
-	
-	<bean id="noticeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.pineapple.mapper.NoticeMapper" />
-		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
-	</bean>	
-	
+   
+   <bean id="noticeService" class="com.pineapple.service.NoticeServiceImpl">
+      <property name="noticeRep" ref="noticeRep" />
+   </bean>
+   
+   
+   <bean id="noticeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+      <property name="mapperInterface" value="com.pineapple.mapper.NoticeMapper" />
+      <property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
+   </bean>   
+   
       <!-- Question -->
    <bean id="questionService" class="com.pineapple.service.QuestionServiceImpl">
       <property name="questionRep" ref="questionRep" />
@@ -122,24 +122,40 @@
    <bean id="reviewMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
       <property name="mapperInterface" value="com.pineapple.mapper.ReviewMapper" />
       <property name="sqlSessionTemplate" ref="sqlSessionTemplate" />
-   </bean>      	
-	
-	<!-- cart -->
-	
-	<bean id="cartService" class="com.pineapple.service.CartServiceImpl">
-		<property name="cartRep" ref="cartRep" />
+   </bean>         
+   
+   <!-- cart -->
+   
+   <bean id="cartService" class="com.pineapple.service.CartServiceImpl">
+      <property name="cartRep" ref="cartRep" />
+   </bean>
+
+   <bean id="cartRep" class="com.pineapple.repository.CartRepImpl">
+      <property name="sessionTemplate" ref="sqlSessionTemplate" />
+      <property name="cartMapper" ref="cartMapper" />
+   </bean>
+   
+   
+   <bean id="cartMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+      <property name="mapperInterface" value="com.pineapple.mapper.CartMapper" />
+      <property name="sqlSessionTemplate" ref="sqlSessionTemplate" />  
+   </bean>
+   
+   <!-- Report -->
+	<bean id="reportService" class="com.pineapple.service.ReportServiceImpl">
+		<property name="reportRep" ref="reportRep" />
 	</bean>
 
-	<bean id="cartRep" class="com.pineapple.repository.CartRepImpl">
+	<bean id="reportRep" class="com.pineapple.repository.ReportRepImpl">
 		<property name="sessionTemplate" ref="sqlSessionTemplate" />
-		<property name="cartMapper" ref="cartMapper" />
+		<property name="reportMapper" ref="reportMapper" />
 	</bean>
 	
 	
-	<bean id="cartMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.pineapple.mapper.CartMapper" />
+	<bean id="reportMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface" value="com.pineapple.mapper.ReportMapper" />
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate" />  
 	</bean>
 
-	
+   
 </beans>

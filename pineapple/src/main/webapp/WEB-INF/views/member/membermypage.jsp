@@ -55,7 +55,7 @@
 		<br></br>
 		<div style="padding-top: 10px; text-align: center">		
 		 <c:if test="${loginuser.userType eq 'admin' }">	 	
-		 <input type="button" id="manger" value="Manger" class="button cart_button" style="color:white;" >
+		 <input type="button" id="report" value="Report" class="button cart_button" style="color:white;" >
 		 </c:if>	
 		 <input type="button" id="orderlist" value="OrderList" class="button cart_button" style="color:white;" >			 		
 		 <input type="button" id="btnmemberset" value="Edit" class="button cart_button" style="color:white;" >	 		  
@@ -98,8 +98,8 @@
    			
    		});
    		
-   		$('#manger').on('click', function(event){
-   			location.href="/pineapple/member/memberlist"; 
+   		$('#report').on('click', function(event){
+   			location.href="/pineapple/report/reporting"; 
    			
    		});
    		

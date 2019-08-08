@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pineapple.mapper.ReportMapper">
+	
+	<select id="productReport" resultType="PaymentDetail">
+		SELECT SUM(AMOUNT) AS amount, SUM(amount*PR.PRICE) AS total, PR.NAME, PR.KIND, PR.PRICE
+		FROM PRODUCT PR, PAYMENTDETAIL PA
+		WHERE PR.PRODUCTNO = PA.PRODUCTNO
+		group by PR.NAME, PR.KIND, PR.PRICE
+		ORDER BY PR.KIND ASC
+	</select>
+	
+	<select id="monthlyReport" resultType="Payment">
+		SELECT PAYMENTDATE, MEMBERID, ADDR1, ADDR2, ADDR3, MONEY
+		FROM PAYMENT
+	</select>
+	
+	<select id="memberReport" resultType="Payment">
+		SELECT SUM(MONEY) AS money, MEMBERID
+		FROM PAYMENT
+		group by MEMBERID
+	</select>
+	
+</mapper>
