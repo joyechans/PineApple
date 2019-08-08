@@ -174,7 +174,6 @@
 	</div>
 
 	
-
 	<!-- Footer -->
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 </div>
