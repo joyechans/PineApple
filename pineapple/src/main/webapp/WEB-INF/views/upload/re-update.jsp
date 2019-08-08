@@ -50,8 +50,11 @@
 		                <th>제목</th>
 		                 <td>
 		                    <select name="category">
-		                      <option value="cat">CAT</option>
-							  <option value="product">PRODUCT</option>
+		                    	<option value="IPHONE">IPHONE</option>
+								<option value="IPAD">IPAD</option>
+								<option value="MAC">MAC</option>
+								<option value="WATCH">WATCH</option>
+								<option value="AIRPOT">AIRPOT</option>
 							</select>
 		                </td>
 		                <td>
