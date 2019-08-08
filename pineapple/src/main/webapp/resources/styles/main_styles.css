@@ -70,7 +70,7 @@ input[type=radio] {
 }
 
 label {
-  color: lighten($bg,40%);
+  color: #000099;
   display: inline-block;
   cursor: pointer;
   font-weight: bold;

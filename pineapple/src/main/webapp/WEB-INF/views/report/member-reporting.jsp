@@ -25,11 +25,10 @@
 		
 		<div id="pageContainer">
 
-		<h2 style="text-align:center;padding-top:5%">Reporting</h2>
+		<h3 style="text-align:center;padding-top:5%">구매자별 판매분류</h3><br>
 		
 		
 		
-		<h3 style="padding-top:2%; padding-left: 10%">구매자별 분류</h3>
 		<div class="container" style="padding-top:50;text-align:center">
 		
 		<table class="table table-hover">

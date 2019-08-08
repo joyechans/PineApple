@@ -14,6 +14,10 @@ public class PaymentDetail {
 	private String kind;
 	private int price;
 	private int total;
+	private String addr1;
+	private String addr2;
+	private String addr3;
+	private int money;
 	
 		
 }

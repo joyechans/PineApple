@@ -175,8 +175,8 @@
 													&nbsp; <a class="deletecomment" href="javascript:"  style="color:black"
 														data-commentno="${ comment.commentNo }">삭제</a>
 												</div>
-												<a class="recomment-link btn btn-dark"
-													data-commentno="${ comment.commentNo }">댓글 쓰기</a>
+<%-- 												<a class="recomment-link btn btn-dark"
+													data-commentno="${ comment.commentNo }">댓글 쓰기</a> --%>
 											</div>
 											<div id='commentedit${ comment.commentNo }'
 												style="display: none">

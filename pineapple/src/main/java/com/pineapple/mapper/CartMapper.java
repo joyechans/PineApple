@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.ArrayList;
 
 import com.pineapple.vo.Cart;
+import com.pineapple.vo.OrderList;
 import com.pineapple.vo.Payment;
 import com.pineapple.vo.PaymentDetail;
 
@@ -33,4 +34,8 @@ public interface CartMapper {
 	void insertpaymentdetail(PaymentDetail paymentDetail);
 	
 	void alldeleteCart(String memberId);
+	
+	List<Payment> orderList(Payment payment);
+	
+	List<OrderList> orderView(Payment payment);
 }

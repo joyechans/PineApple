@@ -116,7 +116,7 @@
 		<div style="padding-top: 10px; padding-left:1000px; text-align: center" >
 		 <input type="button" value="글작성" onclick="location.href='re-write' " class="btn btn-dark">
 		</div>
-			<div id="pager">
+<%-- 			<div id="pager">
 		        <c:set var="pagerSize" value="3" />
 	       		[<a id="first" data-pageno="-1" href="javascript:">처음</a>]
 	       		&nbsp;
@@ -134,7 +134,7 @@
 	       		[<a id="next" data-pageno="-1" href="javascript:">다음</a>]
 	       		&nbsp;
 	       		[<a id="last" data-pageno="-1" href="javascript:">마지막</a>]
-		    </div>
+		    </div> --%>
 	</div>
 	</div>
 	</div>		

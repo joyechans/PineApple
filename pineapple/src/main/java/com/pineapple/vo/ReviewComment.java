@@ -16,4 +16,6 @@ public class ReviewComment {
 	private int step;
 	private int depth;
 	
+	
+	
 }

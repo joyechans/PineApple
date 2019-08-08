@@ -6,6 +6,7 @@ import com.pineapple.common.Util;
 import com.pineapple.repository.CartRep;
 
 import com.pineapple.vo.Cart;
+import com.pineapple.vo.OrderList;
 import com.pineapple.vo.Payment;
 import com.pineapple.vo.PaymentDetail;
 
@@ -78,6 +79,18 @@ public class CartServiceImpl implements CartService {
 	public void alldelete(String memberId) {
 		cartRep.alldelete(memberId);
 		
+	}
+	
+	@Override
+	public List<Payment> orderList(Payment payment) {
+		
+		return cartRep.orderList(payment); 
+	}
+	
+	@Override
+	public List<OrderList> orderView(Payment payment) {
+		
+		return cartRep.orderView(payment); 
 	}
 
 	

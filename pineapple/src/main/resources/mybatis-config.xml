@@ -19,7 +19,8 @@
         <typeAlias type="com.pineapple.vo.QuestionFile" alias="QuestionFile"/>   
         <typeAlias type="com.pineapple.vo.QuestionComment" alias="QuestionComment" />    
         <typeAlias type="com.pineapple.vo.Payment" alias="Payment"/>
-        <typeAlias type="com.pineapple.vo.PaymentDetail" alias="PaymentDetail"/>				
+        <typeAlias type="com.pineapple.vo.PaymentDetail" alias="PaymentDetail"/>
+        <typeAlias type="com.pineapple.vo.OrderList" alias="OrderList"/>			
 	</typeAliases>
 	
 	<environments default="development">

@@ -1,6 +1,5 @@
 package com.pineapple.repository;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,8 +7,8 @@ import java.util.Map;
 import org.mybatis.spring.SqlSessionTemplate;
 
 import com.pineapple.mapper.CartMapper;
-
 import com.pineapple.vo.Cart;
+import com.pineapple.vo.OrderList;
 import com.pineapple.vo.Payment;
 import com.pineapple.vo.PaymentDetail;
 
@@ -98,7 +97,15 @@ public class CartRepImpl implements CartRep {
 		
 	}
 	
+	@Override
+	public List<Payment> orderList(Payment payment) {		
+			return cartMapper.orderList(payment);
+	}
 	
+	@Override
+	public List<OrderList> orderView(Payment payment) {		
+			return cartMapper.orderView(payment);
+	}
 	
 }
 

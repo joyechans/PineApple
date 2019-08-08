@@ -47,7 +47,7 @@
 				<!-- Product Image -->
 				<div class="col-lg-7">
 					<div class="product_image">
-						<div class="product_image_large"><img src="/pineapple/resources/upload-files/${ file.savedFileName }"></div>
+						<div class="product_image_large"><img src="/pineapple/resources/upload-files/${ file.savedFileName }" style="height:550px;width:550px;"></div>
 						<div class="product_image_thumbnails d-flex flex-row align-items-start justify-content-start">
 						</div>
 					</div>
@@ -75,30 +75,30 @@
 							<p>${ product.content }</p>
 						</div>
 						<!-- Product Quantity -->
-		        	<form name="form1" method="post" action="/pineapple/upload/insertcart">
-		        	<input type="hidden" name="memberId" value="${loginuser.memberId }">
-					<input type="hidden" name="productNo" value="${product.productNo }">		        							
+		        	<form name="form1" method="post" action="/pineapple/upload/insertcart/">
+		        	<input type="hidden" name="memberId" value="${ loginuser.memberId }">
+					<input type="hidden" name="productNo" value="${ product.productNo }">		        							
 						<div class="product_quantity_container">
-							<span>Quantity</span>
-		        	<select name="amount">
+							<span style="font-size: 17px;">Quantity</span>
+		        	<select name="amount" class="form-control col-5">
 		        	<c:forEach begin="1" end="10" var="i">
 		        	<option value="${i}">${i}</option>
 		        	</c:forEach>
 		        	</select>
 						</div>
-					<input type="submit" class="button cart_button" style="color:white" value="Add to Cart">						
+					<input type="submit" id="add_button" class="button cart_button" style="color:white" value="Add to Cart">						
 					<input type="button" id="cancel_button"
-					class="button cart_button" style="color:white" value="LIST" /><br>							
+					class="button cart_button" style="color:white" value="LIST" />						
 					</form>
+							<c:if test="${ loginuser.memberId eq product.uploader }">
+								<input type="button" id="update_button"
+									class="button cart_button" style="color:white" value="EDIT" />
+								<input type="button" id="delete_button"
+									class="button cart_button" style="color:white" value="DELETE" />
+							</c:if>						
 					<!-- Product Size -->
 						<div class="product_size_container">	
-                           			<div class="buttons">              			
-									<c:if test="${ loginuser.memberId eq product.uploader }">
-									<input type="button" id="update_button"
-											class="button cart_button" style="color:white" value="EDIT" />
-										<input type="button" id="delete_button"
-											class="button cart_button" style="color:white" value="DELETE" />
-									</c:if>													
+                           			<div class="buttons">              															
 							<div class="product_size">					
 							</div>
 						</div>	
@@ -126,7 +126,6 @@
 		        		btnUpdate.addEventListener('click', function(event){
 		        			location.href="/pineapple/pr-upload/pr-update/${ product.productNo }";
 		        		});
-		        		
 		        	});
 		        	</script>
 
@@ -138,11 +137,15 @@
 	</div>
 </div>
 
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="js/product_custom.js"></script>
+	<script src="/pineapple/resources/js/jquery-3.2.1.min.js"></script>
+	<script src="/pineapple/resources/styles/bootstrap4/popper.js"></script>
+	<script src="/pineapple/resources/styles/bootstrap4/bootstrap.min.js"></script>
+	<script src="/pineapple/resources/plugins/easing/easing.js"></script>
+	<script src="/pineapple/resources/plugins/parallax-js-master/parallax.min.js"></script>
+	<script src="/pineapple/resources/plugins/Isotope/isotope.pkgd.min.js"></script>
+	<script src="/pineapple/resources/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.js"></script>
+	<script src="/pineapple/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+	<script src="/pineapple/resources/js/categories_custom.js"></script>
+	<script type="text/javascript"></script>
 </body>
 </html>

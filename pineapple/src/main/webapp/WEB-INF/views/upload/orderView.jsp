@@ -1,3 +1,4 @@
+<%@ page import="com.pineapple.vo.OrderList"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="true" %>
 <%@ page language="java" 
@@ -32,19 +33,18 @@
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<div class="cart_title">Your Shopping Cart</div>
+					<div class="cart_title">OrderList</div>
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="col">
 					<div class="cart_bar d-flex flex-row align-items-center justify-content-start">
-						<div class="cart_bar_title_name">Product</div>
+						<div class="cart_bar_title_name">Name</div>
 						<div class="cart_bar_title_content ml-auto">
 							<div class="cart_bar_title_content_inner d-flex flex-row align-items-center justify-content-end">
-								<div class="cart_bar_title_price">Price</div>
-								<div class="cart_bar_title_quantity">Quantity</div>
-								<div class="cart_bar_title_total">Total</div>
+								<div class="cart_bar_title_quantityy">Quantity</div>
+								<div class="cart_bar_title_totall">Total</div>
 								<div class="cart_bar_title_button"></div>
 							</div>
 						</div>
@@ -57,42 +57,22 @@
 				<p style="text-align: center; font-size:20px;">장바구니가 비었습니다</p>
 			</c:when>
 			<c:otherwise>
-			<form name="form1" id="form1" method="post" action="/pineapple/upload/updatecart">
-			<input type="hidden" name="memberId" value="${loginuser.memberId }">
-			<c:forEach var="row" items="${map.carts}">
+			
+			<c:forEach var="view" items="${ orderView }">
 			<div class="row">
 				<div class="col">
 					<div class="cart_products">
 						<ul>
 							<li class=" cart_product d-flex flex-md-row flex-column align-items-md-center align-items-start justify-content-start">
-								<!-- Product Image -->
-								<div class="cart_product_image"><img src="/pineapple/resources/upload-files/${ product.img.savedFileName }" alt=""></div>
 								<!-- Product Name -->
-								<div class="cart_product_name"><a href="product.html">${row.productName }</a></div>
+								<div class="cart_product_name" style="font-size: 18px;font-weight: 600;">${ view.name }</div>
 								<div class="cart_product_info ml-auto">
 									<div class="cart_product_info_inner d-flex flex-row align-items-center justify-content-md-end justify-content-start">
 										<!-- Product Price -->
-										<div class="cart_product_price">￦${ row.productPrice }</div>
-										<!-- Product Quantity -->
-										<div class="product_quantity_container">
-											<div class="product_quantity clearfix">
-												<input type="hidden" name="productNo" value="${row.productNo }">
-												<input id="quantity_input${row.productNo }" type="text" name="amount" value="${ row.amount }" pattern="[1-9]*">
-												
-												<div class="quantity_buttons">
-													<div id="quantity_inc_button${row.productNo }" data-no="${row.productNo }" class="quantity_inc quantity_control"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
-													<div id="quantity_dec_button${row.productNo }" data-no="${row.productNo }" class="quantity_dec quantity_control"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
-												</div>
-												
-											</div>
-										</div>
-										<!-- Products Total Price -->
-										<div class="cart_product_total">￦${ row.money }</div>
-										<!-- Product Cart Trash Button -->
+										<div class="cart_product_price">${ view.amount }개</div>
+										<div class="cart_product_price">￦${ view.price }</div>
 										<div class="cart_product_button">
-											<!-- <button class="cart_product_remove"> -->
-											<a href="/pineapple/upload/deletecart?orderId=${ row.orderId }&memberId=${loginuser.memberId}"><img src="../resources/images/trash.png" 
-											alt=""></a>
+											<!-- <button class="cart_product_remove"> -->											
 											<!-- </button> -->
 										</div>
 									</div>
@@ -103,65 +83,45 @@
 				</div>
 			</div>
 			</c:forEach>
+
 			
-			<div class="row">
-				<div class="col">
-					<div class="cart_control_bar d-flex flex-md-row flex-column align-items-start justify-content-start">
-						<input type="hidden" name="count" value="${map.count }">
-						<!-- <button class="button_clear cart_button">clear cart</button> -->
-						<button type="submit" id="btnUpdate" class="button_update cart_button">Edit</button>
-					<button class="button_update cart_button_2 ml-md-auto" id="continue">continue shopping</button>
-					</div>
-				</div>
-			</div>
+
+			
 			<div class="row cart_extra">
 				<!-- Cart Address -->
 				<div class="col-lg-6">
-					<div class="cart_coupon">
-						<div class="cart_title">Address</div><br>
-							<input type="button" onclick="sample2_execDaumPostcode()" class="cart_total_button col-sm-10" value="Find Postal Code">						
-							<input type="text" id="sample2_postcode" class="form-control col-sm-10" placeholder="Postal Code"><br>
-							<input type="text" id="sample2_address" class="form-control col-sm-10" placeholder="Address"><br>
-							<input type="hidden" id="sample2_extraAddress" class="form-control col-sm-10" placeholder="참고항목">							
-							<input type="text" id="sample2_detailAddress" class="form-control col-sm-10" placeholder="Detail address">
-						<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
-						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
-					</div>
-				</div>
 			</div>
 			<!-- Cart Address End -->
 			
 				<!-- Cart Total -->
-				<div class="col-lg-5 offset-lg-1">
+				<c:set var="view" value="${ orderView }"/>
+				<div class="col-lg-10 offset-lg-1">
 					<div class="cart_total">
-						<div class="cart_title">cart total</div>
-						<p class="text-muted">If you pay more than ￦100,000, the shipping cost is free</p>
+						<div class="cart_title">Order Info</div>
 						<ul>
 							<li class="d-flex flex-row align-items-center justify-content-start">
-								<div class="cart_total_title">Subtotal</div>
-								<div class="cart_total_price ml-auto">￦${map.sumMoney}</div>
+								<div class="cart_total_title">주문자</div>
+								<div class="cart_total_price ml-auto">${view[0].memberId}</div>
 							</li>
 							<li class="d-flex flex-row align-items-center justify-content-start">
-								<div class="cart_total_title">Shipping</div>
-								<div class="cart_total_price ml-auto">￦${map.fee }</div>
+								<div class="cart_total_title">배송지</div>
+								<div class="cart_total_price ml-auto">${view[0].addr1}${view[0].addr2}${view[0].addr3}</div>
 							</li>
 							<li class="d-flex flex-row align-items-center justify-content-start">
-								<div class="cart_total_title">Total</div>
-								<div class="cart_total_price ml-auto">￦${map.allSum}</div>
+								<div class="cart_total_title">총 금액</div>
+								<div class="cart_total_price ml-auto">￦${ view[0].money }</div>
 							</li>
-						</ul>
-						<button id="payment" class="cart_total_button">proceed to checkout</button>
+						</ul>						
 					</div>
-				</div>			
+				</div>	
+				
 			</div>
-			</form>
 			</c:otherwise>
 			</c:choose>
 		</div>
 	</div>
 
 	
-
 	<!-- Footer -->
 	<jsp:include page="/WEB-INF/views/include/footer.jsp" />
 </div>
@@ -176,15 +136,38 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js?autoload=false"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script type="text/javascript">	        	
+<script type="text/javascript">	     
+	function check() {
+
+	  if(document.form2.addr1.value.length==0||document.form2.addr2.value.length==0||document.form2.addr3.value.length==0) {
+		    alert("주소를 입력해 주세요.");
+		    return false;
+		  	}
+	  else return true;
+	  }
+	
+	
    	$(function(){
-   		   		
-   		$('#payment').on('click', function(event){
-   			location.href="/pineapple/upload/doorder?memberId=${loginuser.memberId}&money=${map.allSum}";
+   		/* $('#updatebtn').on('click', function(event) {
+   			event.preventDefault();
+   			event.stopPropagation();
    			
-   		});
+   			 $('form[id^=cartform]').forEach(function(idx, item) {
+   				var serializedData = $(this).serialize();
+   	   			//$.ajax(""))
+   				
+   			}); 
+   			
+   			
+   		}); */
+   			$('#submit').on('click', function(event){
+   				$('#form1').submit();
+   			});
+   		 			
+			});
+   		  		
+   		/////////////////////////////////////////////////////////////
    		
-   		////////////////////////////////////////////
    		
    		// Handle product quantity input
 		if($('.product_quantity').length) {
@@ -256,17 +239,17 @@
                         extraAddr = ' (' + extraAddr + ')';
                     }
                     // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample2_extraAddress").value = extraAddr;
+                    document.getElementById("addr2").value = extraAddr;
                 
                 } else {
-                    document.getElementById("sample2_extraAddress").value = '';
+                    document.getElementById("addr2").value = '';
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('sample2_postcode').value = data.zonecode;
-                document.getElementById("sample2_address").value = addr;
+                document.getElementById("addr1").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample2_detailAddress").focus();
+                document.getElementById("addr3").focus();
 
                 // iframe을 넣은 element를 안보이게 한다.
                 // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
@@ -303,9 +286,12 @@
    	
     $(function(){
    		$('#continue').on('click', function(event){
-   			location.href="/pineapple/pr-upload/pr-list2"; 
-   			
+   			var ok = confirm("쇼핑을 계속하시겠습니까?");
+   			if(ok){
+   	   			location.href="/pineapple/pr-upload/pr-list2"; 
+   			}
    		});
+
    		  		
    	});   
 </script>

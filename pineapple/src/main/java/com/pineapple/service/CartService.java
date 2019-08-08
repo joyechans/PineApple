@@ -3,6 +3,7 @@ package com.pineapple.service;
 import java.util.List;
 
 import com.pineapple.vo.Cart;
+import com.pineapple.vo.OrderList;
 import com.pineapple.vo.Payment;
 import com.pineapple.vo.PaymentDetail;
 
@@ -31,4 +32,10 @@ public interface CartService {
 	void insertorderdetail(PaymentDetail paymentDetail);
 
 	void alldelete(String memberId);
+
+	List<Payment> orderList(Payment payment);
+
+	List<OrderList> orderView(Payment payment);
+
+
 }

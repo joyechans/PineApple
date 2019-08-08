@@ -22,6 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.pineapple.common.Util;
 import com.pineapple.service.CartService;
 import com.pineapple.vo.Cart;
+import com.pineapple.vo.Member;
+import com.pineapple.vo.OrderList;
 import com.pineapple.vo.Payment;
 import com.pineapple.vo.PaymentDetail;
 
@@ -116,8 +118,35 @@ public class CartController {
 		  
 	  return "redirect:/upload/ordercart?memberId="+memberId; 
 	  }
-	 
+	  
+		// 주문 목록
+	  @RequestMapping(value = "/orderList", method = RequestMethod.GET)
+	  public void orderList(HttpSession session, Payment payment, Model model) throws Exception {  
+	   
+//		  Member member = (Member)session.getAttribute("member");
+//		  String memberId = member.getMemberId();
+//		  
+//		  payment.setMemberId(memberId);	
+		 	  
+	   List<Payment> orderList = cartService.orderList(payment);
+	   
+	   model.addAttribute("order", orderList);
+	  } 
+	  
+	// 주문 상세 목록
+	  @RequestMapping(value = "/orderView", method = RequestMethod.GET)
+	  public void OrderView(HttpSession session,
+	  @RequestParam("n") String paymentNo, Payment payment, Model model) throws Exception {
+		  
+		  payment.setPaymentNo(paymentNo);
+		  
+	   List<OrderList> orderView = cartService.orderView(payment);
+	   
+	   model.addAttribute("orderView", orderView);
+	  }    
 }
+
+	 
 
 
 

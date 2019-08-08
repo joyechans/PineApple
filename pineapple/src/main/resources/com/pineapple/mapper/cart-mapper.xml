@@ -78,4 +78,22 @@
 	</delete>
 	
 	
+	<select id="orderList" resultType="Payment">
+		SELECT PAYMENTNO, MEMBERID, PAYMENTDATE, MONEY, ADDR1, ADDR2, ADDR3
+		FROM PAYMENT
+		WHERE memberId = #{memberId}
+	</select>
+	
+	<select id="orderView" resultType="OrderList">
+	 SELECT
+	     o.paymentNo, o.memberId, o.addr1, o.addr2, o.addr3, o.paymentDate, o.money,
+	     d.paymentDetailNo, d.productNo, d.amount,
+	     p.name, p.price
+	 FROM PAYMENT o
+	        INNER JOIN PAYMENTDETAIL d
+	             ON o.paymentNo = d.paymentNo
+	         INNER JOIN PRODUCT p
+	             ON d.productNo = p.productNo
+	 WHERE o.paymentNo = #{paymentNo}
+	</select> 
 </mapper>

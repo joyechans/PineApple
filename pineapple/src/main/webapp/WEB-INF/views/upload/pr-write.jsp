@@ -142,7 +142,16 @@
     <!-- ##### Main Content Wrapper End ##### -->
     <!-- ##### Footer Area Start ##### -->
     
-
+	<script src="/pineapple/resources/js/jquery-3.2.1.min.js"></script>
+	<script src="/pineapple/resources/styles/bootstrap4/popper.js"></script>
+	<script src="/pineapple/resources/styles/bootstrap4/bootstrap.min.js"></script>
+	<script src="/pineapple/resources/plugins/easing/easing.js"></script>
+	<script src="/pineapple/resources/plugins/parallax-js-master/parallax.min.js"></script>
+	<script src="/pineapple/resources/plugins/Isotope/isotope.pkgd.min.js"></script>
+	<script src="/pineapple/resources/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.js"></script>
+	<script src="/pineapple/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+	<script src="/pineapple/resources/js/categories_custom.js"></script>
+	<script type="text/javascript"></script>
 	<script>
 	// Add the following code if you want the name of the file appear on select
 	$(".custom-file-input").on("change", function() {

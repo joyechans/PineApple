@@ -665,14 +665,14 @@ section
 
 .products
 {
-	padding-top: 120px;
+	padding-top: 100px;
 	padding-bottom: 98px;
 	background: #FFFFFF;
 }
 .current_page
 {
 	font-family: 'Lucida', serif;
-	font-size: 16px;
+	font-size: 20px;
 	color: #232323;
 }
 .product_sorting

@@ -58,7 +58,7 @@
 							</select>
 		                </td>
 		                <td>
-		                    <input type="text" name="title" style="width:550px" class="form-control" />
+		                    <input type="text" name="title" style="width:550px" class="form-control" value="${ review.title }" />
 		                </td>
 		            </tr>
 		            <tr>
@@ -74,9 +74,9 @@
 		            <tr>
 		                <th colspan="1">첨부자료</th>
 		                <td colspan="2" style="text-align:left">
-		                  	<c:forEach var="file" items="${ product.imgs }">
+		                  	<c:forEach var="file" items="${ review.files }">
 			                ${ file.userFileName } 
-			               [<a href="/pineapple/upload/delete-file/${ product.productNo }/${ file.productImgNo }">삭제</a>]<br>
+			               [<a href="/pineapple/upload/delete-file/${ review.reviewNo }/${ file.reviewFileNo }">삭제</a>]<br>
 			                </c:forEach>
 										<div class="custom-file">
 											<input type="file" name="attach"> 
@@ -86,7 +86,7 @@
 		            </tr>
 		            <tr>
 		               <td colspan="3" >
-		                	<textarea name="content" id="editor" style="width:750px" rows="20" class="form-control">${ question.content }</textarea>
+		                	<textarea name="content" id="editor" style="width:750px" rows="20" class="form-control">${ review.content }</textarea>
 		                </td>
 		            </tr>
 		        </table>

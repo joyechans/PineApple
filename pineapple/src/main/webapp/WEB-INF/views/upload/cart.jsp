@@ -83,8 +83,8 @@
 												<input id="quantity_input${row.productNo }" type="text" name="amount" value="${ row.amount }" pattern="[1-9]*">
 												
 												<div class="quantity_buttons">
-													<div id="quantity_inc_button${row.productNo }" data-no="${row.productNo }" class="quantity_inc quantity_control"><i class="fa fa-caret-up" aria-hidden="true"></i></div>
-													<div id="quantity_dec_button${row.productNo }" data-no="${row.productNo }" class="quantity_dec quantity_control"><i class="fa fa-caret-down" aria-hidden="true"></i></div>
+													<div id="quantity_inc_button${row.productNo }" data-no="${row.productNo }" class="quantity_inc quantity_control">▲<i class="fa fa-caret-up" aria-hidden="true"></i></div>
+													<div id="quantity_dec_button${row.productNo }" data-no="${row.productNo }" class="quantity_dec quantity_control">▼<i class="fa fa-caret-down" aria-hidden="true"></i></div>
 												</div>
 												
 											</div>
@@ -129,11 +129,11 @@
 				<div class="col-lg-6">
 					<div class="cart_coupon">
 						<div class="cart_title">Address</div><br>
-							<input type="button" onclick="sample2_execDaumPostcode()" class="cart_total_button col-sm-10" value="Find Postal Code">						
-							<input type="text" id="sample2_postcode" class="form-control col-sm-10" placeholder="Postal Code"><br>
-							<input type="text" name="addr1" id="addr1" class="form-control col-sm-10" placeholder="Address"><br>
-							<input type="text" name="addr2" id="addr2" class="form-control col-sm-10" placeholder="참고항목">							
-							<input type="text" name="addr3" id="addr3" class="form-control col-sm-10" placeholder="Detail address">
+							<input type="button" onclick="sample2_execDaumPostcode()" class="cart_total_button col-sm-12" value="Find Postal Code">						
+							<input type="text" id="sample2_postcode" class="form-control col-sm-12" placeholder="Postal Code"><br>
+							<input type="text" name="addr1" id="addr1" class="form-control col-sm-12" placeholder="Address"><br>
+							<input type="text" name="addr2" id="addr2" class="form-control col-sm-12" placeholder="Sub Address"><br>						
+							<input type="text" name="addr3" id="addr3" class="form-control col-sm-12" placeholder="Detail address">
 						<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 						<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
 					</div>
@@ -146,7 +146,7 @@
 				<div class="col-lg-5 offset-lg-1">
 					<div class="cart_total">
 						<div class="cart_title">cart total</div>
-						<p class="text-muted">If you pay more than ￦100,000, the shipping cost is free</p>
+						<p class="text-muted" style="text-align: center;">If you pay more than ￦100,000, the shipping cost is free</p>
 						<ul>
 							<li class="d-flex flex-row align-items-center justify-content-start">
 								<div class="cart_total_title">Subtotal</div>
@@ -162,7 +162,7 @@
 								<div class="cart_total_price ml-auto">￦${map.allSum}</div>
 							</li>
 						</ul>						
-						<input type="submit" class="cart_total_button" value="PROCEED TO CHECKOUT" >
+						<input type="submit" class="cart_total_button" value="PROCEED TO CHECKOUT" onclick="alert('구매가 완료되었습니다');">
 					</div>
 				</div>			
 				
@@ -247,7 +247,6 @@
 			});
 
 		}
-   	});
 </script>
 <script>
     // 우편번호 찾기 화면을 넣을 element
@@ -338,9 +337,12 @@
    	
     $(function(){
    		$('#continue').on('click', function(event){
-   			location.href="/pr-upload/pr-list2"; 
-   			
+   			var ok = confirm("쇼핑을 계속하시겠습니까?");
+   			if(ok){
+   	   			location.href="/pineapple/pr-upload/pr-list2"; 
+   			}
    		});
+
    		  		
    	});   
 </script>

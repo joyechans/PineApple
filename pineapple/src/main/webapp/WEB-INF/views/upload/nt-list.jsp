@@ -13,10 +13,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Wish shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="/pineapple/resources/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/bootstrap4/bootstrap.min.css">
 <link href="/pineapple/resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/contact.css">
 <link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/contact_responsive.css">
+<link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/main_styles.css">
 </head>
 <body>
 
@@ -66,7 +68,7 @@
 				<!-- FAQ -->
 				<div class="col-lg-7">
 					<div class="faq">
-						<div class="contact_title">NOTICE</div>
+						<div class="contact_titlee">NOTICE</div>
 						<div class="faq_content">
 							<!-- Accordions -->
 							
@@ -121,12 +123,15 @@
 	
 </div>
 
-<script src="js/jquery-3.2.1.min.js"></script>
-<script src="styles/bootstrap4/popper.js"></script>
-<script src="styles/bootstrap4/bootstrap.min.js"></script>
-<script src="plugins/easing/easing.js"></script>
-<script src="plugins/parallax-js-master/parallax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
-<script src="js/contact_custom.js"></script>
+	<script src="/pineapple/resources/js/jquery-3.2.1.min.js"></script>
+	<script src="/pineapple/resources/styles/bootstrap4/popper.js"></script>
+	<script src="/pineapple/resources/styles/bootstrap4/bootstrap.min.js"></script>
+	<script src="/pineapple/resources/plugins/easing/easing.js"></script>
+	<script src="/pineapple/resources/plugins/parallax-js-master/parallax.min.js"></script>
+	<script src="/pineapple/resources/plugins/Isotope/isotope.pkgd.min.js"></script>
+	<script src="/pineapple/resources/plugins/malihu-custom-scrollbar/jquery.mCustomScrollbar.js"></script>
+	<script src="/pineapple/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+	<script src="/pineapple/resources/js/categories_custom.js"></script>
+	<script type="text/javascript"></script>
 </body>
 </html>
