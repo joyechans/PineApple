@@ -29,6 +29,7 @@
 					<textarea name="content" style="width: 550px" rows="3"
 						maxlength="200">${ comment.content }</textarea>
 				</form>
+				
 				<br />
 				<div>
 					<a class="updatecomment" href="javascript:"

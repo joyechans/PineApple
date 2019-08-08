@@ -27,57 +27,43 @@
 		<div class="header_inner d-flex flex-row align-items-center justify-content-start">
 			<div class="logo"><a href="/pineapple/">PineApple</a></div>
 			<nav class="main_nav">			
-				<ul>
+				<ul style="width: 100%">
 					<li><a href="/pineapple/pr-upload/pr-list2">PiNEAPPLE</a></li>				
                     <li ><a href="/pineapple/upload/nt-list">NOTICE</a></li>         
 					<li><a href="/pineapple/upload/re-list">REVIEW</a></li>
 					<li><a href="/pineapple/qa-upload/qa-list">Q&A</a></li>
 				</ul>
 			</nav>
-			<div class="header_content ml-auto">
-				<div class="search header_search">
-					<form action="#">
+			<div style="width:700px">
+				<div style="width: 100%; height:38px; text-align: right;">
 						<c:choose>
-            <c:when test="${ empty loginuser }">
-            </c:when>
-            <c:otherwise>            	
-            	<a href="#" class="btn">${ loginuser.memberId }님 </a>
-            	<a href="/pineapple/account/logout" class="btn">로그아웃</a>
-            </c:otherwise>
-            </c:choose>
-					</form>
+				            <c:when test="${ empty loginuser }">
+					            <a href="/pineapple/account/login" class="btn">Login</a>
+			                	<a href="/pineapple/account/register" class="btn">Register</a>	
+				            </c:when>
+		            	<c:otherwise>
+		            	<div style="width:60%; float:left; text-align:right; margin-top: 10px; ">            	
+			             	<!-- Cart -->
+							<a href="/pineapple/upload/ordercart?memberId=${loginuser.memberId }">장바구니</a>
+							<!-- MyPage -->
+							<a style="margin-left: 10px;" href="/pineapple/member/membermypage?memberId=${loginuser.memberId }">마이페이지</a>
+						</div>
+						<div style="width:30%; margin-left:70px; float:left">
+			            	<a href="#" class="btn">${ loginuser.memberId }님 </a>
+			            	<a href="/pineapple/account/logout" class="btn">로그아웃</a>
+		            	</div>
+		            </c:otherwise>
+		            </c:choose>
+
 				</div> 
 				
-				<div class="shopping">	
-					<c:choose>
-					<c:when test="${empty loginuser }">
-						<a href="/pineapple/account/login" class="btn">Login</a>
-                	    <a href="/pineapple/account/register" class="btn">Register</a>
-					</c:when>
-					<c:otherwise>	
-				
-					
-					<!-- Cart -->
-					<a href="/pineapple/upload/ordercart?memberId=${loginuser.memberId }">
-						<div class="avatar">
-							 <img src="/pineapple/resources/images/cart.png" alt="">1
-							
-						</div>
-					</a>
-
-					<!-- MyPage -->
-					<a href="#">
-						<div class="avatar">
-						<a href="/pineapple/member/membermypage?memberId=${loginuser.memberId }"><img src="/pineapple/resources/images/profile.png">2</a>
-						</div>
-					</a>
-					<!-- MyPage End -->
-					</c:otherwise>
-				</c:choose>
-				</div>
 			</div>
 
-			<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm"><div></div><div></div><div></div></div>
+			<div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm">
+			<div></div>
+			<div></div>
+			<div></div>
+			</div>
 		</div>
 	</header>
         

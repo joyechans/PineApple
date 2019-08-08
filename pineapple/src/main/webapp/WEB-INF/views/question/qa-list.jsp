@@ -26,6 +26,7 @@
 	href="/pineapple/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 <link rel="stylesheet" type="text/css"
 	href="/pineapple/resources/styles/categories.css">
+	
 <link rel="stylesheet" type="text/css"
 	href="/pineapple/resources/styles/main_styles.css">
 <link rel="stylesheet" type="text/css"

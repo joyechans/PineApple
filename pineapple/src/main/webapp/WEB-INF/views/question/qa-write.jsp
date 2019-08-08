@@ -30,6 +30,7 @@
 	href="/pineapple/resources/styles/main_styles.css">
 <link rel="stylesheet" type="text/css"
 	href="/pineapple/resources/styles/categories_responsive.css">
+	
 
 
 </head>
