@@ -48,7 +48,7 @@
 						<input type="radio" name="kind" value="IPAD" id="kindCategory2"/><label for="kindCategory2">iPad</label>
 						<input type="radio" name="kind" value="MAC" id="kindCategory3" /><label for="kindCategory3">MAC</label>				
 						<input type="radio" name="kind" value="WATCH" id="kindCategory4"/><label for="kindCategory4">Watch</label>					
-						<input type="radio" name="kind" value="AIRPOT" id="kindCategory5"/><label for="kindCategory5">Airpot</label>			 				                     
+						<input type="radio" name="kind" value="AIRPODS" id="kindCategory5"/><label for="kindCategory5">Airpods</label>			 				                     
                  		</form>
                      </div>
 				</div>

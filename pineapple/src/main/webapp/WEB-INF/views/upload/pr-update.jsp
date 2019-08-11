@@ -68,7 +68,7 @@
 							  <option value="IPAD">iPad</option>
 		                      <option value="MAC">MAC</option>		                      
 		                      <option value="WATCH">Watch</option>		                      
-							  <option value="AIRPOT">Airpot</option>				
+							  <option value="AIRPODS">Airpods</option>				
 							  </select>
 		                </td>
 		                </tr>
