@@ -30,6 +30,8 @@
 	<link rel="stylesheet" href="/pineapple/resources/css/core-style.css">
     <link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/categories.css">
 	<link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/main_styles.css">
+	
+	<script src="/pineapple/resources/ckeditor/ckeditor.js"></script>
 
 
 	
@@ -103,8 +105,18 @@
 								</tr>
 
 								<tr>
-									<td colspan="3"><textarea name="content"
-										rows="20" class="form-control"></textarea>
+									<td colspan="3"><textarea name="content" id="ckeditor" rows="20" class="form-control"></textarea>
+										<script>
+										 var ckeditor_config = {
+										   resize_enaleb : false,
+										   enterMode : CKEDITOR.ENTER_BR,
+										   shiftEnterMode : CKEDITOR.ENTER_P,
+										   filebrowserUploadUrl : "/admin/goods/ckUpload"
+										 };
+										 
+										 CKEDITOR.replace("ckeditor", ckeditor_config);
+										</script>
+
 									</td>
 								</tr>
 

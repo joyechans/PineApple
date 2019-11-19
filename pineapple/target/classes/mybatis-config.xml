@@ -17,7 +17,10 @@
       	<typeAlias type="com.pineapple.vo.ReviewComment" alias="ReviewComment" />   
  		<typeAlias type="com.pineapple.vo.Question" alias="Question"/>
         <typeAlias type="com.pineapple.vo.QuestionFile" alias="QuestionFile"/>   
-        <typeAlias type="com.pineapple.vo.QuestionComment" alias="QuestionComment" />    						
+        <typeAlias type="com.pineapple.vo.QuestionComment" alias="QuestionComment" />    
+        <typeAlias type="com.pineapple.vo.Payment" alias="Payment"/>
+        <typeAlias type="com.pineapple.vo.PaymentDetail" alias="PaymentDetail"/>
+        <typeAlias type="com.pineapple.vo.OrderList" alias="OrderList"/>			
 	</typeAliases>
 	
 	<environments default="development">
@@ -39,7 +42,8 @@
 		<mapper resource="com/pineapple/mapper/notice-mapper.xml" />	
 		<mapper resource="com/pineapple/mapper/question-mapper.xml" />	
 		<mapper resource="com/pineapple/mapper/review-mapper.xml" />	
-		<mapper resource="com/pineapple/mapper/cart-mapper.xml" />					
+		<mapper resource="com/pineapple/mapper/cart-mapper.xml" />
+		<mapper resource="com/pineapple/mapper/report-mapper.xml" />						
 	</mappers>
 	
 </configuration>

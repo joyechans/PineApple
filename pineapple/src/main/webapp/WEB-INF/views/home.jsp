@@ -18,7 +18,7 @@
 		<link rel="stylesheet" type="text/css" href="/pineapple/resources/styles/responsive.css">
 	</head>
 
-	<body>
+	<body onload="javascript:pop()">
 
 	<div class="super_container">
 		
@@ -58,8 +58,7 @@
 							</div>	
 						</div>
 					</div>
-					</a>
-					
+					</a>				
 					<!-- Home Slider Item -->					
 					<a href="/pineapple/pr-upload/pr-list2">
 					<div class="owl-item">
@@ -145,7 +144,51 @@
 	<script src="/pineapple/resources/plugins/parallax-js-master/parallax.min.js"></script>
 	<script src="/pineapple/resources/plugins/colorbox/jquery.colorbox-min.js"></script>
 	<script src="/pineapple/resources/js/custom.js"></script>
-	<script type="text/javascript"></script>
+<!-- 	<script type="text/javascript">
+	function pop(){
+		window.open("/pineapple/pop", 
+					"pop", 
+					"width=450,height=450,history=no,resizable=no,status=no,scrollbars=no,menubar=no")
+	}
+	</script> -->
+	
+	<script type="text/javascript">
+	function change(form)
+	{
+	if (form.url.selectedIndex !=0)
+	parent.location = form.url.options[form.url.selectedIndex].value
+	}
+	function setCookie( name, value, expiredays )
+	{
+	var todayDate = new Date();
+	todayDate.setDate( todayDate.getDate() + expiredays );
+	document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+	}
+	function getCookie( name )
+	{
+	var nameOfCookie = name + "=";
+	var x = 0;
+	while ( x <= document.cookie.length )
+	{
+	var y = (x+nameOfCookie.length);
+	if ( document.cookie.substring( x, y ) == nameOfCookie ) {
+	if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
+	endOfCookie = document.cookie.length;
+	return unescape( document.cookie.substring( y, endOfCookie ) );
+	}
+	x = document.cookie.indexOf( " ", x ) + 1;
+	if ( x == 0 )
+	break;
+	}
+	return "";
+	}
+	if ( getCookie( "Notice" ) != "done" )
+	{
+	noticeWindow = window.open("/pineapple/pop","_blank","width=290,height=285,history=no,resizable=no,status=no,scrollbars=no,menubar=no");
+	//winddow.open의 ()의 것은 한줄에 계속 붙여써야 오류가 안남, 줄바뀌면 오류남
+	noticeWindow.opener = self;
+	}
+</script>
 	</body>
 </html>		
 		
